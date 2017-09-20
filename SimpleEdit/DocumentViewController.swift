@@ -25,8 +25,8 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIDocumentIn
 				self.navigationItem.title = self.document?.fileURL.lastPathComponent
 				self.documentBodyTextView.text = self.document?.text
 			} else {
-				UIAlertController(title: "Failed to open document", message: nil, preferredStyle: .alert)
-					.addAction("OK")
+				UIAlertController(title: "Failed to open document", message: "Document could not be opened as UTF8 text", preferredStyle: .alert)
+					.addAction("OK", handler: {[weak self] _ in self?.dismiss(animated: true)})
 					.present(in: self, animated: true)
 			}
 		})
