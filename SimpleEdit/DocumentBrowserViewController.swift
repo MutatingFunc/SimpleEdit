@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocumentBrowserViewControllerDelegate {
+class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocumentBrowserViewControllerDelegate, UIViewControllerTransitioningDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -18,7 +18,7 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
 		allowsPickingMultipleItems = false
 		
 		// Update the style of the UIDocumentBrowserViewController
-		// browserUserInterfaceStyle = .dark
+		browserUserInterfaceStyle = .light
 		// view.tintColor = .white
 		
 		// Specify the allowed content types of your application via the Info.plist.
@@ -71,14 +71,26 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
 	}
 	
 	// MARK: Document Presentation
-	
+	var transitioningController: UIDocumentBrowserTransitionController?
 	func presentDocument(at documentURL: URL) {
 		
 		let storyboard = UIStoryboard(name: "Main", bundle: nil)
 		let nav = storyboard.instantiateViewController(withIdentifier: "DocumentViewControllerNav") as! UINavigationController
 		let documentViewController = nav.viewControllers.first! as! DocumentViewController
-		documentViewController.document = Document(fileURL: documentURL)
 		
+		nav.transitioningDelegate = self
+		let transitioningController = transitionController(forDocumentURL: documentURL)
+		transitioningController.targetView = documentViewController.documentBodyTextView
+		self.transitioningController = transitioningController
+		
+		documentViewController.document = Document(fileURL: documentURL)
 		present(nav, animated: true, completion: nil)
+	}
+	
+	func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+		return transitioningController
+	}
+	func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+		return transitioningController
 	}
 }

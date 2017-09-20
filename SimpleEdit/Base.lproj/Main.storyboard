@@ -29,7 +29,7 @@
         <!--Document View Controller-->
         <scene sceneID="4ND-ra-x2y">
             <objects>
-                <viewController storyboardIdentifier="DocumentViewController" id="ZLf-oC-3ZS" customClass="DocumentViewController" customModule="TextEdit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DocumentViewController" id="ZLf-oC-3ZS" customClass="DocumentViewController" customModule="SimpleEdit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Pg5-ys-S31">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -109,4 +109,5 @@
             <point key="canvasLocation" x="719" y="654"/>
         </scene>
     </scenes>
+    <color key="tintColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
 </document>
