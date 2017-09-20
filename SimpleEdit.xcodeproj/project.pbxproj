@@ -16,6 +16,8 @@
 		1AD9780C1F72C76600CC31F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AD9780A1F72C76600CC31F1 /* LaunchScreen.storyboard */; };
 		1AD978171F72C76600CC31F1 /* SimpleEditTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD978161F72C76600CC31F1 /* SimpleEditTests.swift */; };
 		1AD978221F72C76600CC31F1 /* SimpleEditUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD978211F72C76600CC31F1 /* SimpleEditUITests.swift */; };
+		1AD9783D1F72CC1600CC31F1 /* Additions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AD978361F72C80900CC31F1 /* Additions.framework */; };
+		1AD9783E1F72CC1600CC31F1 /* Additions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1AD978361F72C80900CC31F1 /* Additions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,7 +35,42 @@
 			remoteGlobalIDString = 1AD977F91F72C76600CC31F1;
 			remoteInfo = SimpleEdit;
 		};
+		1AD978351F72C80900CC31F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1AD978301F72C80900CC31F1 /* Additions.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "_____Product_Additions";
+			remoteInfo = Additions;
+		};
+		1AD978371F72C80900CC31F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1AD978301F72C80900CC31F1 /* Additions.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1A5BD3361E5BBA2300B4DF8C;
+			remoteInfo = AdditionsTests;
+		};
+		1AD9783F1F72CC1600CC31F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1AD978301F72C80900CC31F1 /* Additions.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = "______Target_Additions";
+			remoteInfo = Additions;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1AD978411F72CC1600CC31F1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1AD9783E1F72CC1600CC31F1 /* Additions.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1AD977FA1F72C76600CC31F1 /* SimpleEdit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleEdit.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,6 +88,7 @@
 		1AD9781D1F72C76600CC31F1 /* SimpleEditUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleEditUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AD978211F72C76600CC31F1 /* SimpleEditUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEditUITests.swift; sourceTree = "<group>"; };
 		1AD978231F72C76600CC31F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1AD978301F72C80900CC31F1 /* Additions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Additions.xcodeproj; path = "../../Frameworks/StandardAdditions 2.0/Additions.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AD9783D1F72CC1600CC31F1 /* Additions.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +120,7 @@
 		1AD977F11F72C76600CC31F1 = {
 			isa = PBXGroup;
 			children = (
+				1AD978301F72C80900CC31F1 /* Additions.xcodeproj */,
 				1AD977FC1F72C76600CC31F1 /* SimpleEdit */,
 				1AD978151F72C76600CC31F1 /* SimpleEditTests */,
 				1AD978201F72C76600CC31F1 /* SimpleEditUITests */,
@@ -131,6 +171,15 @@
 			path = SimpleEditUITests;
 			sourceTree = "<group>";
 		};
+		1AD978311F72C80900CC31F1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1AD978361F72C80900CC31F1 /* Additions.framework */,
+				1AD978381F72C80900CC31F1 /* AdditionsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -141,10 +190,12 @@
 				1AD977F61F72C76600CC31F1 /* Sources */,
 				1AD977F71F72C76600CC31F1 /* Frameworks */,
 				1AD977F81F72C76600CC31F1 /* Resources */,
+				1AD978411F72CC1600CC31F1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				1AD978401F72CC1600CC31F1 /* PBXTargetDependency */,
 			);
 			name = SimpleEdit;
 			productName = SimpleEdit;
@@ -224,6 +275,12 @@
 			mainGroup = 1AD977F11F72C76600CC31F1;
 			productRefGroup = 1AD977FB1F72C76600CC31F1 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 1AD978311F72C80900CC31F1 /* Products */;
+					ProjectRef = 1AD978301F72C80900CC31F1 /* Additions.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				1AD977F91F72C76600CC31F1 /* SimpleEdit */,
@@ -232,6 +289,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		1AD978361F72C80900CC31F1 /* Additions.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Additions.framework;
+			remoteRef = 1AD978351F72C80900CC31F1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1AD978381F72C80900CC31F1 /* AdditionsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = AdditionsTests.xctest;
+			remoteRef = 1AD978371F72C80900CC31F1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1AD977F81F72C76600CC31F1 /* Resources */ = {
@@ -300,6 +374,11 @@
 			isa = PBXTargetDependency;
 			target = 1AD977F91F72C76600CC31F1 /* SimpleEdit */;
 			targetProxy = 1AD9781E1F72C76600CC31F1 /* PBXContainerItemProxy */;
+		};
+		1AD978401F72CC1600CC31F1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Additions;
+			targetProxy = 1AD9783F1F72CC1600CC31F1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -433,6 +512,7 @@
 		1AD978271F72C76600CC31F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VKFDYMU9HJ;
@@ -448,6 +528,7 @@
 		1AD978281F72C76600CC31F1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VKFDYMU9HJ;

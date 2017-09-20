@@ -9,14 +9,19 @@
 import UIKit
 
 class Document: UIDocument {
-    
-    override func contents(forType typeName: String) throws -> Any {
-        // Encode your document with an instance of NSData or NSFileWrapper
-        return Data()
-    }
-    
-    override func load(fromContents contents: Any, ofType typeName: String?) throws {
-        // Load your document from contents
-    }
+	enum Error: Swift.Error {case filePackage, readFailed, encodingFailed}
+	
+	var text = ""
+	
+	override func contents(forType typeName: String) throws -> Any {
+		guard let encoded = text.data(using: .utf8) else {throw Error.encodingFailed}
+		return encoded
+	}
+	
+	override func load(fromContents contents: Any, ofType typeName: String?) throws {
+		guard let data = contents as? Data else {throw Error.filePackage}
+		guard let string = String(data: data, encoding: .utf8) else {throw Error.readFailed}
+		text = string
+	}
 }
 
