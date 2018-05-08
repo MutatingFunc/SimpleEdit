@@ -73,6 +73,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1A9EB95D20A12C7100A71919 /* SimpleEdit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimpleEdit.entitlements; sourceTree = "<group>"; };
 		1AD977FA1F72C76600CC31F1 /* SimpleEdit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleEdit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AD977FD1F72C76600CC31F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1AD977FF1F72C76600CC31F1 /* DocumentBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentBrowserViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +142,7 @@
 		1AD977FC1F72C76600CC31F1 /* SimpleEdit */ = {
 			isa = PBXGroup;
 			children = (
+				1A9EB95D20A12C7100A71919 /* SimpleEdit.entitlements */,
 				1AD977FD1F72C76600CC31F1 /* AppDelegate.swift */,
 				1AD977FF1F72C76600CC31F1 /* DocumentBrowserViewController.swift */,
 				1AD978011F72C76600CC31F1 /* DocumentViewController.swift */,
@@ -251,6 +253,11 @@
 					1AD977F91F72C76600CC31F1 = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					1AD978111F72C76600CC31F1 = {
 						CreatedOnToolsVersion = 9.0;
@@ -514,6 +521,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SimpleEdit/SimpleEdit.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VKFDYMU9HJ;
 				INFOPLIST_FILE = SimpleEdit/Info.plist;
@@ -530,6 +538,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SimpleEdit/SimpleEdit.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VKFDYMU9HJ;
 				INFOPLIST_FILE = SimpleEdit/Info.plist;

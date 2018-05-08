@@ -18,7 +18,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func application(_ app: UIApplication, open inputURL: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
 		guard inputURL.isFileURL else {return false}
 		
+		var inputURL = inputURL
+		
 		guard let documentBrowser = window?.rootViewController as? DocumentBrowserViewController else {return false}
+		
+		let fileManager = FileManager.default
+		do {
+			
+			let docsURL = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+			
+			if options[.openInPlace] as? Bool != true {
+				let newURL = docsURL.appendingPathComponent(inputURL.lastPathComponent)
+				try fileManager.copyItem(at: inputURL, to: newURL)
+				try fileManager.removeItem(at: inputURL)
+				inputURL = newURL
+			}
+			
+			let contents = try fileManager.contentsOfDirectory(at: docsURL, includingPropertiesForKeys: nil, options: .skipsSubdirectoryDescendants)
+			if let inboxURL = contents.first(where: {$0.lastPathComponent == "Inbox"}) {
+				for itemURL in try fileManager.contentsOfDirectory(at: inboxURL, includingPropertiesForKeys: nil, options: .skipsSubdirectoryDescendants) {
+					try fileManager.copyItem(at: itemURL, to: docsURL)
+					try fileManager.removeItem(at: itemURL)
+				}
+			}
+		} catch {
+			print(error)
+			UIAlertController("Internal error", detail: "\(error)")
+				.addAction("OK")
+				.present(in: documentBrowser, animated: true)
+			return false
+		}
 		
 		documentBrowser.revealDocument(at: inputURL, importIfNeeded: true) {revealedDocumentURL, error in
 			if let error = error {
