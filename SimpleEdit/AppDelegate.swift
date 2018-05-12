@@ -23,27 +23,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		guard let documentBrowser = window?.rootViewController as? DocumentBrowserViewController else {return false}
 		
 		let fileManager = FileManager.default
+		
 		do {
-			
-			let docsURL = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+			let docsURL = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+			let remoteDocsURL = docsURL
+			/*guard let remoteDocsURL = fileManager.url(forUbiquityContainerIdentifier: nil)?.appendingPathComponent("Documents", isDirectory: true) else {
+				UIAlertController("Import error", detail: "Could not load documents store")
+					.addAction("OK")
+					.present(in: documentBrowser, animated: true)
+				return false
+			}*/
 			
 			if options[.openInPlace] as? Bool != true {
-				let newURL = docsURL.appendingPathComponent(inputURL.lastPathComponent)
-				try fileManager.copyItem(at: inputURL, to: newURL)
+				let newURL = remoteDocsURL.appendingPathComponent(inputURL.lastPathComponent)
+				try fileManager.renamingCopy(at: inputURL, to: newURL)
 				try fileManager.removeItem(at: inputURL)
 				inputURL = newURL
 			}
 			
-			let contents = try fileManager.contentsOfDirectory(at: docsURL, includingPropertiesForKeys: nil, options: .skipsSubdirectoryDescendants)
-			if let inboxURL = contents.first(where: {$0.lastPathComponent == "Inbox"}) {
-				for itemURL in try fileManager.contentsOfDirectory(at: inboxURL, includingPropertiesForKeys: nil, options: .skipsSubdirectoryDescendants) {
-					try fileManager.copyItem(at: itemURL, to: docsURL)
-					try fileManager.removeItem(at: itemURL)
+			let contents = try? fileManager.contentsOfDirectory(at: docsURL, includingPropertiesForKeys: nil, options: .skipsSubdirectoryDescendants)
+			if let inboxURL = contents?.first(where: {$0.lastPathComponent == "Inbox"}) {
+				for itemURL in try? fileManager.contentsOfDirectory(at: inboxURL, includingPropertiesForKeys: nil, options: .skipsSubdirectoryDescendants) {
+					try? fileManager.renamingCopy(at: itemURL, to: remoteDocsURL.appendingPathComponent(itemURL.lastPathComponent))
+					try? fileManager.removeItem(at: itemURL)
 				}
 			}
 		} catch {
 			print(error)
-			UIAlertController("Internal error", detail: "\(error)")
+			UIAlertController("Import error", detail: "\(error)")
 				.addAction("OK")
 				.present(in: documentBrowser, animated: true)
 			return false
