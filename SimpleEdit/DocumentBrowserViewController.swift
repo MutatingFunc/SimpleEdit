@@ -11,6 +11,10 @@ import UIKit
 class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocumentBrowserViewControllerDelegate, UIViewControllerTransitioningDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		ud.register(defaults: [
+			keyFontSize: -1,
+			keyKeyboardType: -1
+		])
 		
 		delegate = self
 		

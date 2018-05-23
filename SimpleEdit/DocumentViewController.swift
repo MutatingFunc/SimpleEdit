@@ -10,13 +10,18 @@ import UIKit
 
 import Additions
 
-class DocumentViewController: UIViewController, UITextViewDelegate, UIDocumentInteractionControllerDelegate {
+class DocumentViewController: UIViewController, UITextViewDelegate, UIDocumentInteractionControllerDelegate, DocumentFontPrefsDelegate {
 	@IBOutlet var undoButtons: [UIBarButtonItem]!
 	@IBOutlet var shareButton: UIBarButtonItem!
 	@IBOutlet var documentBodyTextView: UITextView!
 	
 	var document: Document?
 	
+	override func viewDidLoad() {
+		fontChanged()
+		keyboardTypeChanged()
+		fontPrefsDelegate = self
+	}
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		document?.undoManager = documentBodyTextView.undoManager
@@ -39,13 +44,30 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIDocumentIn
 		self.undoButtons.forEach{$0.isEnabled = true}
 	}
 	
-	
 	@IBAction func undo() {
 		guard let document = self.document else {return}
 		document.undoManager.undo()
 		document.text = documentBodyTextView.text
 		if !document.undoManager.canUndo {
 			self.undoButtons.forEach{$0.isEnabled = false}
+		}
+	}
+	
+	@IBAction func fontPrefs(_ sender: UIBarButtonItem) {
+		let navVC = storyboard!.instantiateViewController(withIdentifier: "\(DocumentFontPrefsVC.self)") as! UINavigationController
+		let vc = navVC.viewControllers.first as! DocumentFontPrefsVC
+		vc.delegate = self
+		navVC.present(in: self, from: sender, animated: true)
+	}
+	func fontChanged() {
+		let size = fontSize ?? UIFont.systemFontSize
+		self.documentBodyTextView.font = fontFamily =>? {UIFont(name: $0, size: size)} ?? UIFont.systemFont(ofSize: size)
+	}
+	func keyboardTypeChanged() {
+		self.documentBodyTextView.keyboardType = keyboardType ?? .default
+		if self.documentBodyTextView.isFirstResponder {
+			self.documentBodyTextView.resignFirstResponder()
+			self.documentBodyTextView.becomeFirstResponder()
 		}
 	}
 	

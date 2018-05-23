@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1AC2FE7A20B56584007D0157 /* DocumentFontPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC2FE7920B56584007D0157 /* DocumentFontPrefs.swift */; };
 		1AD977FE1F72C76600CC31F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD977FD1F72C76600CC31F1 /* AppDelegate.swift */; };
 		1AD978001F72C76600CC31F1 /* DocumentBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD977FF1F72C76600CC31F1 /* DocumentBrowserViewController.swift */; };
 		1AD978021F72C76600CC31F1 /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD978011F72C76600CC31F1 /* DocumentViewController.swift */; };
@@ -74,6 +75,7 @@
 
 /* Begin PBXFileReference section */
 		1A9EB95D20A12C7100A71919 /* SimpleEdit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimpleEdit.entitlements; sourceTree = "<group>"; };
+		1AC2FE7920B56584007D0157 /* DocumentFontPrefs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentFontPrefs.swift; sourceTree = "<group>"; };
 		1AD977FA1F72C76600CC31F1 /* SimpleEdit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleEdit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AD977FD1F72C76600CC31F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1AD977FF1F72C76600CC31F1 /* DocumentBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentBrowserViewController.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				1AD977FD1F72C76600CC31F1 /* AppDelegate.swift */,
 				1AD977FF1F72C76600CC31F1 /* DocumentBrowserViewController.swift */,
 				1AD978011F72C76600CC31F1 /* DocumentViewController.swift */,
+				1AC2FE7920B56584007D0157 /* DocumentFontPrefs.swift */,
 				1AD978031F72C76600CC31F1 /* Document.swift */,
 				1AD978051F72C76600CC31F1 /* Main.storyboard */,
 				1AD978081F72C76600CC31F1 /* Assets.xcassets */,
@@ -347,6 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AD978041F72C76600CC31F1 /* Document.swift in Sources */,
+				1AC2FE7A20B56584007D0157 /* DocumentFontPrefs.swift in Sources */,
 				1AD978021F72C76600CC31F1 /* DocumentViewController.swift in Sources */,
 				1AD978001F72C76600CC31F1 /* DocumentBrowserViewController.swift in Sources */,
 				1AD977FE1F72C76600CC31F1 /* AppDelegate.swift in Sources */,
