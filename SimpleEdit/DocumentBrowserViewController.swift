@@ -13,7 +13,9 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
 		super.viewDidLoad()
 		ud.register(defaults: [
 			keyFontSize: -1,
-			keyKeyboardType: -1
+			keyKeyboardType: -1,
+			keyDarkMode: false,
+			keyEditMode: true
 		])
 		
 		delegate = self
@@ -22,7 +24,8 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
 		allowsPickingMultipleItems = false
 		
 		// Update the style of the UIDocumentBrowserViewController
-		browserUserInterfaceStyle = .light
+		browserUserInterfaceStyle = darkMode ? .dark : .light
+		
 		// view.tintColor = .white
 		
 		// Specify the allowed content types of your application via the Info.plist.
@@ -30,6 +33,7 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
 		// Do any additional setup after loading the view, typically from a nib.
 	}
 	
+	override var preferredStatusBarStyle: UIStatusBarStyle {return darkMode ? .lightContent : .default}
 	
 	// MARK: UIDocumentBrowserViewControllerDelegate
 	

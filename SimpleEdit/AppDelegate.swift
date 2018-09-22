@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			let docsURL = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
 			let remoteDocsURL = docsURL
 			/*guard let remoteDocsURL = fileManager.url(forUbiquityContainerIdentifier: nil)?.appendingPathComponent("Documents", isDirectory: true) else {
-				UIAlertController("Import error", detail: "Could not load documents store")
+				UIAlertController("Import error", message: "Could not load documents store")
 					.addAction("OK")
 					.present(in: documentBrowser, animated: true)
 				return false
@@ -50,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			}
 		} catch {
 			print(error)
-			UIAlertController("Import error", detail: "\(error)")
+			UIAlertController("Import error", message: "\(error)")
 				.addAction("OK")
 				.present(in: documentBrowser, animated: true)
 			return false

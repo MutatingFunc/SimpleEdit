@@ -10,6 +10,8 @@ import UIKit
 
 import Additions
 
+class UIBackgroundView: UIView {}
+
 class DocumentViewController: UIViewController, UITextViewDelegate, UIDocumentInteractionControllerDelegate, DocumentFontPrefsDelegate {
 	@IBOutlet var undoButtons: [UIBarButtonItem]!
 	@IBOutlet var shareButton: UIBarButtonItem!
@@ -18,15 +20,20 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIDocumentIn
 	var document: Document?
 	
 	override func viewDidLoad() {
+		//TODO: inset for keyboard
+		self.documentBodyTextView.contentInset.bottom = self.view.bounds.height - self.view.safeAreaInsets.top
+		darkModeChanged()
+		editModeChanged()
 		fontChanged()
 		keyboardTypeChanged()
 		fontPrefsDelegate = self
 	}
+	override var preferredStatusBarStyle: UIStatusBarStyle {return darkMode ? .lightContent : .default}
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		document?.undoManager = documentBodyTextView.undoManager
 		document?.open(completionHandler: { (success) in
 			if success {
+				self.document?.undoManager = self.documentBodyTextView.undoManager
 				self.navigationItem.title = self.document?.fileURL.lastPathComponent
 				self.documentBodyTextView.text = self.document?.text
 			} else {
@@ -58,6 +65,19 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIDocumentIn
 		let vc = navVC.viewControllers.first as! DocumentFontPrefsVC
 		vc.delegate = self
 		navVC.present(in: self, from: sender, animated: true)
+	}
+	func darkModeChanged() {
+		for container in [DocumentViewController.self, DocumentFontPrefsVC.self] {
+			UILabel.appearance(whenContainedInInstancesOf: [container]).textColor = darkMode ? .lightGray : .black
+		}
+		UIBackgroundView.appearance().backgroundColor = darkMode ? .black : .white
+		self.documentBodyTextView.backgroundColor = .clear
+		self.documentBodyTextView.textColor = darkMode ? .lightGray : .black
+		UINavigationBar.appearance().barTintColor = darkMode ? UIColor(white: 0.1, alpha: 1) : nil
+		UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: darkMode ? UIColor.lightGray : .black]
+	}
+	func editModeChanged() {
+		self.documentBodyTextView.isEditable = editMode
 	}
 	func fontChanged() {
 		let size = fontSize ?? UIFont.systemFontSize

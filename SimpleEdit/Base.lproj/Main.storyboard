@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.13.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.9"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,15 +29,16 @@
         <scene sceneID="4ND-ra-x2y">
             <objects>
                 <viewController storyboardIdentifier="DocumentViewController" id="ZLf-oC-3ZS" customClass="DocumentViewController" customModule="SimpleEdit" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Pg5-ys-S31">
+                    <view key="view" contentMode="scaleToFill" id="Pg5-ys-S31" customClass="UIBackgroundView" customModule="SimpleEdit" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xWH-cJ-ans">
-                                <rect key="frame" x="16" y="64" width="343" height="603"/>
+                                <rect key="frame" x="16" y="0.0" width="343" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES" shipmentTrackingNumber="YES" flightNumber="YES" lookupSuggestion="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="ZLf-oC-3ZS" id="TP9-Fl-tTb"/>
                                 </connections>
@@ -48,9 +47,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="xWH-cJ-ans" firstAttribute="trailing" secondItem="Pg5-ys-S31" secondAttribute="trailingMargin" id="Oi4-Ul-Lz6"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="xWH-cJ-ans" secondAttribute="bottom" id="QUs-3I-2al"/>
                             <constraint firstItem="xWH-cJ-ans" firstAttribute="leading" secondItem="Pg5-ys-S31" secondAttribute="leadingMargin" id="Xhl-GQ-tsN"/>
-                            <constraint firstItem="xWH-cJ-ans" firstAttribute="top" secondItem="Pg5-ys-S31" secondAttribute="topMargin" id="kJV-Or-p6b"/>
+                            <constraint firstItem="xWH-cJ-ans" firstAttribute="bottom" secondItem="Pg5-ys-S31" secondAttribute="bottom" id="ha4-am-DcV"/>
+                            <constraint firstItem="xWH-cJ-ans" firstAttribute="top" secondItem="Pg5-ys-S31" secondAttribute="top" id="sXb-8g-STv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WTQ-KS-tHJ"/>
                     </view>
@@ -100,34 +99,88 @@
         <scene sceneID="a9l-GR-IpP">
             <objects>
                 <viewController id="nfU-1a-iTI" customClass="DocumentFontPrefsVC" customModule="SimpleEdit" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Dab-Vn-xvG">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
+                    <view key="view" contentMode="scaleToFill" id="Dab-Vn-xvG" customClass="UIBackgroundView" customModule="SimpleEdit" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="350"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XfZ-Xb-YRn">
-                                <rect key="frame" x="0.0" y="44" width="240" height="184"/>
-                            </pickerView>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yJ2-PG-ERv">
-                                <rect key="frame" x="0.0" y="228" width="320" height="92"/>
-                            </pickerView>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Od-A8-CUa">
-                                <rect key="frame" x="240" y="44" width="80" height="184"/>
-                            </pickerView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="r1d-IX-llz">
+                                <rect key="frame" x="4" y="48" width="312" height="298"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hvJ-lz-RGO">
+                                        <rect key="frame" x="0.0" y="0.0" width="312" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Dark Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ta0-Tp-Bqb">
+                                                <rect key="frame" x="0.0" y="0.0" width="263" height="31"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xUg-Gc-ABW">
+                                                <rect key="frame" x="263" y="0.0" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="darkModeChanged" destination="nfU-1a-iTI" eventType="valueChanged" id="bJo-JN-AyX"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fnh-Ny-y34">
+                                        <rect key="frame" x="0.0" y="35" width="312" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Edit Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LgW-2O-BHH">
+                                                <rect key="frame" x="0.0" y="0.0" width="263" height="31"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KMW-Ki-TjO">
+                                                <rect key="frame" x="263" y="0.0" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="editModeChanged" destination="nfU-1a-iTI" eventType="valueChanged" id="DUO-GB-2LB"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Font" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LTa-gG-dVn">
+                                        <rect key="frame" x="0.0" y="70" width="312" height="20.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TJS-R4-MIx">
+                                        <rect key="frame" x="0.0" y="94.5" width="312" height="116.5"/>
+                                        <subviews>
+                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XfZ-Xb-YRn">
+                                                <rect key="frame" x="0.0" y="0.0" width="234" height="116.5"/>
+                                            </pickerView>
+                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Od-A8-CUa">
+                                                <rect key="frame" x="234" y="0.0" width="78" height="116.5"/>
+                                            </pickerView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="XfZ-Xb-YRn" firstAttribute="width" secondItem="4Od-A8-CUa" secondAttribute="width" multiplier="3" id="LnQ-CW-udf"/>
+                                        </constraints>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Keyboard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n86-Ox-vR4">
+                                        <rect key="frame" x="0.0" y="215" width="312" height="20.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yJ2-PG-ERv">
+                                        <rect key="frame" x="0.0" y="239.5" width="312" height="58.5"/>
+                                    </pickerView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="TJS-R4-MIx" firstAttribute="height" secondItem="yJ2-PG-ERv" secondAttribute="height" multiplier="2" id="S8Q-n9-xby"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Yff-vm-zGJ" firstAttribute="trailing" secondItem="yJ2-PG-ERv" secondAttribute="trailing" id="1UQ-X6-p5Z"/>
-                            <constraint firstItem="yJ2-PG-ERv" firstAttribute="top" secondItem="4Od-A8-CUa" secondAttribute="bottom" id="84u-cI-VTu"/>
-                            <constraint firstItem="yJ2-PG-ERv" firstAttribute="top" secondItem="XfZ-Xb-YRn" secondAttribute="bottom" id="SSZ-RD-tHg"/>
-                            <constraint firstItem="XfZ-Xb-YRn" firstAttribute="top" secondItem="Yff-vm-zGJ" secondAttribute="top" id="a60-Cj-esZ"/>
-                            <constraint firstItem="yJ2-PG-ERv" firstAttribute="leading" secondItem="Yff-vm-zGJ" secondAttribute="leading" id="c1F-fl-0ci"/>
-                            <constraint firstItem="XfZ-Xb-YRn" firstAttribute="leading" secondItem="Yff-vm-zGJ" secondAttribute="leading" id="d3H-84-ab6"/>
-                            <constraint firstItem="Yff-vm-zGJ" firstAttribute="trailing" secondItem="4Od-A8-CUa" secondAttribute="trailing" id="eli-Kh-ifa"/>
-                            <constraint firstItem="XfZ-Xb-YRn" firstAttribute="width" secondItem="4Od-A8-CUa" secondAttribute="width" multiplier="3" id="khs-52-hDH"/>
-                            <constraint firstItem="4Od-A8-CUa" firstAttribute="top" secondItem="Yff-vm-zGJ" secondAttribute="top" id="mTA-B2-EZz"/>
-                            <constraint firstItem="Yff-vm-zGJ" firstAttribute="bottom" secondItem="yJ2-PG-ERv" secondAttribute="bottom" id="wtl-oF-Mlh"/>
-                            <constraint firstItem="4Od-A8-CUa" firstAttribute="leading" secondItem="XfZ-Xb-YRn" secondAttribute="trailing" id="xmF-s1-Ri3"/>
-                            <constraint firstItem="XfZ-Xb-YRn" firstAttribute="height" secondItem="yJ2-PG-ERv" secondAttribute="height" multiplier="2" id="zjd-Ho-vJQ"/>
+                            <constraint firstItem="r1d-IX-llz" firstAttribute="leading" secondItem="Yff-vm-zGJ" secondAttribute="leading" constant="4" id="57N-vf-GJ4"/>
+                            <constraint firstItem="Yff-vm-zGJ" firstAttribute="bottom" secondItem="r1d-IX-llz" secondAttribute="bottom" constant="4" id="FKl-dH-Ike"/>
+                            <constraint firstItem="r1d-IX-llz" firstAttribute="top" secondItem="Yff-vm-zGJ" secondAttribute="top" constant="4" id="JjD-z8-3Mn"/>
+                            <constraint firstItem="Yff-vm-zGJ" firstAttribute="trailing" secondItem="r1d-IX-llz" secondAttribute="trailing" constant="4" id="fOX-JP-ht8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Yff-vm-zGJ"/>
                     </view>
@@ -138,9 +191,11 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <value key="contentSizeForViewInPopover" type="size" width="320" height="320"/>
-                    <size key="freeformSize" width="320" height="320"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="320" height="350"/>
+                    <size key="freeformSize" width="320" height="350"/>
                     <connections>
+                        <outlet property="darkModeSwitch" destination="xUg-Gc-ABW" id="vn0-hi-ngs"/>
+                        <outlet property="editModeSwitch" destination="KMW-Ki-TjO" id="nU1-ze-gmy"/>
                         <outlet property="fontPicker" destination="XfZ-Xb-YRn" id="E6e-kS-rY2"/>
                         <outlet property="fontSizePicker" destination="4Od-A8-CUa" id="6cw-hL-7Nq"/>
                         <outlet property="keyboardTypePicker" destination="yJ2-PG-ERv" id="as2-Nw-U1Q"/>
@@ -153,7 +208,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Npr-05-gNU">
             <objects>
-                <navigationController storyboardIdentifier="DocumentViewControllerNav" automaticallyAdjustsScrollViewInsets="NO" id="qEV-8h-oeB" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="DocumentViewControllerNav" id="qEV-8h-oeB" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zR9-Tv-MDS">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
