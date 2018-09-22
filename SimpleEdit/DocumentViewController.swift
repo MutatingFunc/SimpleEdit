@@ -20,8 +20,7 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIDocumentIn
 	var document: Document?
 	
 	override func viewDidLoad() {
-		//TODO: inset for keyboard
-		self.documentBodyTextView.contentInset.bottom = self.view.bounds.height - self.view.safeAreaInsets.top
+		self.observeKeyboardNotifications()
 		darkModeChanged()
 		editModeChanged()
 		fontChanged()
@@ -126,3 +125,14 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIDocumentIn
 	}
 }
 
+extension DocumentViewController: KeyboardInsetHelpers {
+	var viewsObscuredByKeyboard: [UIScrollView] {
+		return [documentBodyTextView]
+	}
+	func keyboardWasShown(_ notification: NSNotification) {
+		helper_keyboardWasShown(notification)
+	}
+	func keyboardWillBeHidden(_ notification: NSNotification) {
+		helper_keyboardWillBeHidden(notification)
+	}
+}

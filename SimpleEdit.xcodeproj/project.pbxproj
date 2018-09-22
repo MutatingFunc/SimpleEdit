@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A42E93B21564A22007D05DB /* KeyboardInsetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A42E93A21564A22007D05DB /* KeyboardInsetting.swift */; };
 		1AC2FE7A20B56584007D0157 /* DocumentFontPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC2FE7920B56584007D0157 /* DocumentFontPrefs.swift */; };
 		1AD977FE1F72C76600CC31F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD977FD1F72C76600CC31F1 /* AppDelegate.swift */; };
 		1AD978001F72C76600CC31F1 /* DocumentBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD977FF1F72C76600CC31F1 /* DocumentBrowserViewController.swift */; };
@@ -74,6 +75,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1A42E93A21564A22007D05DB /* KeyboardInsetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardInsetting.swift; sourceTree = "<group>"; };
 		1A9EB95D20A12C7100A71919 /* SimpleEdit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimpleEdit.entitlements; sourceTree = "<group>"; };
 		1AC2FE7920B56584007D0157 /* DocumentFontPrefs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentFontPrefs.swift; sourceTree = "<group>"; };
 		1AD977FA1F72C76600CC31F1 /* SimpleEdit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleEdit.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,6 +150,7 @@
 				1AD977FD1F72C76600CC31F1 /* AppDelegate.swift */,
 				1AD977FF1F72C76600CC31F1 /* DocumentBrowserViewController.swift */,
 				1AD978011F72C76600CC31F1 /* DocumentViewController.swift */,
+				1A42E93A21564A22007D05DB /* KeyboardInsetting.swift */,
 				1AC2FE7920B56584007D0157 /* DocumentFontPrefs.swift */,
 				1AD978031F72C76600CC31F1 /* Document.swift */,
 				1AD978051F72C76600CC31F1 /* Main.storyboard */,
@@ -250,11 +253,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "James Froggatt";
 				TargetAttributes = {
 					1AD977F91F72C76600CC31F1 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.iCloud = {
@@ -264,11 +268,13 @@
 					};
 					1AD978111F72C76600CC31F1 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 1AD977F91F72C76600CC31F1;
 					};
 					1AD9781C1F72C76600CC31F1 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 1AD977F91F72C76600CC31F1;
 					};
@@ -349,6 +355,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A42E93B21564A22007D05DB /* KeyboardInsetting.swift in Sources */,
 				1AD978041F72C76600CC31F1 /* Document.swift in Sources */,
 				1AC2FE7A20B56584007D0157 /* DocumentFontPrefs.swift in Sources */,
 				1AD978021F72C76600CC31F1 /* DocumentViewController.swift in Sources */,
@@ -427,6 +434,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -434,6 +442,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -484,6 +493,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -491,6 +501,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -532,7 +543,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = James.SimpleEdit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -549,7 +560,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = James.SimpleEdit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -565,7 +576,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = James.SimpleEditTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SimpleEdit.app/SimpleEdit";
 			};
@@ -582,7 +593,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = James.SimpleEditTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SimpleEdit.app/SimpleEdit";
 			};
@@ -598,7 +609,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = James.SimpleEditUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = SimpleEdit;
 			};
@@ -614,7 +625,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = James.SimpleEditUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = SimpleEdit;
 			};

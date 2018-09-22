@@ -66,7 +66,7 @@ class DocumentFontPrefsVC: UIViewController {
 				count: fontNames.count + 1,
 				getItem: {
 					let font = $0 == 0 ? "System" : fontNames[$0-1]
-					return NSAttributedString(string: font, attributes: [NSAttributedStringKey.font: UIFont(name: font, size: UIFont.systemFontSize) ?? UIFont.systemFont(ofSize: UIFont.systemFontSize), .foregroundColor: darkMode ? UIColor.lightGray : .black])
+					return NSAttributedString(string: font, attributes: [NSAttributedString.Key.font: UIFont(name: font, size: UIFont.systemFontSize) ?? UIFont.systemFont(ofSize: UIFont.systemFontSize), .foregroundColor: darkMode ? UIColor.lightGray : .black])
 				} as (Int) -> NSAttributedString,
 				initialSelection:
 					fontFamily =>? fontNames.index =>? {$0 + 1}
@@ -158,7 +158,7 @@ class PickerSource<Type: CustomStringConvertible>: NSObject, UIPickerViewDataSou
 	}
 	func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
 		let item = self.item(row)
-		return item as? NSAttributedString ?? NSAttributedString(string: item.description, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: UIFont.systemFontSize), .foregroundColor: darkMode ? UIColor.lightGray : .black])
+		return item as? NSAttributedString ?? NSAttributedString(string: item.description, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: UIFont.systemFontSize), .foregroundColor: darkMode ? UIColor.lightGray : .black])
 	}
 	func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
 		selected(row)
