@@ -39,7 +39,7 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
 	
 	func documentBrowser(_ controller: UIDocumentBrowserViewController, didRequestDocumentCreationWithHandler importHandler: @escaping (URL?, UIDocumentBrowserViewController.ImportMode) -> Void) {
 		do {
-			let url = try FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("untitled.txt")
+			let url = try FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: false).appendingPathComponent("Untitled.txt")
 			let document = Document(fileURL: url)
 			document.save(to: url, for: .forCreating) {success in
 				guard success else {
