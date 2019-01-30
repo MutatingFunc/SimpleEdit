@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1336DD49698E5B9BDB11D800 /* Pods_SimpleEdit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A39F92A46E0988D80628507 /* Pods_SimpleEdit.framework */; };
 		1A42E93B21564A22007D05DB /* KeyboardInsetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A42E93A21564A22007D05DB /* KeyboardInsetting.swift */; };
 		1AC2FE7A20B56584007D0157 /* DocumentFontPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC2FE7920B56584007D0157 /* DocumentFontPrefs.swift */; };
 		1AD977FE1F72C76600CC31F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD977FD1F72C76600CC31F1 /* AppDelegate.swift */; };
@@ -18,8 +19,8 @@
 		1AD9780C1F72C76600CC31F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AD9780A1F72C76600CC31F1 /* LaunchScreen.storyboard */; };
 		1AD978171F72C76600CC31F1 /* SimpleEditTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD978161F72C76600CC31F1 /* SimpleEditTests.swift */; };
 		1AD978221F72C76600CC31F1 /* SimpleEditUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD978211F72C76600CC31F1 /* SimpleEditUITests.swift */; };
-		1AD9783D1F72CC1600CC31F1 /* Additions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AD978361F72C80900CC31F1 /* Additions.framework */; };
-		1AD9783E1F72CC1600CC31F1 /* Additions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1AD978361F72C80900CC31F1 /* Additions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5DBC71BF135D410F760B8F5F /* Pods_SimpleEditTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 090BEDB41AA0A124895C61D6 /* Pods_SimpleEditTests.framework */; };
+		FA139A6860A3B016242FC50C /* Pods_SimpleEditUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3E06C4F95D177D4417931F4 /* Pods_SimpleEditUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,27 +38,6 @@
 			remoteGlobalIDString = 1AD977F91F72C76600CC31F1;
 			remoteInfo = SimpleEdit;
 		};
-		1AD978351F72C80900CC31F1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1AD978301F72C80900CC31F1 /* Additions.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = "_____Product_Additions";
-			remoteInfo = Additions;
-		};
-		1AD978371F72C80900CC31F1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1AD978301F72C80900CC31F1 /* Additions.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1A5BD3361E5BBA2300B4DF8C;
-			remoteInfo = AdditionsTests;
-		};
-		1AD9783F1F72CC1600CC31F1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1AD978301F72C80900CC31F1 /* Additions.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = "______Target_Additions";
-			remoteInfo = Additions;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -67,7 +47,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				1AD9783E1F72CC1600CC31F1 /* Additions.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -75,6 +54,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		090BEDB41AA0A124895C61D6 /* Pods_SimpleEditTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimpleEditTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		093FC054946E8D5BAF2B8303 /* Pods-SimpleEditUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleEditUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SimpleEditUITests/Pods-SimpleEditUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		0E384901A13D0BBFA74790B2 /* Pods-SimpleEdit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleEdit.release.xcconfig"; path = "Pods/Target Support Files/Pods-SimpleEdit/Pods-SimpleEdit.release.xcconfig"; sourceTree = "<group>"; };
+		10EDEAFE0D53CF7B3B86DB21 /* Pods-SimpleEdit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleEdit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SimpleEdit/Pods-SimpleEdit.debug.xcconfig"; sourceTree = "<group>"; };
 		1A42E93A21564A22007D05DB /* KeyboardInsetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardInsetting.swift; sourceTree = "<group>"; };
 		1A9EB95D20A12C7100A71919 /* SimpleEdit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimpleEdit.entitlements; sourceTree = "<group>"; };
 		1AC2FE7920B56584007D0157 /* DocumentFontPrefs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentFontPrefs.swift; sourceTree = "<group>"; };
@@ -93,7 +76,11 @@
 		1AD9781D1F72C76600CC31F1 /* SimpleEditUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleEditUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AD978211F72C76600CC31F1 /* SimpleEditUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEditUITests.swift; sourceTree = "<group>"; };
 		1AD978231F72C76600CC31F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1AD978301F72C80900CC31F1 /* Additions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Additions.xcodeproj; path = "../../Frameworks/StandardAdditions 2.0/Additions.xcodeproj"; sourceTree = "<group>"; };
+		3CE5C411AF00B334E9476733 /* Pods-SimpleEditTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleEditTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SimpleEditTests/Pods-SimpleEditTests.release.xcconfig"; sourceTree = "<group>"; };
+		61A42001996F11CA36A34235 /* Pods-SimpleEditTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleEditTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SimpleEditTests/Pods-SimpleEditTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6A39F92A46E0988D80628507 /* Pods_SimpleEdit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimpleEdit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AE3E6CD8765A0D60B8B2EBD /* Pods-SimpleEditUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleEditUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SimpleEditUITests/Pods-SimpleEditUITests.release.xcconfig"; sourceTree = "<group>"; };
+		E3E06C4F95D177D4417931F4 /* Pods_SimpleEditUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimpleEditUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1AD9783D1F72CC1600CC31F1 /* Additions.framework in Frameworks */,
+				1336DD49698E5B9BDB11D800 /* Pods_SimpleEdit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DBC71BF135D410F760B8F5F /* Pods_SimpleEditTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA139A6860A3B016242FC50C /* Pods_SimpleEditUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,11 +114,12 @@
 		1AD977F11F72C76600CC31F1 = {
 			isa = PBXGroup;
 			children = (
-				1AD978301F72C80900CC31F1 /* Additions.xcodeproj */,
 				1AD977FC1F72C76600CC31F1 /* SimpleEdit */,
 				1AD978151F72C76600CC31F1 /* SimpleEditTests */,
 				1AD978201F72C76600CC31F1 /* SimpleEditUITests */,
 				1AD977FB1F72C76600CC31F1 /* Products */,
+				F4B8260512329C57A57CE1B5 /* Pods */,
+				2FCF1F90E59E4173ADD510B7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -179,13 +169,27 @@
 			path = SimpleEditUITests;
 			sourceTree = "<group>";
 		};
-		1AD978311F72C80900CC31F1 /* Products */ = {
+		2FCF1F90E59E4173ADD510B7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1AD978361F72C80900CC31F1 /* Additions.framework */,
-				1AD978381F72C80900CC31F1 /* AdditionsTests.xctest */,
+				6A39F92A46E0988D80628507 /* Pods_SimpleEdit.framework */,
+				090BEDB41AA0A124895C61D6 /* Pods_SimpleEditTests.framework */,
+				E3E06C4F95D177D4417931F4 /* Pods_SimpleEditUITests.framework */,
 			);
-			name = Products;
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F4B8260512329C57A57CE1B5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				10EDEAFE0D53CF7B3B86DB21 /* Pods-SimpleEdit.debug.xcconfig */,
+				0E384901A13D0BBFA74790B2 /* Pods-SimpleEdit.release.xcconfig */,
+				61A42001996F11CA36A34235 /* Pods-SimpleEditTests.debug.xcconfig */,
+				3CE5C411AF00B334E9476733 /* Pods-SimpleEditTests.release.xcconfig */,
+				093FC054946E8D5BAF2B8303 /* Pods-SimpleEditUITests.debug.xcconfig */,
+				6AE3E6CD8765A0D60B8B2EBD /* Pods-SimpleEditUITests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,15 +199,16 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1AD978261F72C76600CC31F1 /* Build configuration list for PBXNativeTarget "SimpleEdit" */;
 			buildPhases = (
+				EB084259498C2CE3EDFBFD71 /* [CP] Check Pods Manifest.lock */,
 				1AD977F61F72C76600CC31F1 /* Sources */,
 				1AD977F71F72C76600CC31F1 /* Frameworks */,
 				1AD977F81F72C76600CC31F1 /* Resources */,
 				1AD978411F72CC1600CC31F1 /* Embed Frameworks */,
+				28145F618AF2934FFB8F10ED /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				1AD978401F72CC1600CC31F1 /* PBXTargetDependency */,
 			);
 			name = SimpleEdit;
 			productName = SimpleEdit;
@@ -214,6 +219,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1AD978291F72C76600CC31F1 /* Build configuration list for PBXNativeTarget "SimpleEditTests" */;
 			buildPhases = (
+				F3B21A78852849037DF9B6B2 /* [CP] Check Pods Manifest.lock */,
 				1AD9780E1F72C76600CC31F1 /* Sources */,
 				1AD9780F1F72C76600CC31F1 /* Frameworks */,
 				1AD978101F72C76600CC31F1 /* Resources */,
@@ -232,6 +238,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1AD9782C1F72C76600CC31F1 /* Build configuration list for PBXNativeTarget "SimpleEditUITests" */;
 			buildPhases = (
+				03B9C1AF476C6E85357FB70D /* [CP] Check Pods Manifest.lock */,
 				1AD978191F72C76600CC31F1 /* Sources */,
 				1AD9781A1F72C76600CC31F1 /* Frameworks */,
 				1AD9781B1F72C76600CC31F1 /* Resources */,
@@ -291,12 +298,6 @@
 			mainGroup = 1AD977F11F72C76600CC31F1;
 			productRefGroup = 1AD977FB1F72C76600CC31F1 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 1AD978311F72C80900CC31F1 /* Products */;
-					ProjectRef = 1AD978301F72C80900CC31F1 /* Additions.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				1AD977F91F72C76600CC31F1 /* SimpleEdit */,
@@ -305,23 +306,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		1AD978361F72C80900CC31F1 /* Additions.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Additions.framework;
-			remoteRef = 1AD978351F72C80900CC31F1 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1AD978381F72C80900CC31F1 /* AdditionsTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = AdditionsTests.xctest;
-			remoteRef = 1AD978371F72C80900CC31F1 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1AD977F81F72C76600CC31F1 /* Resources */ = {
@@ -349,6 +333,85 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		03B9C1AF476C6E85357FB70D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SimpleEditUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		28145F618AF2934FFB8F10ED /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SimpleEdit/Pods-SimpleEdit-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Additions/Additions.framework",
+				"${BUILT_PRODUCTS_DIR}/Menu/Menu.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Additions.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Menu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SimpleEdit/Pods-SimpleEdit-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EB084259498C2CE3EDFBFD71 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SimpleEdit-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F3B21A78852849037DF9B6B2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SimpleEditTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1AD977F61F72C76600CC31F1 /* Sources */ = {
@@ -392,11 +455,6 @@
 			isa = PBXTargetDependency;
 			target = 1AD977F91F72C76600CC31F1 /* SimpleEdit */;
 			targetProxy = 1AD9781E1F72C76600CC31F1 /* PBXContainerItemProxy */;
-		};
-		1AD978401F72CC1600CC31F1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Additions;
-			targetProxy = 1AD9783F1F72CC1600CC31F1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -533,6 +591,7 @@
 		};
 		1AD978271F72C76600CC31F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 10EDEAFE0D53CF7B3B86DB21 /* Pods-SimpleEdit.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -550,6 +609,7 @@
 		};
 		1AD978281F72C76600CC31F1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E384901A13D0BBFA74790B2 /* Pods-SimpleEdit.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -567,6 +627,7 @@
 		};
 		1AD9782A1F72C76600CC31F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 61A42001996F11CA36A34235 /* Pods-SimpleEditTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -584,6 +645,7 @@
 		};
 		1AD9782B1F72C76600CC31F1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3CE5C411AF00B334E9476733 /* Pods-SimpleEditTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -601,6 +663,7 @@
 		};
 		1AD9782D1F72C76600CC31F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 093FC054946E8D5BAF2B8303 /* Pods-SimpleEditUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -617,6 +680,7 @@
 		};
 		1AD9782E1F72C76600CC31F1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6AE3E6CD8765A0D60B8B2EBD /* Pods-SimpleEditUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
