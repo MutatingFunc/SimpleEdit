@@ -18,7 +18,7 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
 			keyEditMode: true
 		])
 		
-		updateInterfaceStyle()
+		browserUserInterfaceStyle = .light
 		
 		delegate = self
 		
@@ -32,14 +32,6 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
 		// Specify the allowed content types of your application via the Info.plist.
 		
 		// Do any additional setup after loading the view, typically from a nib.
-	}
-	/*
-	override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-		super.traitCollectionDidChange(previousTraitCollection)
-		updateInterfaceStyle()
-	}*/
-	private func updateInterfaceStyle() {
-		browserUserInterfaceStyle = traitCollection.userInterfaceStyle == .dark ? .dark : .light
 	}
 	
 	// MARK: UIDocumentBrowserViewControllerDelegate
