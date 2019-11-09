@@ -94,7 +94,7 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
 		let documentViewController = nav.viewControllers.first! as! DocumentViewController
 		
 		nav.transitioningDelegate = self
-		let transitioningController = transitionController(forDocumentURL: documentURL)
+		let transitioningController = transitionController(forDocumentAt: documentURL)
 		transitioningController.targetView = documentViewController.documentBodyTextView
 		self.transitioningController = transitioningController
 		

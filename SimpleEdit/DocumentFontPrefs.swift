@@ -97,6 +97,7 @@ class DocumentFontPrefsVC: UIViewController {
 		case .twitter: return "Twitter"
 		case .URL: return "URL"
 		case .webSearch: return "web search"
+		@unknown case _: return "[unknown type]"
 		}
 	}
 	
