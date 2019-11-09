@@ -17,7 +17,6 @@ let keyEditMode = "edit mode"
 let keyDarkMode = "dark mode"
 
 protocol DocumentFontPrefsDelegate: AnyObject {
-	func darkModeChanged()
 	func editModeChanged()
 	func keyboardTypeChanged()
 	func fontChanged()
@@ -42,13 +41,8 @@ var editMode: Bool {
 	get {return ud.bool(forKey: keyEditMode)}
 	set {ud.set(newValue, forKey: keyEditMode)}
 }
-var darkMode: Bool {
-	get {return ud.bool(forKey: keyDarkMode)}
-	set {ud.set(newValue, forKey: keyDarkMode)}
-}
 
 class DocumentFontPrefsVC: UIViewController {
-	@IBOutlet var darkModeSwitch: UISwitch!
 	@IBOutlet var editModeSwitch: UISwitch!
 	@IBOutlet var fontPicker: UIPickerView!
 	@IBOutlet var fontSizePicker: UIPickerView!
@@ -59,17 +53,15 @@ class DocumentFontPrefsVC: UIViewController {
 	
 	override func viewDidLoad() {
 		let fontNames = UIFont.familyNames.sorted()
-		self.darkModeSwitch.isOn = darkMode
 		self.editModeSwitch.isOn = editMode
 		self.sources = [
 			PickerSource(
 				count: fontNames.count + 1,
 				getItem: {
-					let font = $0 == 0 ? "System" : fontNames[$0-1]
-					return NSAttributedString(string: font, attributes: [NSAttributedString.Key.font: UIFont(name: font, size: UIFont.systemFontSize) ?? UIFont.systemFont(ofSize: UIFont.systemFontSize), .foregroundColor: darkMode ? UIColor.lightGray : .black])
-				} as (Int) -> NSAttributedString,
+					$0 == 0 ? "System" : fontNames[$0-1]
+				},
 				initialSelection:
-					fontFamily =>? fontNames.index =>? {$0 + 1}
+				fontFamily =>? fontNames.firstIndex =>? {$0 + 1}
 						?? 0,
 				onSelect: {fontFamily = $0 == 0 ? nil : fontNames[$0-1]}
 			).add(to: fontPicker),
@@ -89,7 +81,6 @@ class DocumentFontPrefsVC: UIViewController {
 			).add(to: keyboardTypePicker)
 		]
 	}
-	override var preferredStatusBarStyle: UIStatusBarStyle {return darkMode ? .lightContent : .default}
 	
 	
 	func keyboardTypeName(forRow row: Int) -> String {
@@ -106,17 +97,6 @@ class DocumentFontPrefsVC: UIViewController {
 		case .twitter: return "Twitter"
 		case .URL: return "URL"
 		case .webSearch: return "web search"
-		}
-	}
-	
-	@IBAction func darkModeChanged() {
-		darkMode = darkModeSwitch.isOn
-		self.delegate?.darkModeChanged()
-		for window in UIApplication.shared.windows {
-			for view in window.subviews {
-				view.removeFromSuperview()
-				window.addSubview(view)
-			}
 		}
 	}
 	
@@ -151,14 +131,13 @@ class PickerSource<Type: CustomStringConvertible>: NSObject, UIPickerViewDataSou
 	}
 	
 	func numberOfComponents(in pickerView: UIPickerView) -> Int {
-		return 1
+		1
 	}
 	func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-		return count
+		count
 	}
-	func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-		let item = self.item(row)
-		return item as? NSAttributedString ?? NSAttributedString(string: item.description, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: UIFont.systemFontSize), .foregroundColor: darkMode ? UIColor.lightGray : .black])
+	func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+		self.item(row).description
 	}
 	func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
 		selected(row)

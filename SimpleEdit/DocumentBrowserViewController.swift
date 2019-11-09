@@ -18,13 +18,14 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
 			keyEditMode: true
 		])
 		
+		updateInterfaceStyle()
+		
 		delegate = self
 		
 		allowsDocumentCreation = true
 		allowsPickingMultipleItems = false
 		
 		// Update the style of the UIDocumentBrowserViewController
-		browserUserInterfaceStyle = darkMode ? .dark : .light
 		
 		// view.tintColor = .white
 		
@@ -32,8 +33,14 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
 		
 		// Do any additional setup after loading the view, typically from a nib.
 	}
-	
-	override var preferredStatusBarStyle: UIStatusBarStyle {return darkMode ? .lightContent : .default}
+	/*
+	override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+		super.traitCollectionDidChange(previousTraitCollection)
+		updateInterfaceStyle()
+	}*/
+	private func updateInterfaceStyle() {
+		browserUserInterfaceStyle = traitCollection.userInterfaceStyle == .dark ? .dark : .light
+	}
 	
 	// MARK: UIDocumentBrowserViewControllerDelegate
 	
