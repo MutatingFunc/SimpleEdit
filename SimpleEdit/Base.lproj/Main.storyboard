@@ -26,7 +26,7 @@
         <scene sceneID="4ND-ra-x2y">
             <objects>
                 <viewController storyboardIdentifier="DocumentViewController" id="ZLf-oC-3ZS" customClass="DocumentViewController" customModule="SimpleEdit" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Pg5-ys-S31" customClass="UIBackgroundView" customModule="SimpleEdit" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="Pg5-ys-S31">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -97,7 +97,7 @@
         <scene sceneID="a9l-GR-IpP">
             <objects>
                 <viewController id="nfU-1a-iTI" customClass="DocumentFontPrefsVC" customModule="SimpleEdit" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Dab-Vn-xvG" customClass="UIBackgroundView" customModule="SimpleEdit" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="Dab-Vn-xvG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="350"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>

@@ -10,8 +10,6 @@ import UIKit
 
 import Additions
 
-class UIBackgroundView: UIView {}
-
 class DocumentViewController: UIViewController, UITextViewDelegate, UIDocumentInteractionControllerDelegate, DocumentFontPrefsDelegate {
 	@IBOutlet var undoButtons: [UIBarButtonItem]!
 	@IBOutlet var shareButton: UIBarButtonItem!
