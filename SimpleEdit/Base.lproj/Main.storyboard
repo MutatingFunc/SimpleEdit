@@ -31,7 +31,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" alwaysBounceVertical="YES" keyboardDismissMode="interactive" editable="NO" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xWH-cJ-ans">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="16" y="0.0" width="343" height="667"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
@@ -44,8 +44,8 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="xWH-cJ-ans" firstAttribute="trailing" secondItem="Pg5-ys-S31" secondAttribute="trailing" id="Oi4-Ul-Lz6"/>
-                            <constraint firstItem="xWH-cJ-ans" firstAttribute="leading" secondItem="Pg5-ys-S31" secondAttribute="leading" id="Xhl-GQ-tsN"/>
+                            <constraint firstItem="xWH-cJ-ans" firstAttribute="trailing" secondItem="Pg5-ys-S31" secondAttribute="trailingMargin" id="Oi4-Ul-Lz6"/>
+                            <constraint firstItem="xWH-cJ-ans" firstAttribute="leading" secondItem="Pg5-ys-S31" secondAttribute="leadingMargin" id="Xhl-GQ-tsN"/>
                             <constraint firstItem="xWH-cJ-ans" firstAttribute="bottom" secondItem="Pg5-ys-S31" secondAttribute="bottom" id="ha4-am-DcV"/>
                             <constraint firstItem="xWH-cJ-ans" firstAttribute="top" secondItem="Pg5-ys-S31" secondAttribute="top" id="sXb-8g-STv"/>
                         </constraints>
