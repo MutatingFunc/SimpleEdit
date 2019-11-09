@@ -10,6 +10,7 @@
 		1A372EDA237730A700109AFD /* Additions in Frameworks */ = {isa = PBXBuildFile; productRef = 1A372ED9237730A700109AFD /* Additions */; };
 		1A372EDC237730A700109AFD /* UITestAdditions in Frameworks */ = {isa = PBXBuildFile; productRef = 1A372EDB237730A700109AFD /* UITestAdditions */; };
 		1A372EDE2377339F00109AFD /* SettingsRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A372EDD2377339F00109AFD /* SettingsRobot.swift */; };
+		1A372EE0237750E800109AFD /* AppSettingsRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A372EDF237750E800109AFD /* AppSettingsRobot.swift */; };
 		1A42E93B21564A22007D05DB /* KeyboardInsetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A42E93A21564A22007D05DB /* KeyboardInsetting.swift */; };
 		1A475AAF23771D6A00803BDF /* DocumentBrowserRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A475AAE23771D6A00803BDF /* DocumentBrowserRobot.swift */; };
 		1A475AB123771DA800803BDF /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A475AB023771DA800803BDF /* Tests.swift */; };
@@ -59,6 +60,7 @@
 
 /* Begin PBXFileReference section */
 		1A372EDD2377339F00109AFD /* SettingsRobot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRobot.swift; sourceTree = "<group>"; };
+		1A372EDF237750E800109AFD /* AppSettingsRobot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsRobot.swift; sourceTree = "<group>"; };
 		1A42E93A21564A22007D05DB /* KeyboardInsetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardInsetting.swift; sourceTree = "<group>"; };
 		1A475AAE23771D6A00803BDF /* DocumentBrowserRobot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentBrowserRobot.swift; sourceTree = "<group>"; };
 		1A475AB023771DA800803BDF /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				1A89109B23771AA700945538 /* SimpleEditRobot.swift */,
 				1A475AAE23771D6A00803BDF /* DocumentBrowserRobot.swift */,
 				1A475ABA237724B600803BDF /* DocumentEditorRobot.swift */,
+				1A372EDF237750E800109AFD /* AppSettingsRobot.swift */,
 				1A372EDD2377339F00109AFD /* SettingsRobot.swift */,
 			);
 			path = Robots;
@@ -364,6 +367,7 @@
 				1A475ABB237724B600803BDF /* DocumentEditorRobot.swift in Sources */,
 				1A475AB323771DB200803BDF /* Screenshots.swift in Sources */,
 				1A475AB123771DA800803BDF /* Tests.swift in Sources */,
+				1A372EE0237750E800109AFD /* AppSettingsRobot.swift in Sources */,
 				1A475AAF23771D6A00803BDF /* DocumentBrowserRobot.swift in Sources */,
 				1A372EDE2377339F00109AFD /* SettingsRobot.swift in Sources */,
 			);
