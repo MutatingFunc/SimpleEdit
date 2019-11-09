@@ -53,14 +53,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="Osv-Py-yU1">
                         <leftBarButtonItems>
-                            <barButtonItem enabled="NO" title="Revert…" id="JEH-DK-dXr">
-                                <connections>
-                                    <action selector="revert" destination="ZLf-oC-3ZS" id="Bmu-4C-Gzt"/>
-                                </connections>
-                            </barButtonItem>
                             <barButtonItem enabled="NO" systemItem="undo" id="2lu-HJ-cUr">
                                 <connections>
                                     <action selector="undo" destination="ZLf-oC-3ZS" id="Ebr-8c-ic9"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem enabled="NO" title="Revert…" id="JEH-DK-dXr">
+                                <connections>
+                                    <action selector="revert" destination="ZLf-oC-3ZS" id="Bmu-4C-Gzt"/>
                                 </connections>
                             </barButtonItem>
                         </leftBarButtonItems>
