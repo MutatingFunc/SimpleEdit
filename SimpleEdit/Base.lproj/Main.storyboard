@@ -30,8 +30,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xWH-cJ-ans">
-                                <rect key="frame" x="16" y="0.0" width="343" height="667"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" alwaysBounceVertical="YES" keyboardDismissMode="interactive" editable="NO" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xWH-cJ-ans">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
@@ -44,8 +44,8 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="xWH-cJ-ans" firstAttribute="trailing" secondItem="Pg5-ys-S31" secondAttribute="trailingMargin" id="Oi4-Ul-Lz6"/>
-                            <constraint firstItem="xWH-cJ-ans" firstAttribute="leading" secondItem="Pg5-ys-S31" secondAttribute="leadingMargin" id="Xhl-GQ-tsN"/>
+                            <constraint firstItem="xWH-cJ-ans" firstAttribute="trailing" secondItem="Pg5-ys-S31" secondAttribute="trailing" id="Oi4-Ul-Lz6"/>
+                            <constraint firstItem="xWH-cJ-ans" firstAttribute="leading" secondItem="Pg5-ys-S31" secondAttribute="leading" id="Xhl-GQ-tsN"/>
                             <constraint firstItem="xWH-cJ-ans" firstAttribute="bottom" secondItem="Pg5-ys-S31" secondAttribute="bottom" id="ha4-am-DcV"/>
                             <constraint firstItem="xWH-cJ-ans" firstAttribute="top" secondItem="Pg5-ys-S31" secondAttribute="top" id="sXb-8g-STv"/>
                         </constraints>
@@ -53,7 +53,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Osv-Py-yU1">
                         <leftBarButtonItems>
-                            <barButtonItem enabled="NO" title="Revert" id="JEH-DK-dXr">
+                            <barButtonItem enabled="NO" title="Revert…" id="JEH-DK-dXr">
                                 <connections>
                                     <action selector="revert" destination="ZLf-oC-3ZS" id="Bmu-4C-Gzt"/>
                                 </connections>
@@ -70,7 +70,7 @@
                                     <action selector="close" destination="ZLf-oC-3ZS" id="FML-y1-bxf"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Settings" id="0Na-dF-ht5">
+                            <barButtonItem title="Settings" image="gear" catalog="system" id="0Na-dF-ht5">
                                 <connections>
                                     <action selector="fontPrefs:" destination="ZLf-oC-3ZS" id="UfG-cU-IjA"/>
                                 </connections>
@@ -166,7 +166,7 @@
                         <viewLayoutGuide key="safeArea" id="Yff-vm-zGJ"/>
                     </view>
                     <navigationItem key="navigationItem" id="ncO-0J-mTj">
-                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="YwN-YB-GWv">
+                        <barButtonItem key="leftBarButtonItem" springLoaded="YES" systemItem="done" id="YwN-YB-GWv">
                             <connections>
                                 <action selector="done" destination="nfU-1a-iTI" id="U8K-xF-L4V"/>
                             </connections>
@@ -222,5 +222,8 @@
             <point key="canvasLocation" x="2077.5999999999999" y="653.52323838080963"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="gear" catalog="system" width="64" height="58"/>
+    </resources>
     <color key="tintColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
 </document>
