@@ -91,6 +91,7 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
 		
 		let storyboard = UIStoryboard(name: "Main", bundle: nil)
 		let nav = storyboard.instantiateViewController(withIdentifier: "DocumentViewControllerNav") as! UINavigationController
+		nav.modalPresentationStyle = .fullScreen
 		let documentViewController = nav.viewControllers.first! as! DocumentViewController
 		
 		nav.transitioningDelegate = self
