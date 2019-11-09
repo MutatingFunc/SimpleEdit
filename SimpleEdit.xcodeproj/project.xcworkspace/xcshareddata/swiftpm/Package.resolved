@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Additions",
+        "repositoryURL": "https://github.com/MutatingFunc/Additions.git",
+        "state": {
+          "branch": null,
+          "revision": "7d3221a3d25b78a27c11ab86c6c94dbfb0c6a7ce",
+          "version": "1.4.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
