@@ -6,10 +6,10 @@
 //  Copyright © 2019 James Froggatt. All rights reserved.
 //
 
-import XCTest
+import UIKit
 import UITestAdditions
 
-class Screenshots: XCTestCase {
+class Screenshots: Test {
 	func testiPadScreenshots() {
 		testScreenshots(idiom: .pad, landscapeSettings: true)
 	}
