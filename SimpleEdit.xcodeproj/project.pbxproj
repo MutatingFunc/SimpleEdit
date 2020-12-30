@@ -15,6 +15,7 @@
 		1A475AB123771DA800803BDF /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A475AB023771DA800803BDF /* Tests.swift */; };
 		1A475AB323771DB200803BDF /* Screenshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A475AB223771DB200803BDF /* Screenshots.swift */; };
 		1A475ABB237724B600803BDF /* DocumentEditorRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A475ABA237724B600803BDF /* DocumentEditorRobot.swift */; };
+		1A82652B259D236600725E68 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A82652A259D236600725E68 /* SceneDelegate.swift */; };
 		1A89109C23771AA700945538 /* SimpleEditRobot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A89109B23771AA700945538 /* SimpleEditRobot.swift */; };
 		1AC2FE7A20B56584007D0157 /* DocumentFontPrefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC2FE7920B56584007D0157 /* DocumentFontPrefs.swift */; };
 		1AD977FE1F72C76600CC31F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD977FD1F72C76600CC31F1 /* AppDelegate.swift */; };
@@ -64,6 +65,7 @@
 		1A475AB023771DA800803BDF /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		1A475AB223771DB200803BDF /* Screenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screenshots.swift; sourceTree = "<group>"; };
 		1A475ABA237724B600803BDF /* DocumentEditorRobot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentEditorRobot.swift; sourceTree = "<group>"; };
+		1A82652A259D236600725E68 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		1A89109B23771AA700945538 /* SimpleEditRobot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEditRobot.swift; sourceTree = "<group>"; };
 		1A9EB95D20A12C7100A71919 /* SimpleEdit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimpleEdit.entitlements; sourceTree = "<group>"; };
 		1AC2FE7920B56584007D0157 /* DocumentFontPrefs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentFontPrefs.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 			children = (
 				1A9EB95D20A12C7100A71919 /* SimpleEdit.entitlements */,
 				1AD977FD1F72C76600CC31F1 /* AppDelegate.swift */,
+				1A82652A259D236600725E68 /* SceneDelegate.swift */,
 				1AD977FF1F72C76600CC31F1 /* DocumentBrowserViewController.swift */,
 				1AD978011F72C76600CC31F1 /* DocumentViewController.swift */,
 				1A42E93A21564A22007D05DB /* KeyboardInsetting.swift */,
@@ -340,6 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A42E93B21564A22007D05DB /* KeyboardInsetting.swift in Sources */,
+				1A82652B259D236600725E68 /* SceneDelegate.swift in Sources */,
 				1AD978041F72C76600CC31F1 /* Document.swift in Sources */,
 				1AC2FE7A20B56584007D0157 /* DocumentFontPrefs.swift in Sources */,
 				1AD978021F72C76600CC31F1 /* DocumentViewController.swift in Sources */,
