@@ -79,7 +79,7 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
 	
 	// MARK: Document Presentation
 	var transitioningController: UIDocumentBrowserTransitionController?
-	func presentDocument(at documentURL: URL) {
+	func presentDocument(at documentURL: URL, animated: Bool = true) {
 		
 		let storyboard = UIStoryboard(name: "Main", bundle: nil)
 		let nav = storyboard.instantiateViewController(withIdentifier: "DocumentViewControllerNav") as! UINavigationController
@@ -92,7 +92,7 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
 		self.transitioningController = transitioningController
 		
 		documentViewController.document = Document(fileURL: documentURL)
-		present(nav, animated: true, completion: nil)
+		present(nav, animated: animated, completion: nil)
 	}
 	
 	func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
