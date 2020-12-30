@@ -11,7 +11,57 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 	var window: UIWindow?
 
-
+	func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+		for openURLContext in URLContexts {
+			var inputURL = openURLContext.url
+			guard inputURL.isFileURL else {return}
+			
+			guard let documentBrowser = (scene as? UIWindowScene)?.windows.first?.rootViewController as? DocumentBrowserViewController else {return}
+			
+			let fileManager = FileManager.default
+			
+			do {
+				let docsURL = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+				let remoteDocsURL = docsURL
+				/*guard let remoteDocsURL = fileManager.url(forUbiquityContainerIdentifier: nil)?.appendingPathComponent("Documents", isDirectory: true) else {
+					UIAlertController("Import error", message: "Could not load documents store")
+						.addAction("OK")
+						.present(in: documentBrowser, animated: true)
+					return false
+				}*/
+				
+				if !openURLContext.options.openInPlace {
+					let newURL = remoteDocsURL.appendingPathComponent(inputURL.lastPathComponent)
+					try fileManager.renamingCopy(at: inputURL, to: newURL)
+					try fileManager.removeItem(at: inputURL)
+					inputURL = newURL
+				}
+				
+				let contents = try? fileManager.contentsOfDirectory(at: docsURL, includingPropertiesForKeys: nil, options: .skipsSubdirectoryDescendants)
+				if let inboxURL = contents?.first(where: {$0.lastPathComponent == "Inbox"}) {
+					for itemURL in (try? fileManager.contentsOfDirectory(at: inboxURL, includingPropertiesForKeys: nil, options: .skipsSubdirectoryDescendants)) ?? [] {
+						try? fileManager.renamingCopy(at: itemURL, to: remoteDocsURL.appendingPathComponent(itemURL.lastPathComponent))
+						try? fileManager.removeItem(at: itemURL)
+					}
+				}
+			} catch {
+				print(error)
+				UIAlertController("Import error", message: "\(error)")
+					.addAction("OK")
+					.present(in: documentBrowser, animated: true)
+			}
+			
+			documentBrowser.revealDocument(at: inputURL, importIfNeeded: true) {revealedDocumentURL, error in
+				if let error = error {
+					return UIAlertController(title: "Error", message: "Failed to reveal the document at URL \(inputURL) with error: '\(error)'", preferredStyle: .alert)
+						.addAction("OK")
+						.present(in: documentBrowser, animated: true)
+				}
+				documentBrowser.presentDocument(at: revealedDocumentURL!)
+			}
+		}
+	}
+	
 	func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 		// Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
 		// If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
