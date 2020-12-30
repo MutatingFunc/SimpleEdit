@@ -10,7 +10,7 @@ import UIKit
 
 import Additions
 
-class DocumentViewController: UIViewController, UITextViewDelegate, UIDocumentInteractionControllerDelegate, DocumentFontPrefsDelegate {
+class DocumentViewController: UIViewController, UITextViewDelegate, UIDocumentInteractionControllerDelegate {
 	@IBOutlet var undoButtons: [UIBarButtonItem]!
 	@IBOutlet var shareButton: UIBarButtonItem!
 	@IBOutlet var documentBodyTextView: UITextView!
@@ -19,11 +19,25 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIDocumentIn
 	
 	override func viewDidLoad() {
 		self.observeKeyboardNotifications()
+	}
+	
+	override func didMove(toParent parent: UIViewController?) {
+		super.didMove(toParent: parent)
+		NotificationCenter.default.addObserver(self, selector: #selector(userDefaultsChanged), name: UserDefaults.didChangeNotification, object: nil)
+		userDefaultsChanged()
+	}
+	
+	override func willMove(toParent parent: UIViewController?) {
+		super.willMove(toParent: parent)
+		NotificationCenter.default.removeObserver(self)
+	}
+	
+	@objc func userDefaultsChanged() {
 		editModeChanged()
 		fontChanged()
 		keyboardTypeChanged()
-		fontPrefsDelegate = self
 	}
+	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		document?.open(completionHandler: { (success) in
@@ -57,8 +71,6 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIDocumentIn
 	
 	@IBAction func fontPrefs(_ sender: UIBarButtonItem) {
 		let navVC = storyboard!.instantiateViewController(withIdentifier: "\(DocumentFontPrefsVC.self)") as! UINavigationController
-		let vc = navVC.viewControllers.first as! DocumentFontPrefsVC
-		vc.delegate = self
 		navVC.present(in: self, from: sender, animated: true)
 	}
 	func editModeChanged() {

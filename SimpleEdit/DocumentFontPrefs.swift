@@ -16,26 +16,19 @@ let keyKeyboardType = "keyboard type"
 let keyEditMode = "edit mode"
 let keyDarkMode = "dark mode"
 
-protocol DocumentFontPrefsDelegate: AnyObject {
-	func editModeChanged()
-	func keyboardTypeChanged()
-	func fontChanged()
-}
-weak var fontPrefsDelegate: DocumentFontPrefsDelegate?
-
 let ud = UserDefaults.standard
 
 var fontFamily: String? {
 	get {return ud.string(forKey: keyFont)}
-	set {ud.set(newValue, forKey: keyFont); fontPrefsDelegate?.fontChanged()}
+	set {ud.set(newValue, forKey: keyFont)}
 }
 var fontSize: CGFloat? {
 	get {return ud.double(forKey: keyFontSize) => {$0 < 0 ? nil : $0} =>? CGFloat.init(_:)}
-	set {ud.set(newValue, forKey: keyFontSize); fontPrefsDelegate?.fontChanged()}
+	set {ud.set(newValue, forKey: keyFontSize)}
 }
 var keyboardType: UIKeyboardType? {
 	get {return ud.integer(forKey: keyKeyboardType) => {$0 < 0 ? nil : $0} =>? UIKeyboardType.init(rawValue:)}
-	set {ud.set(newValue?.rawValue, forKey: keyKeyboardType); fontPrefsDelegate?.keyboardTypeChanged()}
+	set {ud.set(newValue?.rawValue, forKey: keyKeyboardType)}
 }
 var editMode: Bool {
 	get {return ud.bool(forKey: keyEditMode)}
@@ -48,7 +41,6 @@ class DocumentFontPrefsVC: UIViewController {
 	@IBOutlet var fontSizePicker: UIPickerView!
 	@IBOutlet var keyboardTypePicker: UIPickerView!
 	
-	weak var delegate: DocumentFontPrefsDelegate?
 	var sources: [AnyObject] = []
 	
 	override func viewDidLoad() {
@@ -103,7 +95,6 @@ class DocumentFontPrefsVC: UIViewController {
 	
 	@IBAction func editModeChanged() {
 		editMode = editModeSwitch.isOn
-		self.delegate?.editModeChanged()
 	}
 	
 	@IBAction func done() {
