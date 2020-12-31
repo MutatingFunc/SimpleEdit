@@ -30,12 +30,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 			do {
 				let docsURL = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
 				let remoteDocsURL = docsURL
-				/*guard let remoteDocsURL = fileManager.url(forUbiquityContainerIdentifier: nil)?.appendingPathComponent("Documents", isDirectory: true) else {
-					UIAlertController("Import error", message: "Could not load documents store")
-						.addAction("OK")
-						.present(in: documentBrowser, animated: true)
-					return false
-				}*/
 				
 				if !openURLContext.options.openInPlace {
 					let newURL = remoteDocsURL.appendingPathComponent(inputURL.lastPathComponent)
@@ -58,13 +52,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 					.present(in: documentBrowser, animated: true)
 			}
 			
-			documentBrowser.revealDocument(at: inputURL, importIfNeeded: true) {revealedDocumentURL, error in
-				if let error = error {
-					return UIAlertController(title: "Error", message: "Failed to reveal the document at URL \(inputURL) with error: '\(error)'", preferredStyle: .alert)
-						.addAction("OK")
-						.present(in: documentBrowser, animated: true)
+			DispatchQueue.main.async {
+				documentBrowser.dismiss(animated: true) {
+					documentBrowser.revealDocument(at: inputURL, importIfNeeded: true) {revealedDocumentURL, error in
+						if let error = error {
+							return UIAlertController(title: "Error", message: "Failed to reveal the document at URL \(inputURL) with error: '\(error)'", preferredStyle: .alert)
+								.addAction("OK")
+								.present(in: documentBrowser, animated: true)
+						}
+						documentBrowser.presentDocument(at: revealedDocumentURL!)
+					}
 				}
-				documentBrowser.presentDocument(at: revealedDocumentURL!)
 			}
 		}
 	}
@@ -74,17 +72,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		// If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
 		// This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 		guard let _ = (scene as? UIWindowScene) else { return }
-		if let bookmark = session.stateRestorationActivity?.userInfo?["URL"] as? Data {
-			var isStale = false
-			do {
-				let url = try URL(resolvingBookmarkData: bookmark, bookmarkDataIsStale: &isStale)
-				guard !isStale else {
-				 return assertionFailure()
-			 }
-				documentBrowser(for: scene)?.presentDocument(at: url, animated: false)
-			} catch {
-				assertionFailure(error.localizedDescription)
+		if connectionOptions.urlContexts.isEmpty {
+			if let bookmark = session.stateRestorationActivity?.userInfo?["URL"] as? Data {
+				var isStale = false
+				do {
+					let url = try URL(resolvingBookmarkData: bookmark, bookmarkDataIsStale: &isStale)
+					guard !isStale else {
+					 return assertionFailure()
+				 }
+					documentBrowser(for: scene)?.presentDocument(at: url, animated: false)
+				} catch {
+					assertionFailure(error.localizedDescription)
+				}
 			}
+		} else {
+			self.scene(scene, openURLContexts: connectionOptions.urlContexts)
 		}
 	}
 
