@@ -15,10 +15,21 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIDocumentIn
 	@IBOutlet var shareButton: UIBarButtonItem!
 	@IBOutlet var documentBodyTextView: UITextView!
 	
-	var document: Document?
+	var document: Document? {
+		didSet {
+			if isViewLoaded {
+				oldValue?.close(completionHandler: nil)
+				openDocument()
+				documentChanged()
+			}
+		}
+	}
 	
 	override func viewDidLoad() {
 		self.observeKeyboardNotifications()
+		openDocument()
+	}
+	func openDocument() {
 		document?.open { (success) in
 			if success {
 				self.document?.undoManager = self.documentBodyTextView.undoManager
@@ -31,6 +42,7 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIDocumentIn
 			}
 		}
 	}
+	
 	deinit {
 		document?.close(completionHandler: nil)
 	}
@@ -57,6 +69,9 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIDocumentIn
 	var observation: NSKeyValueObservation?
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
+		documentChanged()
+	}
+	func documentChanged() {
 		self.userActivity = document?.activity
 		if let windowScene = self.view.window?.windowScene {
 			windowScene.title = userActivity?.title

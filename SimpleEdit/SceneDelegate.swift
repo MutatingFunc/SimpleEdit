@@ -105,6 +105,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		// This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 		guard let _ = (scene as? UIWindowScene) else { return }
 		
+		scene.activationConditions.canActivateForTargetContentIdentifierPredicate = NSPredicate(value: scene.session.configuration.name != "Default Configuration")
+		
 		if !connectionOptions.urlContexts.isEmpty {
 			self.scene(scene, openURLContexts: connectionOptions.urlContexts)
 			return
