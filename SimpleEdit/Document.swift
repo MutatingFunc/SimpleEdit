@@ -23,5 +23,16 @@ class Document: UIDocument {
 		guard let string = String(data: data, encoding: .utf8) else {throw Error.readFailed}
 		text = string
 	}
+	
+	var activity: NSUserActivity {
+		let activity = NSUserActivity(activityType: "SimpleEditActivity")
+		do {
+			let bookmark = try fileURL.bookmarkData()
+			activity.userInfo = ["URL": bookmark].compactMapValues{$0}
+		} catch {
+			assertionFailure(error.localizedDescription)
+		}
+		return activity
+	}
 }
 

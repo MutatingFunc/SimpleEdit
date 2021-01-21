@@ -40,7 +40,7 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIDocumentIn
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		document?.open(completionHandler: { (success) in
+		document?.open { (success) in
 			if success {
 				self.document?.undoManager = self.documentBodyTextView.undoManager
 				self.navigationItem.title = self.document?.fileURL.lastPathComponent
@@ -50,7 +50,22 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIDocumentIn
 					.addAction("OK", handler: {[weak self] _ in self?.dismiss(animated: true)})
 					.present(in: self, animated: true)
 			}
-		})
+		}
+	}
+	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		if let scene = view.window?.windowScene, let document = document {
+			scene.userActivity = document.userActivity
+			scene.title = document.fileURL.lastPathComponent
+		}
+	}
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		if let scene = view.window?.windowScene {
+			scene.userActivity = nil
+			scene.title = nil
+		}
 	}
 	
 	var timer: Timer?

@@ -72,21 +72,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		// If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
 		// This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 		guard let _ = (scene as? UIWindowScene) else { return }
-		if connectionOptions.urlContexts.isEmpty {
-			if let bookmark = session.stateRestorationActivity?.userInfo?["URL"] as? Data {
-				var isStale = false
-				do {
-					let url = try URL(resolvingBookmarkData: bookmark, bookmarkDataIsStale: &isStale)
-					guard !isStale else {
-					 return assertionFailure()
-				 }
-					documentBrowser(for: scene)?.presentDocument(at: url, animated: false)
-				} catch {
-					assertionFailure(error.localizedDescription)
-				}
-			}
-		} else {
+		
+		if !connectionOptions.urlContexts.isEmpty {
 			self.scene(scene, openURLContexts: connectionOptions.urlContexts)
+			return
+		}
+		
+		if let activity = connectionOptions.userActivities.first ?? session.stateRestorationActivity, // Use activity from systems like handoff before restoration
+		   let bookmark = activity.userInfo?["URL"] as? Data {
+			var isStale = false
+			do {
+				let url = try URL(resolvingBookmarkData: bookmark, bookmarkDataIsStale: &isStale)
+				guard !isStale else {
+				 return assertionFailure()
+			 }
+				documentBrowser(for: scene)?.presentDocument(at: url, animated: false)
+			} catch {
+				assertionFailure(error.localizedDescription)
+			}
 		}
 	}
 
@@ -105,7 +108,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 	func sceneWillResignActive(_ scene: UIScene) {
 		// Called when the scene will move from an active state to an inactive state.
 		// This may occur due to temporary interruptions (ex. an incoming phone call).
-		scene.title = document(for: scene)?.fileURL.lastPathComponent
 	}
 
 	func sceneWillEnterForeground(_ scene: UIScene) {
@@ -120,17 +122,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 	}
 	
 	func stateRestorationActivity(for scene: UIScene) -> NSUserActivity? {
-		let activity = NSUserActivity(activityType: "SimpleEditActivity")
-		guard let fileURL = document(for: scene)?.fileURL else {
-			return activity
-		}
-		do {
-			let bookmark = try fileURL.bookmarkData()
-			activity.userInfo = ["URL": bookmark].compactMapValues{$0}
-		} catch {
-			assertionFailure(error.localizedDescription)
-		}
-		return activity
+		scene.userActivity
 	}
 
 }
