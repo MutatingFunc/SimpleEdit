@@ -11,7 +11,11 @@ import UIKit
 class Document: UIDocument {
 	enum Error: Swift.Error {case filePackage, readFailed, encodingFailed}
 	
-	var text = ""
+	var text = "" {
+		didSet {
+			activity.needsSave = true
+		}
+	}
 	
 	override func contents(forType typeName: String) throws -> Any {
 		guard let encoded = text.data(using: .utf8) else {throw Error.encodingFailed}
@@ -24,15 +28,11 @@ class Document: UIDocument {
 		text = string
 	}
 	
-	var activity: NSUserActivity {
+	private(set) lazy var activity: NSUserActivity = {
 		let activity = NSUserActivity(activityType: "SimpleEditActivity")
-		do {
-			let bookmark = try fileURL.bookmarkData()
-			activity.userInfo = ["URL": bookmark].compactMapValues{$0}
-		} catch {
-			assertionFailure(error.localizedDescription)
-		}
+		activity.simpleEditBookmark = fileURL
+		activity.title = fileURL.lastPathComponent
 		return activity
-	}
+	}()
 }
 
