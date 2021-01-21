@@ -59,6 +59,11 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIDocumentIn
 			windowScene.title = userActivity?.title
 			windowScene.userActivity = userActivity
 		}
+		observation = document?.observe(\.text) { document, change in
+			if !self.documentBodyTextView.isFirstResponder {
+				self.documentBodyTextView.text = document.text
+			}
+		}
 	}
 	
 	override func viewWillDisappear(_ animated: Bool) {

@@ -11,7 +11,7 @@ import UIKit
 class Document: UIDocument {
 	enum Error: Swift.Error {case filePackage, readFailed, encodingFailed}
 	
-	var text = "" {
+	@objc dynamic var text = "" {
 		didSet {
 			activity.needsSave = true
 		}
