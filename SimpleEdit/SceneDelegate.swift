@@ -37,14 +37,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 					try fileManager.removeItem(at: inputURL)
 					inputURL = newURL
 				}
-				
-				let contents = try? fileManager.contentsOfDirectory(at: docsURL, includingPropertiesForKeys: nil, options: .skipsSubdirectoryDescendants)
-				if let inboxURL = contents?.first(where: {$0.lastPathComponent == "Inbox"}) {
-					for itemURL in (try? fileManager.contentsOfDirectory(at: inboxURL, includingPropertiesForKeys: nil, options: .skipsSubdirectoryDescendants)) ?? [] {
-						try? fileManager.renamingCopy(at: itemURL, to: remoteDocsURL.appendingPathComponent(itemURL.lastPathComponent))
-						try? fileManager.removeItem(at: itemURL)
-					}
-				}
 			} catch {
 				print(error)
 				UIAlertController("Import error", message: "\(error)")
