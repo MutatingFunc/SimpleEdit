@@ -44,9 +44,11 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIDocumentIn
 	}
 	
 	@objc func userDefaultsChanged() {
-		editModeChanged()
-		fontChanged()
-		keyboardTypeChanged()
+		DispatchQueue.main.async { [self] in
+			editModeChanged()
+			fontChanged()
+			keyboardTypeChanged()
+		}
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
