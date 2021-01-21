@@ -25,13 +25,13 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
 		allowsDocumentCreation = true
 		allowsPickingMultipleItems = false
 		
-		// Update the style of the UIDocumentBrowserViewController
-		
-		// view.tintColor = .white
-		
-		// Specify the allowed content types of your application via the Info.plist.
-		
-		// Do any additional setup after loading the view, typically from a nib.
+		self.customActions = [
+			UIDocumentBrowserAction(identifier: "Open in New Window", localizedTitle: "Open in New Window", availability: .menu) { urls in
+				urls
+					.map(Document.init)
+					.forEach(UIApplication.shared.resumeSession)
+			}
+		]
 	}
 	
 	// MARK: UIDocumentBrowserViewControllerDelegate
@@ -81,7 +81,7 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
 	var transitioningController: UIDocumentBrowserTransitionController?
 	func presentDocument(at documentURL: URL, animated: Bool = true) {
 		
-		let storyboard = UIStoryboard(name: "Main", bundle: nil)
+		let storyboard = UIStoryboard(name: "Auxiliary", bundle: nil)
 		let nav = storyboard.instantiateViewController(withIdentifier: "DocumentViewControllerNav") as! UINavigationController
 		nav.modalPresentationStyle = .fullScreen
 		let documentViewController = nav.viewControllers.first! as! DocumentViewController

@@ -51,18 +51,23 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIDocumentIn
 		}
 	}
 	
+	var observation: NSKeyValueObservation?
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
-		if let scene = view.window?.windowScene, let document = document {
-			scene.userActivity = document.userActivity
-			scene.title = document.fileURL.lastPathComponent
+		self.userActivity = document?.activity
+		if let windowScene = self.view.window?.windowScene {
+			windowScene.title = userActivity?.title
+			windowScene.userActivity = userActivity
 		}
 	}
+	
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
-		if let scene = view.window?.windowScene {
-			scene.userActivity = nil
-			scene.title = nil
+		observation = nil
+		userActivity = nil
+		if let windowScene = self.view.window?.windowScene {
+			windowScene.title = nil
+			windowScene.userActivity = nil
 		}
 	}
 	
@@ -114,8 +119,14 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIDocumentIn
 	}
 	
 	@IBAction func close() {
-		dismiss(animated: true) {
-			self.document?.close(completionHandler: nil)
+		if presentingViewController == nil, let scene = view.window?.windowScene {
+			let options = UIWindowSceneDestructionRequestOptions()
+			options.windowDismissalAnimation = .commit
+			UIApplication.shared.requestSceneSessionDestruction(scene.session, options: options)
+		} else {
+			dismiss(animated: true) {
+				self.document?.close(completionHandler: nil)
+			}
 		}
 	}
 	func performRevert() {

@@ -10,6 +10,16 @@ import UIKit
 
 import Additions
 
+extension UIApplication {
+	func resumeSession(document: Document) {
+		if let session = openSessions.first(where: {$0.stateRestorationActivity?.simpleEditBookmark == document.fileURL}) {
+			requestSceneSessionActivation(session, userActivity: nil, options: nil)
+		} else {
+			requestSceneSessionActivation(nil, userActivity: document.activity, options: nil)
+		}
+	}
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 	
@@ -25,6 +35,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
 		// Called when a new scene session is being created.
 		// Use this method to select a configuration to create the new scene with.
+		if !options.urlContexts.isEmpty || !options.userActivities.isEmpty {
+			return UISceneConfiguration(name: "Auxiliary Configuration", sessionRole: connectingSceneSession.role)
+		}
 		return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
 	}
 

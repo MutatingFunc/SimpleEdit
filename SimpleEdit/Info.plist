@@ -81,6 +81,14 @@
 					<key>UISceneStoryboardFile</key>
 					<string>Main</string>
 				</dict>
+				<dict>
+					<key>UISceneConfigurationName</key>
+					<string>Auxiliary Configuration</string>
+					<key>UISceneDelegateClassName</key>
+					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
+					<key>UISceneStoryboardFile</key>
+					<string>Auxiliary</string>
+				</dict>
 			</array>
 		</dict>
 	</dict>

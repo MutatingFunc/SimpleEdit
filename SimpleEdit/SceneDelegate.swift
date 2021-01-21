@@ -7,54 +7,94 @@
 
 import UIKit
 
+extension NSUserActivity {
+	var simpleEditBookmark: URL? {
+		get {
+			guard let bookmark = userInfo?["URL"] as? Data else {
+				return nil
+			}
+			var isStale = false
+			do {
+				let url = try URL(resolvingBookmarkData: bookmark, bookmarkDataIsStale: &isStale)
+				guard !isStale else {
+					assertionFailure()
+					return nil
+				}
+				return url
+			} catch {
+				assertionFailure(error.localizedDescription)
+				return nil
+			}
+		}
+		set {
+			guard let newValue = newValue else {
+				return
+			}
+			do {
+				let bookmark = try newValue.bookmarkData()
+				(userInfo?["URL"] = bookmark)
+					?? (userInfo = ["URL": bookmark as Any])
+			} catch {
+				assertionFailure(error.localizedDescription)
+			}
+		}
+	}
+}
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 	var window: UIWindow?
 	
-	func documentBrowser(for scene: UIScene) -> DocumentBrowserViewController? {
+	func rootDocumentBrowser(for scene: UIScene) -> DocumentBrowserViewController? {
 		(scene as? UIWindowScene)?.windows.first?.rootViewController as? DocumentBrowserViewController
 	}
-	func document(for scene: UIScene) -> UIDocument? {
-		((documentBrowser(for: scene)?.presentedViewController as? UINavigationController)?.viewControllers.first as? DocumentViewController)?.document
+	func rootDocumentEditor(for scene: UIScene) -> DocumentViewController? {
+		((scene as? UIWindowScene)?.windows.first?.rootViewController as? UINavigationController)?.viewControllers.first as? DocumentViewController
 	}
 
 	func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+		guard let scene = (scene as? UIWindowScene) else { return }
 		for openURLContext in URLContexts {
 			var inputURL = openURLContext.url
 			guard inputURL.isFileURL else {return}
 			
-			guard let documentBrowser = documentBrowser(for: scene) else {return}
-			
 			let fileManager = FileManager.default
 			
 			do {
-				let docsURL = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-				let remoteDocsURL = docsURL
-				
 				if !openURLContext.options.openInPlace {
-					let newURL = remoteDocsURL.appendingPathComponent(inputURL.lastPathComponent)
+					let docsURL = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+					let newURL = docsURL.appendingPathComponent(inputURL.lastPathComponent)
 					try fileManager.renamingCopy(at: inputURL, to: newURL)
 					try fileManager.removeItem(at: inputURL)
 					inputURL = newURL
 				}
 			} catch {
-				print(error)
-				UIAlertController("Import error", message: "\(error)")
-					.addAction("OK")
-					.present(in: documentBrowser, animated: true)
+				assertionFailure(error.localizedDescription)
+				if let root = scene.windows.first?.rootViewController {
+					UIAlertController("Import error", message: "\(error)")
+						.addAction("OK")
+						.present(in: root, animated: true)
+				}
 			}
 			
-			DispatchQueue.main.async {
-				documentBrowser.dismiss(animated: true) {
-					documentBrowser.revealDocument(at: inputURL, importIfNeeded: true) {revealedDocumentURL, error in
-						if let error = error {
-							return UIAlertController(title: "Error", message: "Failed to reveal the document at URL \(inputURL) with error: '\(error)'", preferredStyle: .alert)
-								.addAction("OK")
-								.present(in: documentBrowser, animated: true)
+			if scene.session.configuration.name == "Default Configuration" {
+				DispatchQueue.main.async {
+					guard let documentBrowser = self.rootDocumentBrowser(for: scene) else {return assertionFailure()}
+					
+					documentBrowser.dismiss(animated: true) {
+						documentBrowser.revealDocument(at: inputURL, importIfNeeded: true) {revealedDocumentURL, error in
+							if let error = error {
+								return UIAlertController(title: "Error", message: "Failed to reveal the document at URL \(inputURL) with error: '\(error)'", preferredStyle: .alert)
+									.addAction("OK")
+									.present(in: documentBrowser, animated: true)
+							}
+							documentBrowser.presentDocument(at: revealedDocumentURL!)
 						}
-						documentBrowser.presentDocument(at: revealedDocumentURL!)
 					}
 				}
+			} else {
+				guard let root = rootDocumentEditor(for: scene) else {return assertionFailure()}
+				root.document = Document(fileURL: inputURL)
 			}
 		}
 	}
@@ -71,16 +111,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		}
 		
 		if let activity = connectionOptions.userActivities.first ?? session.stateRestorationActivity, // Use activity from systems like handoff before restoration
-		   let bookmark = activity.userInfo?["URL"] as? Data {
-			var isStale = false
-			do {
-				let url = try URL(resolvingBookmarkData: bookmark, bookmarkDataIsStale: &isStale)
-				guard !isStale else {
-				 return assertionFailure()
-			 }
-				documentBrowser(for: scene)?.presentDocument(at: url, animated: false)
-			} catch {
-				assertionFailure(error.localizedDescription)
+			 let url = activity.simpleEditBookmark {
+			if scene.session.configuration.name == "Default Configuration" {
+				rootDocumentBrowser(for: scene)?.presentDocument(at: url, animated: false)
+			} else {
+				rootDocumentEditor(for: scene)?.document = Document(fileURL: url)
 			}
 		}
 	}
