@@ -31,6 +31,9 @@ class DocumentViewController: UIViewController, UITextViewDelegate, UIDocumentIn
 			}
 		}
 	}
+	deinit {
+		document?.close(completionHandler: nil)
+	}
 	
 	override func didMove(toParent parent: UIViewController?) {
 		super.didMove(toParent: parent)
