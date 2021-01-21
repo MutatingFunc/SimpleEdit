@@ -22,21 +22,25 @@ extension KeyboardInsetHelpers {
 	}
 	
 	func helper_keyboardWasShown(_ notification: NSNotification) {
-		let info = notification.userInfo
-		let infoNSValue = info![UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue
-		let kbSize = infoNSValue.cgRectValue.size
-		let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: kbSize.height, right: 0.0)
-		viewsObscuredByKeyboard.forEach {
-			$0.contentInset = contentInsets
-			$0.scrollIndicatorInsets = contentInsets
+		DispatchQueue.main.async { [self] in
+			let info = notification.userInfo
+			let infoNSValue = info![UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue
+			let kbSize = infoNSValue.cgRectValue.size
+			let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: kbSize.height, right: 0.0)
+			viewsObscuredByKeyboard.forEach {
+				$0.contentInset = contentInsets
+				$0.scrollIndicatorInsets = contentInsets
+			}
 		}
 	}
 	
 	func helper_keyboardWillBeHidden(_ notification: NSNotification) {
-		let contentInsets = UIEdgeInsets.zero
-		viewsObscuredByKeyboard.forEach {
-			$0.contentInset = contentInsets
-			$0.scrollIndicatorInsets = contentInsets
+		DispatchQueue.main.async { [self] in
+			let contentInsets = UIEdgeInsets.zero
+			viewsObscuredByKeyboard.forEach {
+				$0.contentInset = contentInsets
+				$0.scrollIndicatorInsets = contentInsets
+			}
 		}
 	}
 }
