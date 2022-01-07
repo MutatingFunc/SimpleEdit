@@ -1,0 +1,434 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1A92CB5C2787577C00D8B77E /* DocumentsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92CB472787577C00D8B77E /* DocumentsButton.swift */; };
+		1A92CB5D2787577C00D8B77E /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92CB482787577C00D8B77E /* TextView.swift */; };
+		1A92CB5E2787577C00D8B77E /* KeyboardPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92CB4A2787577C00D8B77E /* KeyboardPicker.swift */; };
+		1A92CB5F2787577C00D8B77E /* FontPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92CB4B2787577C00D8B77E /* FontPicker.swift */; };
+		1A92CB602787577C00D8B77E /* FontSizePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92CB4C2787577C00D8B77E /* FontSizePicker.swift */; };
+		1A92CB612787577C00D8B77E /* UndoRedoButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92CB4D2787577C00D8B77E /* UndoRedoButtons.swift */; };
+		1A92CB622787577C00D8B77E /* SimpleEditDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92CB4F2787577C00D8B77E /* SimpleEditDocument.swift */; };
+		1A92CB632787577C00D8B77E /* SimpleEditApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92CB502787577C00D8B77E /* SimpleEditApp.swift */; };
+		1A92CB642787577C00D8B77E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A92CB512787577C00D8B77E /* Assets.xcassets */; };
+		1A92CB652787577C00D8B77E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A92CB532787577C00D8B77E /* Preview Assets.xcassets */; };
+		1A92CB662787577C00D8B77E /* StoredSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92CB552787577C00D8B77E /* StoredSettingsView.swift */; };
+		1A92CB672787577C00D8B77E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92CB562787577C00D8B77E /* SettingsView.swift */; };
+		1A92CB682787577C00D8B77E /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92CB572787577C00D8B77E /* RootView.swift */; };
+		1A92CB692787577C00D8B77E /* Editor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92CB582787577C00D8B77E /* Editor.swift */; };
+		1A92CB6A2787577C00D8B77E /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92CB5A2787577C00D8B77E /* UIFont.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1A92CB322787571B00D8B77E /* SimpleEdit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleEdit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A92CB472787577C00D8B77E /* DocumentsButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentsButton.swift; sourceTree = "<group>"; };
+		1A92CB482787577C00D8B77E /* TextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		1A92CB4A2787577C00D8B77E /* KeyboardPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardPicker.swift; sourceTree = "<group>"; };
+		1A92CB4B2787577C00D8B77E /* FontPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontPicker.swift; sourceTree = "<group>"; };
+		1A92CB4C2787577C00D8B77E /* FontSizePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontSizePicker.swift; sourceTree = "<group>"; };
+		1A92CB4D2787577C00D8B77E /* UndoRedoButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UndoRedoButtons.swift; sourceTree = "<group>"; };
+		1A92CB4F2787577C00D8B77E /* SimpleEditDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleEditDocument.swift; sourceTree = "<group>"; };
+		1A92CB502787577C00D8B77E /* SimpleEditApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleEditApp.swift; sourceTree = "<group>"; };
+		1A92CB512787577C00D8B77E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1A92CB532787577C00D8B77E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1A92CB552787577C00D8B77E /* StoredSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoredSettingsView.swift; sourceTree = "<group>"; };
+		1A92CB562787577C00D8B77E /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		1A92CB572787577C00D8B77E /* RootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		1A92CB582787577C00D8B77E /* Editor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Editor.swift; sourceTree = "<group>"; };
+		1A92CB5A2787577C00D8B77E /* UIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		1A92CB5B2787577C00D8B77E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1A92CB6C27875BD900D8B77E /* SimpleEdit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimpleEdit.entitlements; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1A92CB2F2787571B00D8B77E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1A92CB292787571B00D8B77E = {
+			isa = PBXGroup;
+			children = (
+				1A92CB6C27875BD900D8B77E /* SimpleEdit.entitlements */,
+				1A92CB4E2787577C00D8B77E /* App */,
+				1A92CB512787577C00D8B77E /* Assets.xcassets */,
+				1A92CB592787577C00D8B77E /* Extensions */,
+				1A92CB5B2787577C00D8B77E /* Info.plist */,
+				1A92CB522787577C00D8B77E /* Preview Content */,
+				1A92CB542787577C00D8B77E /* Screens */,
+				1A92CB462787577C00D8B77E /* Views */,
+				1A92CB332787571B00D8B77E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1A92CB332787571B00D8B77E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1A92CB322787571B00D8B77E /* SimpleEdit.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1A92CB462787577C00D8B77E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1A92CB472787577C00D8B77E /* DocumentsButton.swift */,
+				1A92CB482787577C00D8B77E /* TextView.swift */,
+				1A92CB492787577C00D8B77E /* Pickers */,
+				1A92CB4D2787577C00D8B77E /* UndoRedoButtons.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1A92CB492787577C00D8B77E /* Pickers */ = {
+			isa = PBXGroup;
+			children = (
+				1A92CB4A2787577C00D8B77E /* KeyboardPicker.swift */,
+				1A92CB4B2787577C00D8B77E /* FontPicker.swift */,
+				1A92CB4C2787577C00D8B77E /* FontSizePicker.swift */,
+			);
+			path = Pickers;
+			sourceTree = "<group>";
+		};
+		1A92CB4E2787577C00D8B77E /* App */ = {
+			isa = PBXGroup;
+			children = (
+				1A92CB4F2787577C00D8B77E /* SimpleEditDocument.swift */,
+				1A92CB502787577C00D8B77E /* SimpleEditApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		1A92CB522787577C00D8B77E /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				1A92CB532787577C00D8B77E /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		1A92CB542787577C00D8B77E /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				1A92CB552787577C00D8B77E /* StoredSettingsView.swift */,
+				1A92CB562787577C00D8B77E /* SettingsView.swift */,
+				1A92CB572787577C00D8B77E /* RootView.swift */,
+				1A92CB582787577C00D8B77E /* Editor.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		1A92CB592787577C00D8B77E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1A92CB5A2787577C00D8B77E /* UIFont.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1A92CB312787571B00D8B77E /* SimpleEdit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1A92CB432787571C00D8B77E /* Build configuration list for PBXNativeTarget "SimpleEdit" */;
+			buildPhases = (
+				1A92CB2E2787571B00D8B77E /* Sources */,
+				1A92CB2F2787571B00D8B77E /* Frameworks */,
+				1A92CB302787571B00D8B77E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SimpleEdit;
+			productName = SimpleEdit;
+			productReference = 1A92CB322787571B00D8B77E /* SimpleEdit.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1A92CB2A2787571B00D8B77E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					1A92CB312787571B00D8B77E = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 1A92CB2D2787571B00D8B77E /* Build configuration list for PBXProject "SimpleEdit" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1A92CB292787571B00D8B77E;
+			productRefGroup = 1A92CB332787571B00D8B77E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1A92CB312787571B00D8B77E /* SimpleEdit */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1A92CB302787571B00D8B77E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A92CB652787577C00D8B77E /* Preview Assets.xcassets in Resources */,
+				1A92CB642787577C00D8B77E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1A92CB2E2787571B00D8B77E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A92CB662787577C00D8B77E /* StoredSettingsView.swift in Sources */,
+				1A92CB622787577C00D8B77E /* SimpleEditDocument.swift in Sources */,
+				1A92CB5F2787577C00D8B77E /* FontPicker.swift in Sources */,
+				1A92CB692787577C00D8B77E /* Editor.swift in Sources */,
+				1A92CB682787577C00D8B77E /* RootView.swift in Sources */,
+				1A92CB5E2787577C00D8B77E /* KeyboardPicker.swift in Sources */,
+				1A92CB5C2787577C00D8B77E /* DocumentsButton.swift in Sources */,
+				1A92CB632787577C00D8B77E /* SimpleEditApp.swift in Sources */,
+				1A92CB5D2787577C00D8B77E /* TextView.swift in Sources */,
+				1A92CB6A2787577C00D8B77E /* UIFont.swift in Sources */,
+				1A92CB612787577C00D8B77E /* UndoRedoButtons.swift in Sources */,
+				1A92CB602787577C00D8B77E /* FontSizePicker.swift in Sources */,
+				1A92CB672787577C00D8B77E /* SettingsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1A92CB412787571C00D8B77E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1A92CB422787571C00D8B77E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1A92CB442787571C00D8B77E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SimpleEdit.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "Preview\\ Content";
+				DEVELOPMENT_TEAM = VKFDYMU9HJ;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportsDocumentBrowser = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = James.SimpleEdit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1A92CB452787571C00D8B77E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SimpleEdit.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "Preview\\ Content";
+				DEVELOPMENT_TEAM = VKFDYMU9HJ;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportsDocumentBrowser = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = James.SimpleEdit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1A92CB2D2787571B00D8B77E /* Build configuration list for PBXProject "SimpleEdit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A92CB412787571C00D8B77E /* Debug */,
+				1A92CB422787571C00D8B77E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1A92CB432787571C00D8B77E /* Build configuration list for PBXNativeTarget "SimpleEdit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A92CB442787571C00D8B77E /* Debug */,
+				1A92CB452787571C00D8B77E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1A92CB2A2787571B00D8B77E /* Project object */;
+}
