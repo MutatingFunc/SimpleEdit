@@ -33,7 +33,6 @@ struct FontSizePicker: View {
     }()
     
     var body: some View {
-        #if !targetEnvironment(macCatalyst)
         TextField(
             "Font size",
             value: $fontSize,
@@ -51,7 +50,6 @@ struct FontSizePicker: View {
                 .keyboardShortcut("s")
                 .hidden()
             }
-        #endif
         Stepper(
             "Font size",
             value: fontSizeBinding,

@@ -19,6 +19,7 @@ struct TextView: UIViewRepresentable {
             view.becomeFirstResponder()
         }
         setIfNeeded(&view.font, to: context.environment.uiFont)
+        setIfNeeded(&view.keyboardType, to: context.environment.keyboardType)
         view.delegate = context.coordinator
     }
     

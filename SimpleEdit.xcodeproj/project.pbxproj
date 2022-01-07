@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A4143D3278CE97B004D503C /* KeyboardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4143D2278CE97B004D503C /* KeyboardType.swift */; };
 		1A92CB5C2787577C00D8B77E /* DocumentsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92CB472787577C00D8B77E /* DocumentsButton.swift */; };
 		1A92CB5D2787577C00D8B77E /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92CB482787577C00D8B77E /* TextView.swift */; };
 		1A92CB5E2787577C00D8B77E /* KeyboardPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92CB4A2787577C00D8B77E /* KeyboardPicker.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A4143D2278CE97B004D503C /* KeyboardType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardType.swift; sourceTree = "<group>"; };
 		1A92CB322787571B00D8B77E /* SimpleEdit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleEdit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A92CB472787577C00D8B77E /* DocumentsButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentsButton.swift; sourceTree = "<group>"; };
 		1A92CB482787577C00D8B77E /* TextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				1A92CB5A2787577C00D8B77E /* UIFont.swift */,
+				1A4143D2278CE97B004D503C /* KeyboardType.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 				1A92CB6A2787577C00D8B77E /* UIFont.swift in Sources */,
 				1A92CB612787577C00D8B77E /* UndoRedoButtons.swift in Sources */,
 				1A92CB602787577C00D8B77E /* FontSizePicker.swift in Sources */,
+				1A4143D3278CE97B004D503C /* KeyboardType.swift in Sources */,
 				1A92CB672787577C00D8B77E /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -367,7 +371,7 @@
 				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = James.SimpleEdit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -400,7 +404,7 @@
 				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = James.SimpleEdit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

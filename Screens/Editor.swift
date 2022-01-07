@@ -22,7 +22,7 @@ struct Editor: View {
             }
             .environment(\.editMode, .constant(editMode ? .active : .inactive))
             .font(family: fontFamily, size: fontSize)
-            .keyboardType(keyboardType)
+            .uiKeyboardType(keyboardType)
             .toolbar {
                 ToolbarItem(id: "revert", placement: .navigationBarLeading) {
                     revertButton
@@ -47,13 +47,11 @@ struct Editor: View {
         }
         .keyboardShortcut("r")
         .confirmationDialog("Revert file content to state when last opened?", isPresented: $isRevertShown) { 
-            Button(role: .destructive) { 
+            Button(role: .destructive) {
                 document.revert()
             } label: { 
                 Text("Revert to last opened")
             }
-            UndoButton()
-            RedoButton()
             Button(role: .cancel) {} label: {
                 Text("Cancel")
             }.keyboardShortcut(.cancelAction)
@@ -61,14 +59,6 @@ struct Editor: View {
     }
     
     var editorSettingsButton: some View {
-#if targetEnvironment(macCatalyst)
-        Menu {
-            settings
-        } label: {
-            Label("Preferences", systemImage: "textformat")
-        }
-        .keyboardShortcut(",")
-#else
         Button {
             isEditorFocused = false
             isSettingsShown.toggle()
@@ -79,7 +69,6 @@ struct Editor: View {
         .sheet(isPresented: $isSettingsShown) { 
             settings
         }
-#endif
     }
     
     var settings: some View {

@@ -16,22 +16,7 @@ struct FontPicker: View {
     }
     
     var body: some View {
-        let picker = FontPickerVC(fontFamily: fontFamilyBinding)
-#if targetEnvironment(macCatalyst)
-        Menu("Font") {
-            Button {
-                isShowingNativePicker.toggle()
-            } label: {
-                Text("Other")
-            }.sheet(isPresented: $isShowingNativePicker) {
-                picker
-            }
-            Button("System") {
-                fontFamily = nil
-            }
-        }
-#else
-        picker
+        FontPickerVC(fontFamily: fontFamilyBinding)
             .edgesIgnoringSafeArea(.top) // Bottom doesn't inset properly
             .safeAreaInset(edge: .top, spacing: 0) {
                 VStack(spacing: 0) {
@@ -67,7 +52,6 @@ struct FontPicker: View {
                     }
                 }
             }.navigationTitle("Font")
-#endif
     }
 }
 

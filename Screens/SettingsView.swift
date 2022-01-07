@@ -15,9 +15,6 @@ struct SettingsView<AdditionalContent: View>: View {
     }
     
     var body: some View {
-#if targetEnvironment(macCatalyst)
-        content
-#else
         NavigationView {
             List {
                 content
@@ -34,24 +31,20 @@ struct SettingsView<AdditionalContent: View>: View {
             }
         }
         .navigationViewStyle(.stack)
-#endif
     }
     
     @ViewBuilder
     var content: some View {
         additionalContent()
         Section("App") {
+            fontPicker
+            fontSizePicker
             KeyboardPicker(keyboard: $keyboardType)
                 .keyboardShortcut("k")
-            fontSizePicker
-            fontPicker
         }
     }
     
     var fontPicker: some View {
-#if targetEnvironment(macCatalyst)
-        FontPicker(fontFamily: $fontFamily)
-#else
         NavigationLink { 
             FontPicker(fontFamily: $fontFamily)
                 .navigationBarTitleDisplayMode(.inline)
@@ -68,7 +61,6 @@ struct SettingsView<AdditionalContent: View>: View {
                     .foregroundColor(.secondary)
             }
         }.keyboardShortcut("f")
-#endif
     }
     
     var fontSizePicker: some View {
