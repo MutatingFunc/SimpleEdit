@@ -22,11 +22,15 @@
 			<key>CFBundleTypeName</key>
 			<string>Data</string>
 			<key>LSHandlerRank</key>
-			<string>Default</string>
+			<string>Alternate</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>public.data</string>
 			</array>
+			<key>NSUbiquitousDocumentUserActivityType</key>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER).simpleedit-data</string>
 		</dict>
 	</array>
 	<key>NSUbiquitousContainers</key>
