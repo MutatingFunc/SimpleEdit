@@ -29,6 +29,7 @@ struct SettingsView<AdditionalContent: View>: View {
                     .keyboardShortcut(.cancelAction)
                 }
             }
+            .navigationBarBackButtonHidden()
         }
         .navigationViewStyle(.stack)
     }
@@ -48,7 +49,7 @@ struct SettingsView<AdditionalContent: View>: View {
         NavigationLink { 
             FontPicker(fontFamily: $fontFamily)
                 .navigationBarTitleDisplayMode(.inline)
-        } label: { 
+        } label: {
             HStack {
                 let currentValue = fontFamily ?? "System"
                 Label("Font", systemImage: "textformat.alt")

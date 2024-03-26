@@ -43,7 +43,7 @@ struct Editor: View {
         Button {
             isRevertShown = true
         } label: {
-            Label("Revert", systemImage: "backward")
+            Label("Revert", systemImage: "chevron.left.to.line")
         }
         .keyboardShortcut("r")
         .confirmationDialog("Revert file content to state when last opened?", isPresented: $isRevertShown) { 
