@@ -14,7 +14,7 @@ struct Editor: View {
     @Environment(\.presentationMode) @Binding var presentationMode
     
     var body: some View {
-        TextView(text: $document.text)
+        let view = TextView(text: $document.text)
             .focused($isEditorFocused)
             .onAppear {
                 isEditorFocused = true
@@ -23,10 +23,8 @@ struct Editor: View {
             .environment(\.editMode, .constant(editMode ? .active : .inactive))
             .font(family: fontFamily, size: fontSize)
             .uiKeyboardType(keyboardType)
+            
             .toolbar {
-                ToolbarItem(id: "revert", placement: .navigationBarLeading) {
-                    revertButton
-                }
                 ToolbarItem(id: "editMode", placement: .navigationBarTrailing) {
                     editModeToggle
                         .toggleStyle(PlainButtonToggleStyle())
@@ -37,13 +35,28 @@ struct Editor: View {
             }
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle(document.filename)
+        if #available(iOS 16.0, *) {
+            view.toolbarTitleMenu {
+                Button {
+                    document.revert()
+                } label: {
+                    revertLabel
+                }
+            }
+        } else {
+            view.toolbar {
+                ToolbarItem(id: "revert", placement: .navigationBarLeading) {
+                    revertButton
+                }
+            }
+        }
     }
     
     var revertButton: some View {
         Button {
             isRevertShown = true
         } label: {
-            Label("Revert", systemImage: "chevron.left.to.line")
+            revertLabel
         }
         .keyboardShortcut("r")
         .confirmationDialog("Revert file content to state when last opened?", isPresented: $isRevertShown) { 
@@ -56,6 +69,9 @@ struct Editor: View {
                 Text("Cancel")
             }.keyboardShortcut(.cancelAction)
         }
+    }
+    var revertLabel: some View {
+        Label("Revert", systemImage: "chevron.left.to.line")
     }
     
     var editorSettingsButton: some View {
