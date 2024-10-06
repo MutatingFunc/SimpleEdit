@@ -27,7 +27,7 @@ struct Editor: View {
             .toolbar {
                 ToolbarItem(id: "editMode", placement: .navigationBarTrailing) {
                     editModeToggle
-                        .toggleStyle(PlainButtonToggleStyle())
+                        .toggleStyle(.button)
                 }
                 ToolbarItem(id: "preferences", placement: .navigationBarTrailing) {
                     editorSettingsButton
@@ -105,17 +105,6 @@ struct Editor: View {
             Label("Edit mode", systemImage: "pencil")
                 .symbolVariant(editMode ? .none : .slash)
         }.keyboardShortcut("e")
-    }
-}
-
-/// Doesn't auto-apply fill when on
-struct PlainButtonToggleStyle: ToggleStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        Button {
-            configuration.isOn.toggle()
-        } label: {
-            configuration.label
-        }
     }
 }
 
