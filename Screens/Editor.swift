@@ -11,10 +11,11 @@ struct Editor: View {
     @AppStorage("fontSize") private var fontSize: Double?
     @AppStorage("keyboardType") private var keyboardType = UIKeyboardType.default
     @Environment(\.undoManager) private var undoManager
-    @Environment(\.presentationMode) @Binding var presentationMode
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
-        let view = TextView(text: $document.text)
+        TextView(text: $document.text, focused: $isEditorFocused)
+            .ignoresSafeArea(.container, edges: .vertical)
             .focused($isEditorFocused)
             .onAppear {
                 isEditorFocused = true
@@ -23,8 +24,19 @@ struct Editor: View {
             .environment(\.editMode, .constant(editMode ? .active : .inactive))
             .font(family: fontFamily, size: fontSize)
             .uiKeyboardType(keyboardType)
-            
+        
             .toolbar {
+                ToolbarItem(id: "dismiss", placement: .navigationBarLeading) {
+                    Button {
+                        if isEditorFocused {
+                            isEditorFocused = false
+                        } else {
+                            dismiss()
+                        }
+                    } label: {
+                        Label("Done", systemImage: "xmark.circle")
+                    }.keyboardShortcut(.cancelAction)
+                }
                 ToolbarItem(id: "editMode", placement: .navigationBarTrailing) {
                     editModeToggle
                         .toggleStyle(.button)
@@ -35,21 +47,14 @@ struct Editor: View {
             }
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle(document.filename)
-        if #available(iOS 16.0, *) {
-            view.toolbarTitleMenu {
+            .toolbarTitleMenu {
+                RenameButton()
                 Button {
                     document.revert()
                 } label: {
                     revertLabel
                 }
             }
-        } else {
-            view.toolbar {
-                ToolbarItem(id: "revert", placement: .navigationBarLeading) {
-                    revertButton
-                }
-            }
-        }
     }
     
     var revertButton: some View {
@@ -81,7 +86,6 @@ struct Editor: View {
         } label: {
             Label("Preferences", systemImage: "textformat")
         }
-        .keyboardShortcut(",")
         .sheet(isPresented: $isSettingsShown) { 
             settings
         }

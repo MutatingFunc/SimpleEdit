@@ -5,7 +5,7 @@ struct SettingsView<AdditionalContent: View>: View {
     @Binding var fontSize: Double?
     @Binding var keyboardType: UIKeyboardType
     @ViewBuilder var additionalContent: () -> AdditionalContent
-    @Environment(\.presentationMode) @Binding private var presentationMode
+    @Environment(\.dismiss) private var dismiss
     
     enum Focus: String, Hashable {
         case additionalContent
@@ -20,16 +20,17 @@ struct SettingsView<AdditionalContent: View>: View {
                 content
             }
             .navigationTitle("Preferences")
+            .navigationBarBackButtonHidden()
             .toolbar {
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Done") {
-                        presentationMode.dismiss()
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Label("Done", systemImage: "xmark.circle")
                     }
-                    .keyboardShortcut(",")
                     .keyboardShortcut(.cancelAction)
                 }
             }
-            .navigationBarBackButtonHidden()
         }
         .navigationViewStyle(.stack)
     }

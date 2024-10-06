@@ -4,31 +4,64 @@ import SwiftUI
 
 @main
 struct SimpleEditApp: App {
+    @State private var showSettings = false
+    
     var body: some Scene {
-        // Remove WindowGroup when running
-//        WindowGroup {
-//            RootView()
-//        }
         DocumentGroup(newDocument: SimpleEditDocument(text: "")) { config in
-            Editor(document: config.$document)
+            NavigationStack {
+                let editor = Editor(document: config.$document)
+                if let fileURL = config.fileURL {
+                    editor
+                        .navigationDocument(fileURL)
+                } else {
+                    editor
+                }
+            }
         }
-        .commands {
-//            CommandGroup(after: .appSettings) {
-//                Button("Toggle edit mode") {
-//                    editMode?.toggle()
-//                }
-//            }
-//            CommandGroup(replacing: .appSettings) {
-//                Button("Preferences") {
-//                    let options = UIWindowScene.ActivationRequestOptions()
-//                    options.preferredPresentationStyle = .prominent
-//                                    let activity = NSUserActivity(activityType: settingsActivity)
-//                                    activity.targetContentIdentifier = settingsActivity
-//                                    UIApplication.shared.requestSceneSessionActivation(nil, userActivity: activity, options: options) { error in
-//                        print(error)
-//                    }
-//                }.keyboardShortcut("p")
-//            }
+        
+        if #available(iOS 18.0, *) {
+            DocumentGroupLaunchScene {
+                NewDocumentButton("New Text File")
+                Button {
+                    showSettings = true
+                } label: {
+                    Label("Settings", systemImage: "gearshape")
+                }
+                .labelStyle(.titleOnly)
+                .sheet(isPresented: $showSettings) {
+                    StoredSettingsView()
+                }
+            } background: {
+                ZStack {
+                    Rectangle().fill(.windowBackground)
+                    let tintColor = Color(red: 0x00/0xFF, green: 0x14/0xFF, blue: 0xC5/0xFF)
+                    LinearGradient(colors: [tintColor.opacity(0.25), tintColor.opacity(0.5)], startPoint: .top, endPoint: .center)
+                        .overlay {
+                            VStack(spacing: 0) {
+                                Color.clear
+                                Rectangle().fill(.windowBackground)
+                            }
+                        }
+                }
+            }.commands {
+                SharedCommands(showSettings: $showSettings)
+            }
+        }
+    }
+}
+
+struct SharedCommands: Commands {
+    @Environment(\.openWindow) private var openWindow
+    @Environment(\.supportsMultipleWindows) private var supportsMultipleWindows
+    @Binding var showSettings: Bool
+    
+    var body: some Commands {
+        if supportsMultipleWindows {
+            CommandGroup(replacing: .appSettings) {
+                Button("Settings") {
+                    showSettings = true
+                }.keyboardShortcut(",")
+            }
         }
     }
 }
