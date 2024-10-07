@@ -3,6 +3,34 @@ import SwiftUI
 //let settingsActivity = Bundle.main.bundleIdentifier! + ".settings"
 
 @main
+struct SimpleEditEntryPoint {
+    static func main() {
+        if #available(iOS 18.0, *) {
+            SimpleEditApp.main()
+        } else {
+            SimpleEditApp_Legacy.main()
+        }
+    }
+}
+
+struct SimpleEditApp_Legacy: App {
+    @State private var showSettings = false
+    
+    var body: some Scene {
+        DocumentGroup(newDocument: SimpleEditDocument(text: "")) { config in
+            NavigationStack {
+                let editor = Editor(document: config.$document)
+                if let fileURL = config.fileURL {
+                    editor
+                        .navigationDocument(fileURL)
+                } else {
+                    editor
+                }
+            }
+        }
+    }
+}
+
 struct SimpleEditApp: App {
     @State private var showSettings = false
     
