@@ -63,12 +63,6 @@ struct SimpleEditApp: App {
                 Rectangle().fill(.windowBackground)
                 let tintColor = Color(red: 0x00/0xFF, green: 0x14/0xFF, blue: 0xC5/0xFF)
                 LinearGradient(colors: [tintColor.opacity(0.25), tintColor.opacity(0.5)], startPoint: .top, endPoint: .center)
-                    .overlay {
-                        VStack(spacing: 0) {
-                            Color.clear
-                            Rectangle().fill(.windowBackground)
-                        }
-                    }
             }
         }.commands {
             SharedCommands(showSettings: $showSettings)
