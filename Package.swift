@@ -35,6 +35,8 @@ let package = Package(
             capabilities: [
                 .fileAccess(.userSelectedFiles, mode: .readWrite)
             ],
+            appCategory: .utilities,
+            additionalInfoPlistContentFilePath: "Info.plist"
         )
     ],
     targets: [
