@@ -34,7 +34,11 @@ struct Editor: View {
                             dismiss()
                         }
                     } label: {
-                        Label("Done", systemImage: "xmark.circle")
+                        if isEditorFocused {
+                            Label("Done", systemImage: "keyboard.chevron.compact.down")
+                        } else {
+                            Label("Close", systemImage: "xmark.circle")
+                        }
                     }.keyboardShortcut(.cancelAction)
                 }
                 ToolbarItem(id: "editMode", placement: .navigationBarTrailing) {
