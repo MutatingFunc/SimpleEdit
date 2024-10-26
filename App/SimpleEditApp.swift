@@ -31,6 +31,7 @@ struct SimpleEditApp_Legacy: App {
     }
 }
 
+@available(iOS 18.0, *)
 struct SimpleEditApp: App {
     @State private var showSettings = false
     
@@ -59,11 +60,8 @@ struct SimpleEditApp: App {
                 StoredSettingsView()
             }
         } background: {
-            ZStack {
-                Rectangle().fill(.windowBackground)
-                let tintColor = Color(red: 0x00/0xFF, green: 0x14/0xFF, blue: 0xC5/0xFF)
-                LinearGradient(colors: [tintColor.opacity(0.25), tintColor.opacity(0.5)], startPoint: .top, endPoint: .center)
-            }
+            let tintColor = Color(red: 0x00/0xFF, green: 0x14/0xFF, blue: 0xC5/0xFF)
+            LinearGradient(colors: [tintColor.opacity(0.25), tintColor.opacity(0.5), tintColor.opacity(0.5)], startPoint: .top, endPoint: .bottom)
         }.commands {
             SharedCommands(showSettings: $showSettings)
         }
