@@ -26,20 +26,33 @@ struct Editor: View {
             .uiKeyboardType(keyboardType)
         
             .toolbar {
-                ToolbarItem(id: "dismiss", placement: .navigationBarLeading) {
-                    Button {
+                let dismissButton = Button {
+                    if isEditorFocused {
+                        isEditorFocused = false
+                    } else {
+                        dismiss()
+                    }
+                } label: {
+                    if isEditorFocused {
+                        Label("Done", systemImage: "keyboard.chevron.compact.down")
+                    } else {
+                        Label("Close", systemImage: "xmark.circle")
+                    }
+                }.keyboardShortcut(.cancelAction)
+                if #available(iOS 18.2, *) {
+                    ToolbarItem(id: "dismiss", placement: .navigationBarLeading) {
                         if isEditorFocused {
-                            isEditorFocused = false
-                        } else {
-                            dismiss()
+                            dismissButton
                         }
-                    } label: {
-                        if isEditorFocused {
-                            Label("Done", systemImage: "keyboard.chevron.compact.down")
-                        } else {
-                            Label("Close", systemImage: "xmark.circle")
+                    }
+                } else {
+                    ToolbarItem(id: "dismiss", placement: .navigationBarLeading) {
+                        if #available(iOS 18.0, *) {
+                            dismissButton
+                        } else if isEditorFocused {
+                            dismissButton
                         }
-                    }.keyboardShortcut(.cancelAction)
+                    }
                 }
                 ToolbarItem(id: "editMode", placement: .navigationBarTrailing) {
                     editModeToggle

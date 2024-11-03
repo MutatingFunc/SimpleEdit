@@ -18,14 +18,12 @@ struct SimpleEditApp_Legacy: App {
     
     var body: some Scene {
         DocumentGroup(newDocument: SimpleEditDocument(text: "")) { config in
-            NavigationStack {
-                let editor = Editor(document: config.$document)
-                if let fileURL = config.fileURL {
-                    editor
-                        .navigationDocument(fileURL)
-                } else {
-                    editor
-                }
+            let editor = Editor(document: config.$document)
+            if let fileURL = config.fileURL {
+                editor
+                    .navigationDocument(fileURL)
+            } else {
+                editor
             }
         }
     }
@@ -37,14 +35,23 @@ struct SimpleEditApp: App {
     
     var body: some Scene {
         DocumentGroup(newDocument: SimpleEditDocument(text: "")) { config in
-            NavigationStack {
-                let editor = Editor(document: config.$document)
+            let editor = Editor(document: config.$document)
+            let editor2 = Group {
                 if let fileURL = config.fileURL {
                     editor
                         .navigationDocument(fileURL)
                 } else {
                     editor
                 }
+            }
+            if #available(iOS 18.2, *) {
+                editor2
+            } else if #available(iOS 18.0, *) {
+                NavigationStack {
+                    editor2
+                }
+            } else {
+                editor2
             }
         }
         
