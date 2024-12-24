@@ -16,7 +16,9 @@ struct TextView: UIViewRepresentable {
     }
     
     func updateUIView(_ view: UITextView, context: Context) {
+        let selectedTextRange = view.selectedTextRange
         setIfNeeded(&view.text, to: text)
+        view.selectedTextRange = selectedTextRange
         setIfNeeded(&view.isEditable, to: context.environment.editMode?.wrappedValue.isEditing == true)
         setIfNeeded(&view.directionalPressGestureRecognizer.isEnabled, to: !view.isEditable)
         setIfNeeded(&view.font, to: context.environment.uiFont)
