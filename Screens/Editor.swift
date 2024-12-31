@@ -40,13 +40,13 @@ struct Editor: View {
                     }
                 }.keyboardShortcut(.cancelAction)
                 if #available(iOS 18.2, *) {
-                    ToolbarItem(id: "dismiss", placement: .navigationBarLeading) {
+                    ToolbarItem(placement: .navigationBarLeading) {
                         if isEditorFocused {
                             dismissButton
                         }
                     }
                 } else {
-                    ToolbarItem(id: "dismiss", placement: .navigationBarLeading) {
+                    ToolbarItem(placement: .navigationBarLeading) {
                         if #available(iOS 18.0, *) {
                             dismissButton
                         } else if isEditorFocused {
@@ -54,11 +54,11 @@ struct Editor: View {
                         }
                     }
                 }
-                ToolbarItem(id: "editMode", placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .navigationBarTrailing) {
                     editModeToggle
                         .toggleStyle(.button)
                 }
-                ToolbarItem(id: "preferences", placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .navigationBarTrailing) {
                     editorSettingsButton
                 }
             }
