@@ -1,6 +1,6 @@
 import SwiftUI
 
-extension UIFont: EnvironmentKey {
+extension UIFont: @retroactive EnvironmentKey {
     public static let defaultValue = UIFont.preferredFont(forTextStyle: .body)
 }
 

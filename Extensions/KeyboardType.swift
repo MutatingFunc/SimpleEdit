@@ -1,6 +1,6 @@
 import SwiftUI
 
-extension UIKeyboardType: EnvironmentKey {
+extension UIKeyboardType: @retroactive EnvironmentKey {
     public static let defaultValue = Self.default
 }
 extension EnvironmentValues {
