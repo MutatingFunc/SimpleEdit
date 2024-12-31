@@ -1,0 +1,15 @@
+{
+  "originHash" : "00784953d8833fe0d8e8f2752c072cf31e7a8f2bcc9e75fc19282bcf94fbd201",
+  "pins" : [
+    {
+      "identity" : "about",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/MutatingFunc/About.git",
+      "state" : {
+        "revision" : "533fb6c53cc4c98ffe66ebc4655eacf36f29275f",
+        "version" : "3.1.0"
+      }
+    }
+  ],
+  "version" : 3
+}

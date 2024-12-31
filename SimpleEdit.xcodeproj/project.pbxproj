@@ -23,6 +23,7 @@
 		1A92CB682787577C00D8B77E /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92CB572787577C00D8B77E /* RootView.swift */; };
 		1A92CB692787577C00D8B77E /* Editor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92CB582787577C00D8B77E /* Editor.swift */; };
 		1A92CB6A2787577C00D8B77E /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92CB5A2787577C00D8B77E /* UIFont.swift */; };
+		1AFC75202D2451AC00DE2E8E /* About in Frameworks */ = {isa = PBXBuildFile; productRef = 1AFC751F2D2451AC00DE2E8E /* About */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AFC75202D2451AC00DE2E8E /* About in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,6 +185,9 @@
 				Base,
 			);
 			mainGroup = 1A92CB292787571B00D8B77E;
+			packageReferences = (
+				1AFC751E2D2451AC00DE2E8E /* XCRemoteSwiftPackageReference "About" */,
+			);
 			productRefGroup = 1A92CB332787571B00D8B77E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -363,7 +368,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportsDocumentBrowser = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16;
+				IPHONEOS_DEPLOYMENT_TARGET = 17;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -396,7 +401,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportsDocumentBrowser = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16;
+				IPHONEOS_DEPLOYMENT_TARGET = 17;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -433,6 +438,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1AFC751E2D2451AC00DE2E8E /* XCRemoteSwiftPackageReference "About" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MutatingFunc/About.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1AFC751F2D2451AC00DE2E8E /* About */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1AFC751E2D2451AC00DE2E8E /* XCRemoteSwiftPackageReference "About" */;
+			productName = About;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1A92CB2A2787571B00D8B77E /* Project object */;
 }

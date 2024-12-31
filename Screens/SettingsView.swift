@@ -1,4 +1,5 @@
 import SwiftUI
+import About
 
 struct SettingsView<AdditionalContent: View>: View {
     @Binding var fontFamily: String?
@@ -29,6 +30,17 @@ struct SettingsView<AdditionalContent: View>: View {
                         Label("Done", systemImage: "xmark.circle")
                     }
                     .keyboardShortcut(.cancelAction)
+                }
+                ToolbarItem(placement: .topBarTrailing) {
+                    AboutLink(
+                        app: .simpleEdit,
+                        features: [],
+                        tips: [
+                            IAPProduct(id: "James.SimpleEdit.SmallTip", image: Image(systemName: "face.smiling")),
+                            IAPProduct(id: "James.SimpleEdit.MediumTip", image: Image(systemName: "cup.and.heat.waves")),
+                            IAPProduct(id: "James.SimpleEdit.LargeTip", image: Image(systemName: "heart.square")),
+                        ]
+                    )
                 }
             }
         }
