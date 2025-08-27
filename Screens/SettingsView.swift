@@ -56,6 +56,23 @@ struct SettingsView<AdditionalContent: View>: View {
             KeyboardPicker(keyboard: $keyboardType)
                 .keyboardShortcut("k")
         }
+        Section {
+            systemSettingsLink
+        }
+    }
+    
+    @ViewBuilder
+    var systemSettingsLink: some View {
+        let destination = URL(string: UIApplication.openSettingsURLString)
+        Link(destination: destination ?? URL(string: "about:blank")!) {
+            LabeledContent {
+                Image(systemName: "arrow.up.forward.app")
+                    .foregroundColor(.secondary)
+                    .accessibilityHidden(true)
+            } label: {
+                Label("System Settings", systemImage: "gear")
+            }
+        }.disabled(destination == nil)
     }
     
     var fontPicker: some View {
