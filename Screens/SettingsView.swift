@@ -1,12 +1,16 @@
 import SwiftUI
 import About
 
+extension EnvironmentValues {
+    @Entry var isSettingsWindow: Bool = false
+}
 struct SettingsView<AdditionalContent: View>: View {
     @Binding var fontFamily: String?
     @Binding var fontSize: Double?
     @Binding var keyboardType: UIKeyboardType
     @ViewBuilder var additionalContent: () -> AdditionalContent
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.isSettingsWindow) private var isSettingsWindow
     
     enum Focus: String, Hashable {
         case additionalContent
@@ -23,13 +27,13 @@ struct SettingsView<AdditionalContent: View>: View {
             .navigationTitle("Preferences")
             .navigationBarBackButtonHidden()
             .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button {
-                        dismiss()
-                    } label: {
-                        Label("Done", systemImage: "xmark.circle")
+                if !isSettingsWindow {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button(role: .close) {
+                            dismiss()
+                        }
+                        .keyboardShortcut(.cancelAction)
                     }
-                    .keyboardShortcut(.cancelAction)
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     AboutLink(
