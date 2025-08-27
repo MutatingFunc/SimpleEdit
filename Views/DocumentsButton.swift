@@ -2,7 +2,7 @@ import SwiftUI
 
 struct DocumentsButton: View {
     @Binding var isFileImporterShown: Bool
-    @Binding var error: Error?
+    @Binding var error: (any Error)?
     
     var isErrorShown: Binding<Bool> {
         Binding {
@@ -29,9 +29,9 @@ struct DocumentsButton: View {
     }
     
     struct ImportError: LocalizedError {
-        var rawValue: Error
+        var rawValue: any Error
         var errorDescription: String? {
-            (rawValue as? LocalizedError)?.localizedDescription
+            (rawValue as? any LocalizedError)?.localizedDescription
         }
     }
     

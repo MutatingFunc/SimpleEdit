@@ -11,7 +11,6 @@ struct Editor: View {
     @AppStorage("fontSize") private var fontSize: Double?
     @AppStorage("keyboardType") private var keyboardType = UIKeyboardType.default
     @Environment(\.undoManager) private var undoManager
-    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         TextView(text: $document.text, focused: $isEditorFocused)
@@ -26,39 +25,21 @@ struct Editor: View {
             .uiKeyboardType(keyboardType)
         
             .toolbar {
-                let dismissButton = Button {
-                    if isEditorFocused {
-                        isEditorFocused = false
-                    } else {
-                        dismiss()
-                    }
-                } label: {
-                    if isEditorFocused {
-                        Label("Done", systemImage: "keyboard.chevron.compact.down")
-                    } else {
-                        Label("Close", systemImage: "xmark.circle")
-                    }
-                }.keyboardShortcut(.cancelAction)
-                if #available(iOS 18.2, *) {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        if isEditorFocused {
-                            dismissButton
-                        }
-                    }
-                } else {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        if #available(iOS 18.0, *) {
-                            dismissButton
-                        } else if isEditorFocused {
-                            dismissButton
-                        }
+                if isEditorFocused {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button {
+                            isEditorFocused = false
+                        } label: {
+                            Label("Done", systemImage: "keyboard.chevron.compact.down")
+                        }.keyboardShortcut(.cancelAction)
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     editModeToggle
                         .toggleStyle(.button)
                 }
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarSpacer(placement: .topBarTrailing)
+                ToolbarItem(placement: .topBarTrailing) {
                     editorSettingsButton
                 }
             }
@@ -124,7 +105,6 @@ struct Editor: View {
     var editModeToggle: some View {
         Toggle(isOn: $editMode) {
             Label("Edit mode", systemImage: "pencil")
-                .symbolVariant(editMode ? .none : .slash)
         }.keyboardShortcut("e")
     }
 }

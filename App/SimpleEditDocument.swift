@@ -38,7 +38,7 @@ struct SimpleEditDocument: FileDocument {
         guard url.startAccessingSecurityScopedResource() else {
             throw CocoaError(.fileReadNoPermission)
         }
-        let contents = try String(contentsOf: url)
+        let contents = try String(contentsOf: url, encoding: .utf8)
         url.stopAccessingSecurityScopedResource()
         self.init(
             text: contents, 

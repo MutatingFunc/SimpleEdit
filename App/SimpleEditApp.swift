@@ -1,20 +1,10 @@
 import SwiftUI
 
-//let settingsActivity = Bundle.main.bundleIdentifier! + ".settings"
-
 @main
-struct SimpleEditEntryPoint {
-    static func main() {
-        if #available(iOS 18.0, *) {
-            SimpleEditApp.main()
-        } else {
-            SimpleEditApp_Legacy.main()
-        }
-    }
-}
-
-struct SimpleEditApp_Legacy: App {
+struct SimpleEditApp: App {
     @State private var showSettings = false
+    @Environment(\.openWindow) private var openWindow
+    @Environment(\.supportsMultipleWindows) private var supportsMultipleWindows
     
     var body: some Scene {
         DocumentGroup(newDocument: SimpleEditDocument(text: "")) { config in
@@ -26,39 +16,12 @@ struct SimpleEditApp_Legacy: App {
                 editor
             }
         }
-    }
-}
-
-@available(iOS 18.0, *)
-struct SimpleEditApp: App {
-    @State private var showSettings = false
-    
-    var body: some Scene {
-        DocumentGroup(newDocument: SimpleEditDocument(text: "")) { config in
-            let editor = Editor(document: config.$document)
-            let editor2 = Group {
-                if let fileURL = config.fileURL {
-                    editor
-                        .navigationDocument(fileURL)
-                } else {
-                    editor
-                }
-            }
-            if #available(iOS 18.2, *) {
-                editor2
-            } else if #available(iOS 18.0, *) {
-                NavigationStack {
-                    editor2
-                }
-            } else {
-                editor2
-            }
-        }
         
-        DocumentGroupLaunchScene {
+        DocumentGroupLaunchScene("SimpleEdit") {
             NewDocumentButton("New Text File")
+                .keyboardShortcut("n")
             Button {
-                showSettings = true
+                openSettings()
             } label: {
                 Label("Settings", systemImage: "gearshape")
             }
@@ -70,23 +33,32 @@ struct SimpleEditApp: App {
             let tintColor = Color(red: 0x00/0xFF, green: 0x14/0xFF, blue: 0xC5/0xFF)
             LinearGradient(colors: [tintColor.opacity(0.25), tintColor.opacity(0.5), tintColor.opacity(0.5)], startPoint: .top, endPoint: .bottom)
         }.commands {
-            SharedCommands(showSettings: $showSettings)
+            SharedCommands(openSettings: openSettings)
+        }
+        
+        WindowGroup("Settings", id: "Settings") {
+            StoredSettingsView()
+                .environment(\.isSettingsWindow, true)
+        }.defaultSize(width: 320, height: 480)
+    }
+    
+    func openSettings() {
+        if supportsMultipleWindows {
+            openWindow(id: "Settings")
+        } else {
+            showSettings = true
         }
     }
 }
 
 struct SharedCommands: Commands {
-    @Environment(\.openWindow) private var openWindow
-    @Environment(\.supportsMultipleWindows) private var supportsMultipleWindows
-    @Binding var showSettings: Bool
+    var openSettings: () -> ()
     
     var body: some Commands {
-        if supportsMultipleWindows {
-            CommandGroup(replacing: .appSettings) {
-                Button("Settings") {
-                    showSettings = true
-                }.keyboardShortcut(",")
-            }
+        CommandGroup(replacing: .appSettings) {
+            Button("Settings") {
+                openSettings()
+            }.keyboardShortcut(",")
         }
     }
 }
