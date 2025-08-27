@@ -3,6 +3,7 @@ import About
 
 extension EnvironmentValues {
     @Entry var isSettingsWindow: Bool = false
+    @Entry var isPresentedInPopover: Bool = false
 }
 struct SettingsView<AdditionalContent: View>: View {
     @Binding var fontFamily: String?
@@ -10,6 +11,7 @@ struct SettingsView<AdditionalContent: View>: View {
     @Binding var keyboardType: UIKeyboardType
     @ViewBuilder var additionalContent: () -> AdditionalContent
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.isPresentedInPopover) private var isPresentedInPopover
     @Environment(\.isSettingsWindow) private var isSettingsWindow
     
     enum Focus: String, Hashable {
@@ -24,27 +26,18 @@ struct SettingsView<AdditionalContent: View>: View {
             List {
                 content
             }
-            .navigationTitle("Preferences")
+            .scrollBounceBehavior(.basedOnSize)
+            .navigationTitle("Settings")
+            .toolbarVisibility(isPresentedInPopover ? .hidden : .automatic, for: .navigationBar)
             .navigationBarBackButtonHidden()
             .toolbar {
-                if !isSettingsWindow {
+                if !isSettingsWindow, !isPresentedInPopover {
                     ToolbarItem(placement: .topBarLeading) {
                         Button(role: .close) {
                             dismiss()
                         }
                         .keyboardShortcut(.cancelAction)
                     }
-                }
-                ToolbarItem(placement: .topBarTrailing) {
-                    AboutLink(
-                        app: .simpleEdit,
-                        features: [],
-                        tips: [
-                            IAPProduct(id: "James.SimpleEdit.SmallTip", image: Image(systemName: "face.smiling")),
-                            IAPProduct(id: "James.SimpleEdit.MediumTip", image: Image(systemName: "cup.and.heat.waves")),
-                            IAPProduct(id: "James.SimpleEdit.LargeTip", image: Image(systemName: "heart.square")),
-                        ]
-                    )
                 }
             }
         }
@@ -53,15 +46,24 @@ struct SettingsView<AdditionalContent: View>: View {
     
     @ViewBuilder
     var content: some View {
+        Section {
+            AboutLink(
+                app: .simpleEdit,
+                features: [],
+                tips: [
+                    IAPProduct(id: "James.SimpleEdit.SmallTip", image: Image(systemName: "face.smiling")),
+                    IAPProduct(id: "James.SimpleEdit.MediumTip", image: Image(systemName: "cup.and.heat.waves")),
+                    IAPProduct(id: "James.SimpleEdit.LargeTip", image: Image(systemName: "heart.square")),
+                ]
+            )
+            systemSettingsLink
+        }
         additionalContent()
         Section("App") {
             fontPicker
             fontSizePicker
             KeyboardPicker(keyboard: $keyboardType)
                 .keyboardShortcut("k")
-        }
-        Section {
-            systemSettingsLink
         }
     }
     
@@ -86,7 +88,7 @@ struct SettingsView<AdditionalContent: View>: View {
         } label: {
             HStack {
                 let currentValue = fontFamily ?? "System"
-                Label("Font", systemImage: "textformat.alt")
+                FontPickerLabel()
                     .accessibilityValue(currentValue)
                 Spacer()
                 Text(currentValue)
@@ -100,10 +102,21 @@ struct SettingsView<AdditionalContent: View>: View {
     
     var fontSizePicker: some View {
         HStack {
-            Label("Font size", systemImage: "textformat.size")
+            FontSizePickerLabel()
                 .accessibilityHidden(true)
             FontSizePicker(fontSize: $fontSize)
         }
+    }
+}
+
+struct FontSizePickerLabel: View {
+    var body: some View {
+        Label("Font size", systemImage: "textformat.size")
+    }
+}
+struct FontPickerLabel: View {
+    var body: some View {
+        Label("Font", systemImage: "textformat.alt")
     }
 }
 

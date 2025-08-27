@@ -53,7 +53,7 @@ struct FontSizePicker: View {
         Stepper(
             "Font size",
             value: fontSizeBinding,
-            in: 0 ... (99 as Double)
+            in: 8 ... (399 as Double)
         ).labelsHidden()
     }
 }

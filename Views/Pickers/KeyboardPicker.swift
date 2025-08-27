@@ -11,7 +11,7 @@ struct KeyboardPicker: View {
                     .tag(UIKeyboardType(rawValue: row)!)
             }
         } label: {
-            Label("Keyboard", systemImage: "keyboard.badge.ellipsis")
+            KeyboardPickerLabel()
         }
     }
     
@@ -31,6 +31,12 @@ struct KeyboardPicker: View {
         case .webSearch: return "Web search"
         @unknown case _: return "[unknown type]"
         }
+    }
+}
+
+struct KeyboardPickerLabel: View {
+    var body: some View {
+        Label("Keyboard", systemImage: "keyboard.badge.ellipsis")
     }
 }
 

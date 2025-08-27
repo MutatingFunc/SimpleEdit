@@ -55,6 +55,7 @@ struct SharedCommands: Commands {
     var openSettings: () -> ()
     
     var body: some Commands {
+        ToolbarCommands()
         CommandGroup(replacing: .appSettings) {
             Button("Settings") {
                 openSettings()

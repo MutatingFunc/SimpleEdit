@@ -17,40 +17,26 @@ struct FontPicker: View {
     
     var body: some View {
         FontPickerVC(fontFamily: fontFamilyBinding)
-            .edgesIgnoringSafeArea(.top) // Bottom doesn't inset properly
-            .safeAreaInset(edge: .top, spacing: 0) {
-                VStack(spacing: 0) {
-                    Color.clear
-                        .frame(height: 0)
-                        .background(.bar)
-                    Divider()
-                }
-            }
+            .edgesIgnoringSafeArea(.vertical) // Bottom doesn't inset properly
             .safeAreaInset(edge: .bottom, spacing: 0) {
-                VStack(spacing: 0) {
-                    Divider()
-                    HStack {
-                        Button {
-                            fontFamily = nil
-                            presentationMode.dismiss()
-                        } label: {
-                            Text("System")
-                                .frame(maxWidth: .infinity)
-                        }.buttonStyle(.borderedProminent)
-                        Button {
-                            presentationMode.dismiss()
-                        } label: {
-                            Text("Cancel")
-                                .frame(maxWidth: .infinity)
-                        }.buttonStyle(.bordered)
+                HStack {
+                    Button {
+                        fontFamily = nil
+                        presentationMode.dismiss()
+                    } label: {
+                        Text("System")
+                            .frame(maxWidth: .infinity)
                     }
-                    .padding(12)
-                    .background(.bar)
-                    .background {
-                        Color.clear
-                            .shadow(radius: 1, x: 0, y: 0)
-                    }
+                    .buttonStyle(.glassProminent)
+                    Button {
+                        presentationMode.dismiss()
+                    } label: {
+                        Text("Cancel")
+                            .frame(maxWidth: .infinity)
+                    }.buttonStyle(.glass)
                 }
+                .padding(.horizontal, 12)
+                .padding(.bottom, 4)
             }.navigationTitle("Font")
     }
 }
@@ -104,8 +90,8 @@ struct FontPicker_Previews: PreviewProvider {
         var body: some View {
             VStack {
                 FontPicker(fontFamily: $fontFamily)
-                Divider()
-                Text("\(fontFamily)" as String)
+//                Divider()
+//                Text("\(fontFamily)" as String)
             }
         }
     }
