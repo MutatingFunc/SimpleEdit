@@ -20,18 +20,18 @@ struct SimpleEditApp: App {
             SharedCommands(openSettings: openSettings)
             EditorCommands()
         }
-        
-        DocumentGroupLaunchScene("SimpleEdit") {
+        DocumentGroupLaunchScene {
             NewDocumentButton("New Text File")
                 .keyboardShortcut("n")
             Button {
-                openSettings()
+                showSettings = true
             } label: {
                 Label("Settings", systemImage: "gearshape")
             }
             .labelStyle(.titleOnly)
             .sheet(isPresented: $showSettings) {
                 StoredSettingsView()
+                    .frame(idealWidth: 320, idealHeight: 480)
             }
         } background: {
             let tintColor = Color(red: 0x00/0xFF, green: 0x14/0xFF, blue: 0xC5/0xFF)
@@ -40,18 +40,19 @@ struct SimpleEditApp: App {
             SharedCommands(openSettings: openSettings)
         }
         
-        WindowGroup("Settings", id: "Settings") {
-            StoredSettingsView()
-                .environment(\.isSettingsWindow, true)
-        }.defaultSize(width: 320, height: 480)
+//        WindowGroup("Settings", id: "Settings") {
+//            StoredSettingsView()
+//                .environment(\.isSettingsWindow, true)
+//                .frame(idealWidth: 320, idealHeight: 480)
+//        }.defaultSize(width: 320, height: 480)
     }
     
     func openSettings() {
-        if supportsMultipleWindows {
-            openWindow(id: "Settings")
-        } else {
+//        if supportsMultipleWindows {
+//            openWindow(id: "Settings")
+//        } else {
             showSettings = true
-        }
+//        }
     }
 }
 
