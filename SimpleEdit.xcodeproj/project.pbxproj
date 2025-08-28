@@ -23,6 +23,7 @@
 		1A92CB682787577C00D8B77E /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92CB572787577C00D8B77E /* RootView.swift */; };
 		1A92CB692787577C00D8B77E /* Editor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92CB582787577C00D8B77E /* Editor.swift */; };
 		1A92CB6A2787577C00D8B77E /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92CB5A2787577C00D8B77E /* UIFont.swift */; };
+		1AC3A5AA2E6064AF00997750 /* EditorCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC3A5A92E6064AF00997750 /* EditorCommands.swift */; };
 		1AFC75202D2451AC00DE2E8E /* About in Frameworks */ = {isa = PBXBuildFile; productRef = 1AFC751F2D2451AC00DE2E8E /* About */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,7 @@
 		1A92CB5A2787577C00D8B77E /* UIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		1A92CB5B2787577C00D8B77E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A92CB6C27875BD900D8B77E /* SimpleEdit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimpleEdit.entitlements; sourceTree = "<group>"; };
+		1AC3A5A92E6064AF00997750 /* EditorCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorCommands.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 			children = (
 				1A92CB4F2787577C00D8B77E /* SimpleEditDocument.swift */,
 				1A92CB502787577C00D8B77E /* SimpleEditApp.swift */,
+				1AC3A5A92E6064AF00997750 /* EditorCommands.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 			files = (
 				1A92CB662787577C00D8B77E /* StoredSettingsView.swift in Sources */,
 				1A92CB622787577C00D8B77E /* SimpleEditDocument.swift in Sources */,
+				1AC3A5AA2E6064AF00997750 /* EditorCommands.swift in Sources */,
 				1A92CB5F2787577C00D8B77E /* FontPicker.swift in Sources */,
 				1A92CB692787577C00D8B77E /* Editor.swift in Sources */,
 				1A92CB682787577C00D8B77E /* RootView.swift in Sources */,

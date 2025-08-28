@@ -15,6 +15,10 @@ struct SimpleEditApp: App {
             } else {
                 editor
             }
+        }.commands {
+            ToolbarCommands()
+            SharedCommands(openSettings: openSettings)
+            EditorCommands()
         }
         
         DocumentGroupLaunchScene("SimpleEdit") {

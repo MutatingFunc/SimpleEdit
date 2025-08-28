@@ -29,8 +29,6 @@
 			<array>
 				<string>public.data</string>
 			</array>
-			<key>NSUbiquitousDocumentUserActivityType</key>
-			<string>$(PRODUCT_BUNDLE_IDENTIFIER).simpleedit-data</string>
 		</dict>
 	</array>
 	<key>NSUbiquitousContainers</key>
