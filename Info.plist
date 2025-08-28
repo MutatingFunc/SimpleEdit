@@ -17,6 +17,8 @@
 			<array>
 				<string>public.plain-text</string>
 			</array>
+			<key>NSUbiquitousDocumentUserActivityType</key>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER).plaintext</string>
 		</dict>
 		<dict>
 			<key>CFBundleTypeName</key>
@@ -29,6 +31,8 @@
 			<array>
 				<string>public.data</string>
 			</array>
+			<key>NSUbiquitousDocumentUserActivityType</key>
+			<string>$(PRODUCT_BUNDLE_IDENTIFIER).data</string>
 		</dict>
 	</array>
 	<key>NSUbiquitousContainers</key>
