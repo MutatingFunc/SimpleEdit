@@ -18,8 +18,8 @@ let package = Package(
             targets: ["AppModule"],
             bundleIdentifier: "James.SimpleEdit",
             teamIdentifier: "VKFDYMU9HJ",
-            displayVersion: "2.0",
-            bundleVersion: "6",
+            displayVersion: "3.0.0",
+            bundleVersion: "1",
             appIcon: .asset("AppIcon"),
             accentColor: .asset("AccentColor"),
             supportedDeviceFamilies: [
