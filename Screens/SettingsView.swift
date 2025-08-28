@@ -26,9 +26,9 @@ struct SettingsView<AdditionalContent: View>: View {
             List {
                 content
             }
-            .scrollBounceBehavior(.basedOnSize)
+            .scrollBounceBehavior(isPresentedInPopover ? .basedOnSize : .automatic)
             .navigationTitle("Settings")
-            .toolbarVisibility(isPresentedInPopover ? .hidden : .automatic, for: .navigationBar)
+            .toolbarTitleDisplayMode(isPresentedInPopover ? .inline : .automatic)
             .navigationBarBackButtonHidden()
             .toolbar {
                 if !isSettingsWindow, !isPresentedInPopover {
@@ -39,6 +39,17 @@ struct SettingsView<AdditionalContent: View>: View {
                         .keyboardShortcut(.cancelAction)
                     }
                 }
+                ToolbarItem(placement: .topBarTrailing) {
+                    AboutLink(
+                        app: .simpleEdit,
+                        features: [],
+                        tips: [
+                            IAPProduct(id: "James.SimpleEdit.SmallTip", image: Image(systemName: "face.smiling")),
+                            IAPProduct(id: "James.SimpleEdit.MediumTip", image: Image(systemName: "cup.and.heat.waves")),
+                            IAPProduct(id: "James.SimpleEdit.LargeTip", image: Image(systemName: "heart.square")),
+                        ]
+                    )
+                }
             }
         }
         .navigationViewStyle(.stack)
@@ -47,15 +58,6 @@ struct SettingsView<AdditionalContent: View>: View {
     @ViewBuilder
     var content: some View {
         Section {
-            AboutLink(
-                app: .simpleEdit,
-                features: [],
-                tips: [
-                    IAPProduct(id: "James.SimpleEdit.SmallTip", image: Image(systemName: "face.smiling")),
-                    IAPProduct(id: "James.SimpleEdit.MediumTip", image: Image(systemName: "cup.and.heat.waves")),
-                    IAPProduct(id: "James.SimpleEdit.LargeTip", image: Image(systemName: "heart.square")),
-                ]
-            )
             systemSettingsLink
         }
         additionalContent()
@@ -82,7 +84,7 @@ struct SettingsView<AdditionalContent: View>: View {
     }
     
     var fontPicker: some View {
-        NavigationLink { 
+        NavigationLink {
             FontPicker(fontFamily: $fontFamily)
                 .navigationBarTitleDisplayMode(.inline)
         } label: {
