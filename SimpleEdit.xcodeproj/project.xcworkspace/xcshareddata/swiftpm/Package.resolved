@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/MutatingFunc/About.git",
       "state" : {
-        "revision" : "b3c561a2c791e2b9a8b40a4d0667ee4cbf248d1f",
-        "version" : "4.1.1"
+        "revision" : "7f6b2bc6801ea1f2a0985593528783c1c595f169",
+        "version" : "4.1.2"
       }
     }
   ],
