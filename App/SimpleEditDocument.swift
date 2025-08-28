@@ -1,7 +1,7 @@
 import SwiftUI
 import UniformTypeIdentifiers
 
-struct SimpleEditDocument: FileDocument {
+nonisolated struct SimpleEditDocument: FileDocument {
     static let readableContentTypes: [UTType] = [.plainText, .data]
     static let defaultFileName = "Untitled.txt"
     
@@ -28,8 +28,8 @@ struct SimpleEditDocument: FileDocument {
             throw CocoaError(.fileReadCorruptFile)
         }
         self.init(
-            text: text, 
-            filename: filename, 
+            text: text,
+            filename: filename,
             isSafelyEditable: isSafelyEditable
         )
     }
@@ -41,8 +41,8 @@ struct SimpleEditDocument: FileDocument {
         let contents = try String(contentsOf: url, encoding: .utf8)
         url.stopAccessingSecurityScopedResource()
         self.init(
-            text: contents, 
-            filename: url.lastPathComponent, 
+            text: contents,
+            filename: url.lastPathComponent,
             isSafelyEditable: UTType(filenameExtension: url.pathExtension) == .plainText
         )
     }
@@ -52,8 +52,8 @@ struct SimpleEditDocument: FileDocument {
             throw CocoaError(.fileReadCorruptFile)
         }
         try self.init(
-            data: contents, 
-            filename: configuration.file.filename 
+            data: contents,
+            filename: configuration.file.filename
             ?? configuration.file.preferredFilename
             ?? Self.defaultFileName,
             isSafelyEditable: configuration.contentType == .plainText
@@ -61,7 +61,7 @@ struct SimpleEditDocument: FileDocument {
     }
     
     func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
-        let data = Data(text.utf8)
+        let data = text.data(using: .utf8)!
         return FileWrapper(regularFileWithContents: data)
     }
     
