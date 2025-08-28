@@ -18,7 +18,6 @@ struct SimpleEditApp: App {
         }.commands {
             ToolbarCommands()
             SharedCommands(openSettings: openSettings)
-            EditorCommands()
         }
         
         // Launch scene breaks Open In (iOS 18, 26)

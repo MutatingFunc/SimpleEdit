@@ -1,8 +1,6 @@
 import SwiftUI
 
 struct EditorCommands: Commands {
-    @FocusedBinding(\.editMode) var isEditing: Bool?
-
     var body: some Commands {
         CommandGroup(before: .saveItem) {
             let boolBinding = Binding<Bool>(

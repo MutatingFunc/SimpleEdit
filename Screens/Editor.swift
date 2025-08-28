@@ -1,9 +1,5 @@
 import SwiftUI
 
-extension FocusedValues {
-    @Entry var editMode: Binding<Bool>?
-}
-
 struct Editor: View {
     @Binding var document: SimpleEditDocument
     @State private var activeSearch = ""
@@ -28,7 +24,6 @@ struct Editor: View {
                 editMode = document.isSafelyEditable
             }
             .environment(\.editMode, .constant(editMode ? .active : .inactive))
-            .focusedValue(\.editMode, $editMode)
             .font(family: fontFamily, size: fontSize)
             .uiKeyboardType(keyboardType)
             .toolbar(id: "Editor") {
