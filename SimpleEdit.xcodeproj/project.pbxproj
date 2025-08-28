@@ -3,52 +3,28 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1A4143D3278CE97B004D503C /* KeyboardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4143D2278CE97B004D503C /* KeyboardType.swift */; };
-		1A92CB5C2787577C00D8B77E /* DocumentsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92CB472787577C00D8B77E /* DocumentsButton.swift */; };
-		1A92CB5D2787577C00D8B77E /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92CB482787577C00D8B77E /* TextView.swift */; };
-		1A92CB5E2787577C00D8B77E /* KeyboardPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92CB4A2787577C00D8B77E /* KeyboardPicker.swift */; };
-		1A92CB5F2787577C00D8B77E /* FontPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92CB4B2787577C00D8B77E /* FontPicker.swift */; };
-		1A92CB602787577C00D8B77E /* FontSizePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92CB4C2787577C00D8B77E /* FontSizePicker.swift */; };
-		1A92CB612787577C00D8B77E /* UndoRedoButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92CB4D2787577C00D8B77E /* UndoRedoButtons.swift */; };
-		1A92CB622787577C00D8B77E /* SimpleEditDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92CB4F2787577C00D8B77E /* SimpleEditDocument.swift */; };
-		1A92CB632787577C00D8B77E /* SimpleEditApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92CB502787577C00D8B77E /* SimpleEditApp.swift */; };
 		1A92CB642787577C00D8B77E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A92CB512787577C00D8B77E /* Assets.xcassets */; };
-		1A92CB652787577C00D8B77E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A92CB532787577C00D8B77E /* Preview Assets.xcassets */; };
-		1A92CB662787577C00D8B77E /* StoredSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92CB552787577C00D8B77E /* StoredSettingsView.swift */; };
-		1A92CB672787577C00D8B77E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92CB562787577C00D8B77E /* SettingsView.swift */; };
-		1A92CB682787577C00D8B77E /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92CB572787577C00D8B77E /* RootView.swift */; };
-		1A92CB692787577C00D8B77E /* Editor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92CB582787577C00D8B77E /* Editor.swift */; };
-		1A92CB6A2787577C00D8B77E /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A92CB5A2787577C00D8B77E /* UIFont.swift */; };
-		1AC3A5AA2E6064AF00997750 /* EditorCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC3A5A92E6064AF00997750 /* EditorCommands.swift */; };
 		1AFC75202D2451AC00DE2E8E /* About in Frameworks */ = {isa = PBXBuildFile; productRef = 1AFC751F2D2451AC00DE2E8E /* About */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1A4143D2278CE97B004D503C /* KeyboardType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardType.swift; sourceTree = "<group>"; };
 		1A92CB322787571B00D8B77E /* SimpleEdit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleEdit.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1A92CB472787577C00D8B77E /* DocumentsButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentsButton.swift; sourceTree = "<group>"; };
-		1A92CB482787577C00D8B77E /* TextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
-		1A92CB4A2787577C00D8B77E /* KeyboardPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardPicker.swift; sourceTree = "<group>"; };
-		1A92CB4B2787577C00D8B77E /* FontPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontPicker.swift; sourceTree = "<group>"; };
-		1A92CB4C2787577C00D8B77E /* FontSizePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontSizePicker.swift; sourceTree = "<group>"; };
-		1A92CB4D2787577C00D8B77E /* UndoRedoButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UndoRedoButtons.swift; sourceTree = "<group>"; };
-		1A92CB4F2787577C00D8B77E /* SimpleEditDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleEditDocument.swift; sourceTree = "<group>"; };
-		1A92CB502787577C00D8B77E /* SimpleEditApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleEditApp.swift; sourceTree = "<group>"; };
 		1A92CB512787577C00D8B77E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		1A92CB532787577C00D8B77E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		1A92CB552787577C00D8B77E /* StoredSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoredSettingsView.swift; sourceTree = "<group>"; };
-		1A92CB562787577C00D8B77E /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		1A92CB572787577C00D8B77E /* RootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
-		1A92CB582787577C00D8B77E /* Editor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Editor.swift; sourceTree = "<group>"; };
-		1A92CB5A2787577C00D8B77E /* UIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		1A92CB5B2787577C00D8B77E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A92CB6C27875BD900D8B77E /* SimpleEdit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimpleEdit.entitlements; sourceTree = "<group>"; };
-		1AC3A5A92E6064AF00997750 /* EditorCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorCommands.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		1A245CC42E6087DB0006A8C8 /* App */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = App; sourceTree = "<group>"; };
+		1A245CCA2E6087DF0006A8C8 /* Extensions */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Extensions; sourceTree = "<group>"; };
+		1A245CCE2E6087E30006A8C8 /* Preview Content */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "Preview Content"; sourceTree = "<group>"; };
+		1A245CD42E6087E80006A8C8 /* Screens */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Screens; sourceTree = "<group>"; };
+		1A245CE02E6087EB0006A8C8 /* Views */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Views; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		1A92CB2F2787571B00D8B77E /* Frameworks */ = {
@@ -66,13 +42,13 @@
 			isa = PBXGroup;
 			children = (
 				1A92CB6C27875BD900D8B77E /* SimpleEdit.entitlements */,
-				1A92CB4E2787577C00D8B77E /* App */,
+				1A245CC42E6087DB0006A8C8 /* App */,
 				1A92CB512787577C00D8B77E /* Assets.xcassets */,
-				1A92CB592787577C00D8B77E /* Extensions */,
+				1A245CCA2E6087DF0006A8C8 /* Extensions */,
 				1A92CB5B2787577C00D8B77E /* Info.plist */,
-				1A92CB522787577C00D8B77E /* Preview Content */,
-				1A92CB542787577C00D8B77E /* Screens */,
-				1A92CB462787577C00D8B77E /* Views */,
+				1A245CCE2E6087E30006A8C8 /* Preview Content */,
+				1A245CD42E6087E80006A8C8 /* Screens */,
+				1A245CE02E6087EB0006A8C8 /* Views */,
 				1A92CB332787571B00D8B77E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -83,65 +59,6 @@
 				1A92CB322787571B00D8B77E /* SimpleEdit.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		1A92CB462787577C00D8B77E /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				1A92CB472787577C00D8B77E /* DocumentsButton.swift */,
-				1A92CB482787577C00D8B77E /* TextView.swift */,
-				1A92CB492787577C00D8B77E /* Pickers */,
-				1A92CB4D2787577C00D8B77E /* UndoRedoButtons.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		1A92CB492787577C00D8B77E /* Pickers */ = {
-			isa = PBXGroup;
-			children = (
-				1A92CB4A2787577C00D8B77E /* KeyboardPicker.swift */,
-				1A92CB4B2787577C00D8B77E /* FontPicker.swift */,
-				1A92CB4C2787577C00D8B77E /* FontSizePicker.swift */,
-			);
-			path = Pickers;
-			sourceTree = "<group>";
-		};
-		1A92CB4E2787577C00D8B77E /* App */ = {
-			isa = PBXGroup;
-			children = (
-				1A92CB4F2787577C00D8B77E /* SimpleEditDocument.swift */,
-				1A92CB502787577C00D8B77E /* SimpleEditApp.swift */,
-				1AC3A5A92E6064AF00997750 /* EditorCommands.swift */,
-			);
-			path = App;
-			sourceTree = "<group>";
-		};
-		1A92CB522787577C00D8B77E /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				1A92CB532787577C00D8B77E /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		1A92CB542787577C00D8B77E /* Screens */ = {
-			isa = PBXGroup;
-			children = (
-				1A92CB552787577C00D8B77E /* StoredSettingsView.swift */,
-				1A92CB562787577C00D8B77E /* SettingsView.swift */,
-				1A92CB572787577C00D8B77E /* RootView.swift */,
-				1A92CB582787577C00D8B77E /* Editor.swift */,
-			);
-			path = Screens;
-			sourceTree = "<group>";
-		};
-		1A92CB592787577C00D8B77E /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				1A92CB5A2787577C00D8B77E /* UIFont.swift */,
-				1A4143D2278CE97B004D503C /* KeyboardType.swift */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,6 +75,13 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				1A245CC42E6087DB0006A8C8 /* App */,
+				1A245CCA2E6087DF0006A8C8 /* Extensions */,
+				1A245CCE2E6087E30006A8C8 /* Preview Content */,
+				1A245CD42E6087E80006A8C8 /* Screens */,
+				1A245CE02E6087EB0006A8C8 /* Views */,
 			);
 			name = SimpleEdit;
 			productName = SimpleEdit;
@@ -205,7 +129,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A92CB652787577C00D8B77E /* Preview Assets.xcassets in Resources */,
 				1A92CB642787577C00D8B77E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -217,21 +140,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A92CB662787577C00D8B77E /* StoredSettingsView.swift in Sources */,
-				1A92CB622787577C00D8B77E /* SimpleEditDocument.swift in Sources */,
-				1AC3A5AA2E6064AF00997750 /* EditorCommands.swift in Sources */,
-				1A92CB5F2787577C00D8B77E /* FontPicker.swift in Sources */,
-				1A92CB692787577C00D8B77E /* Editor.swift in Sources */,
-				1A92CB682787577C00D8B77E /* RootView.swift in Sources */,
-				1A92CB5E2787577C00D8B77E /* KeyboardPicker.swift in Sources */,
-				1A92CB5C2787577C00D8B77E /* DocumentsButton.swift in Sources */,
-				1A92CB632787577C00D8B77E /* SimpleEditApp.swift in Sources */,
-				1A92CB5D2787577C00D8B77E /* TextView.swift in Sources */,
-				1A92CB6A2787577C00D8B77E /* UIFont.swift in Sources */,
-				1A92CB612787577C00D8B77E /* UndoRedoButtons.swift in Sources */,
-				1A92CB602787577C00D8B77E /* FontSizePicker.swift in Sources */,
-				1A4143D3278CE97B004D503C /* KeyboardType.swift in Sources */,
-				1A92CB672787577C00D8B77E /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
