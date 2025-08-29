@@ -18,7 +18,7 @@ struct FontPicker: View {
     var body: some View {
         FontPickerVC(fontFamily: fontFamilyBinding)
             .edgesIgnoringSafeArea(.vertical) // Bottom doesn't inset properly
-            .safeAreaInset(edge: .bottom, spacing: 0) {
+            .safeAreaBar(edge: .bottom, spacing: 0) {
                 HStack {
                     Button {
                         fontFamily = nil
