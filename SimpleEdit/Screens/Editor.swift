@@ -102,9 +102,8 @@ struct Editor: View {
             } label: { 
                 Text("Revert to last opened")
             }
-            Button(role: .cancel) {} label: {
-                Text("Cancel")
-            }.keyboardShortcut(.cancelAction)
+            Button(role: .cancel) {}
+                .keyboardShortcut(.cancelAction)
         }
     }
     var revertLabel: some View {
