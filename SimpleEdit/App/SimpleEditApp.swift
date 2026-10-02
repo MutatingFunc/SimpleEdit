@@ -5,7 +5,12 @@ struct SimpleEditApp: App {
     @State private var showSettings = false
     @Environment(\.openWindow) private var openWindow
     @Environment(\.supportsMultipleWindows) private var supportsMultipleWindows
-    
+
+    init() {
+        // SwiftUI's TextField has no clear button API; this enables UIKit's native one.
+        UITextField.appearance().clearButtonMode = .whileEditing
+    }
+
     var body: some Scene {
         DocumentGroup(newDocument: SimpleEditDocument(text: "")) { config in
             let editor = Editor(document: config.$document)
