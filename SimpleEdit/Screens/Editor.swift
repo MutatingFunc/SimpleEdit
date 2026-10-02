@@ -86,11 +86,7 @@ struct Editor: View {
             .navigationTitle(document.filename)
             .toolbarTitleMenu {
                 RenameButton()
-                Button {
-                    document.revert()
-                } label: {
-                    revertLabel
-                }
+                revertButton
             }
     }
     
