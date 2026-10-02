@@ -1,12 +1,12 @@
-import SwiftUI
+public import SwiftUI
 
-extension UIKeyboardType: @retroactive EnvironmentKey {
-    public static let defaultValue = Self.default
+private enum UIKeyboardTypeKey: EnvironmentKey {
+    static let defaultValue: UIKeyboardType = .default
 }
 extension EnvironmentValues {
     var keyboardType: UIKeyboardType {
-        get {self[UIKeyboardType.self]}
-        set {self[UIKeyboardType.self] = newValue}
+        get {self[UIKeyboardTypeKey.self]}
+        set {self[UIKeyboardTypeKey.self] = newValue}
     }
 }
 

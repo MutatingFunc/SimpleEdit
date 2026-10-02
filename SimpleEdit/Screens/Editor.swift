@@ -13,6 +13,7 @@ struct Editor: View {
     @AppStorage("fontSize") private var fontSize: Double?
     @AppStorage("keyboardType") private var keyboardType = UIKeyboardType.default
     @Environment(\.undoManager) private var undoManager
+    @Environment(\.verticalSizeClass) private var vSize
     @Environment(\.horizontalSizeClass) private var hSize
     
     var body: some View {
@@ -136,7 +137,7 @@ struct Editor: View {
                 EditModeToggle(isEditing: $editMode)
             }
         }
-        .environment(\.isPresentedInPopover, hSize != .compact)
+        .environment(\.isPresentedInPopover, hSize != .compact && vSize != .compact)
         .frame(idealWidth: 480, idealHeight: 512)
     }
 }

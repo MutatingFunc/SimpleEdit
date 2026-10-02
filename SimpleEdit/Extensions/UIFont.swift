@@ -1,13 +1,13 @@
 import SwiftUI
 
-extension UIFont: @retroactive EnvironmentKey {
-    public static let defaultValue = UIFont.preferredFont(forTextStyle: .body)
+private enum UIFontKey: EnvironmentKey {
+    static let defaultValue = UIFont.preferredFont(forTextStyle: .body)
 }
 
 extension EnvironmentValues {
     var uiFont: UIFont {
-        get {self[UIFont.self]}
-        set {self[UIFont.self] = newValue}
+        get {self[UIFontKey.self]}
+        set {self[UIFontKey.self] = newValue}
     }
 }
 
