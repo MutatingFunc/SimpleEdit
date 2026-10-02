@@ -111,7 +111,6 @@ struct Editor: View {
         Label("Revert", systemImage: "chevron.left.to.line")
     }
     
-    @Namespace private var ns
     var editorSettingsButton: some View {
         Button {
             isEditorFocused = false
