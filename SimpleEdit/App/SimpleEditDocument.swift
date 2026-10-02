@@ -38,8 +38,8 @@ nonisolated struct SimpleEditDocument: FileDocument {
         guard url.startAccessingSecurityScopedResource() else {
             throw CocoaError(.fileReadNoPermission)
         }
+        defer { url.stopAccessingSecurityScopedResource() }
         let contents = try String(contentsOf: url, encoding: .utf8)
-        url.stopAccessingSecurityScopedResource()
         self.init(
             text: contents,
             filename: url.lastPathComponent,
