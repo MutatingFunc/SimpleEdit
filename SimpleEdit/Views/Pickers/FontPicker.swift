@@ -61,7 +61,7 @@ struct FontPickerVC: UIViewControllerRepresentable {
         Coordinator(fontFamily: $fontFamily)
     }
     
-    class Coordinator: NSObject, UIFontPickerViewControllerDelegate {
+    final class Coordinator: NSObject, UIFontPickerViewControllerDelegate {
         @Binding var fontFamily: UIFontDescriptor?
         var dismiss: () -> ()
         init(

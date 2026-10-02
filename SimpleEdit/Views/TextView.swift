@@ -36,7 +36,7 @@ struct TextView: UIViewRepresentable {
         }
     }
     
-    class Coordinator: NSObject, UITextViewDelegate {
+    final class Coordinator: NSObject, UITextViewDelegate {
         @Binding var text: String
         @FocusState.Binding var focused: Bool
         init(text: Binding<String>, focused: FocusState<Bool>.Binding) {
