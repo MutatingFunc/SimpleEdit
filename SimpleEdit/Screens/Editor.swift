@@ -87,6 +87,16 @@ struct Editor: View {
                 RenameButton()
                 revertButton
             }
+            // Attached to the editor, not to the button in the title menu, which is dismissed along with its presentation.
+            .confirmationDialog("Revert file content to state when last opened?", isPresented: $isRevertShown) {
+                Button(role: .destructive) {
+                    document.revert()
+                } label: {
+                    Text("Revert to last opened")
+                }
+                Button(role: .cancel) {}
+                    .keyboardShortcut(.cancelAction)
+            }
     }
     
     var revertButton: some View {
@@ -96,15 +106,6 @@ struct Editor: View {
             revertLabel
         }
         .keyboardShortcut("r")
-        .confirmationDialog("Revert file content to state when last opened?", isPresented: $isRevertShown) { 
-            Button(role: .destructive) {
-                document.revert()
-            } label: { 
-                Text("Revert to last opened")
-            }
-            Button(role: .cancel) {}
-                .keyboardShortcut(.cancelAction)
-        }
     }
     var revertLabel: some View {
         Label("Revert", systemImage: "chevron.left.to.line")

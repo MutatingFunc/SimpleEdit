@@ -1,0 +1,27 @@
+{
+  "configurations" : [
+    {
+      "id" : "D964546C-1601-4F40-ACE7-16DB7B6F9424",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "performanceAntipatternCheckerEnabled" : true,
+    "testExecutionOrdering" : "random",
+    "testInteropMode" : "complete",
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:SimpleEdit.xcodeproj",
+        "identifier" : "7DAB982030703305000C08A2",
+        "name" : "SimpleEditUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
