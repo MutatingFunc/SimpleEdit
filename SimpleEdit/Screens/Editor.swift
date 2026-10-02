@@ -7,7 +7,6 @@ struct Editor: View {
     @State private var isSettingsShown = false
     @State private var editMode = false
     @State private var fontPickerShown = false
-    @State private var fontSizePickerShown = false
     @FocusState private var isEditorFocused
     @AppStorage("fontFamily") private var fontFamily: String?
     @AppStorage("fontSize") private var fontSize: Double?

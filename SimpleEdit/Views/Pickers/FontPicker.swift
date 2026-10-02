@@ -3,7 +3,6 @@ import SwiftUI
 struct FontPicker: View {
     @Binding var fontFamily: String?
     @Environment(\.dismiss) private var dismiss
-    @State private var isShowingNativePicker = false
     
     var fontFamilyBinding: Binding<UIFontDescriptor?> {
         Binding {
