@@ -61,8 +61,7 @@ nonisolated struct SimpleEditDocument: FileDocument {
     }
     
     func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
-        let data = text.data(using: .utf8)!
-        return FileWrapper(regularFileWithContents: data)
+        FileWrapper(regularFileWithContents: Data(text.utf8))
     }
     
     mutating func revert() {
