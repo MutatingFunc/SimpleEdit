@@ -21,10 +21,9 @@ struct SimpleEditApp: App {
                 editor
             }
         }.commands {
-            ToolbarCommands()
             SharedCommands(openSettings: openSettings)
         }
-        
+
         // Launch scene breaks Open In (iOS 18, 26)
         DocumentGroupLaunchScene {
             NewDocumentButton("New Text File")
