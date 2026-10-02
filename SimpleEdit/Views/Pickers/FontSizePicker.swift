@@ -58,10 +58,8 @@ struct FontSizePicker: View {
     }
 }
 
-struct FontSizePicker_Previews: PreviewProvider {
-    static var previews: some View {
-        HStack {
-            FontSizePicker(fontSize: .constant(nil))
-        }
+#Preview {
+    HStack {
+        FontSizePicker(fontSize: .constant(nil))
     }
 }

@@ -56,16 +56,20 @@ struct TextView: UIViewRepresentable {
     }
 }
 
-struct TextView_Previews: PreviewProvider {
-    static var previews: some View {
-        TextView(text: .constant("Hello world!"), focused: FocusState<Bool>().projectedValue)
-            .previewDisplayName("Standard TextView")
-        TextView(text: .constant("https://example.com"), focused: FocusState<Bool>().projectedValue)
-            .previewDisplayName("Data detection")
-        TextView(text: .constant(String(repeating: "Hello world! ", count: 1000)), focused: FocusState<Bool>().projectedValue)
-            .previewDisplayName("Long TextView")
-        TextView(text: State(initialValue: "123").projectedValue, focused: FocusState<Bool>().projectedValue)
-            .environment(\.editMode, .constant(.active))
-            .previewDisplayName("Editable TextView")
-    }
+#Preview("Standard TextView") {
+    TextView(text: .constant("Hello world!"), focused: FocusState<Bool>().projectedValue)
+}
+
+#Preview("Data detection") {
+    TextView(text: .constant("https://example.com"), focused: FocusState<Bool>().projectedValue)
+}
+
+#Preview("Long TextView") {
+    TextView(text: .constant(String(repeating: "Hello world! ", count: 1000)), focused: FocusState<Bool>().projectedValue)
+}
+
+#Preview("Editable TextView") {
+    @Previewable @State var text = "123"
+    TextView(text: $text, focused: FocusState<Bool>().projectedValue)
+        .environment(\.editMode, .constant(.active))
 }

@@ -152,18 +152,10 @@ struct EditModeToggle: View {
     }
 }
 
-struct Editor_Previews: PreviewProvider {
-    struct Container: View {
-        @State private var document = SimpleEditDocument(text: "https://example.com")
-        
-        var body: some View {
-            NavigationView {
-                Editor(document: $document)
-                    .toolbarRole(.editor)
-            }.navigationViewStyle(.stack)
-        }
-    }
-    static var previews: some View {
-        Container()
+#Preview {
+    @Previewable @State var document = SimpleEditDocument(text: "https://example.com")
+    NavigationStack {
+        Editor(document: $document)
+            .toolbarRole(.editor)
     }
 }

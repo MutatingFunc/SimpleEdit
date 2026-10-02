@@ -22,7 +22,7 @@ struct SettingsView<AdditionalContent: View>: View {
     }
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
                 content
             }
@@ -52,7 +52,6 @@ struct SettingsView<AdditionalContent: View>: View {
                 }
             }
         }
-        .navigationViewStyle(.stack)
     }
     
     @ViewBuilder
@@ -75,7 +74,7 @@ struct SettingsView<AdditionalContent: View>: View {
         Link(destination: destination ?? URL(string: "about:blank")!) {
             LabeledContent {
                 Image(systemName: "arrow.up.forward.app")
-                    .foregroundColor(.secondary)
+                    .foregroundStyle(.secondary)
                     .accessibilityHidden(true)
             } label: {
                 Label("System Settings", systemImage: "gear")
@@ -97,7 +96,7 @@ struct SettingsView<AdditionalContent: View>: View {
                     .font(fontFamily.map{.custom($0, size: 16)})
                     .padding(.vertical, 6)
                     .accessibilityHidden(true)
-                    .foregroundColor(.secondary)
+                    .foregroundStyle(.secondary)
             }
         }.keyboardShortcut("f")
     }
@@ -122,24 +121,16 @@ struct FontPickerLabel: View {
     }
 }
 
-struct EditorSettings_Previews: PreviewProvider {
-    struct Container: View {
-        @State private var editMode = true
-        @State private var fontFamily: String?
-        @State private var fontSize: Double?
-        @State private var keyboardType = UIKeyboardType.default
-        
-        var body: some View {
-            SettingsView(
-                fontFamily: $fontFamily,
-                fontSize: $fontSize,
-                keyboardType: $keyboardType
-            ) {
-                Toggle("Edit mode", isOn: $editMode)
-            }
-        }
-    }
-    static var previews: some View {
-        Container()
+#Preview {
+    @Previewable @State var editMode = true
+    @Previewable @State var fontFamily: String?
+    @Previewable @State var fontSize: Double?
+    @Previewable @State var keyboardType = UIKeyboardType.default
+    SettingsView(
+        fontFamily: $fontFamily,
+        fontSize: $fontSize,
+        keyboardType: $keyboardType
+    ) {
+        Toggle("Edit mode", isOn: $editMode)
     }
 }

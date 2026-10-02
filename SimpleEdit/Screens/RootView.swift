@@ -8,7 +8,7 @@ struct RootView: View {
     @State private var importError: (any Error)?
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Editor(document: $document)
                 .fileImporter(
                     isPresented: $isFileImporterShown, 
@@ -24,7 +24,6 @@ struct RootView: View {
                     }
                 }
         }
-        .navigationViewStyle(.stack)
     }
     
     func importDocument(_ result: Result<URL, any Error>) {

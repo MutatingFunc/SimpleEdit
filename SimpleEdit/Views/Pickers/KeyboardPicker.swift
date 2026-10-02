@@ -40,8 +40,6 @@ struct KeyboardPickerLabel: View {
     }
 }
 
-struct KeyboardPicker_Previews: PreviewProvider {
-    static var previews: some View {
-        KeyboardPicker(keyboard: .constant(.default))
-    }
+#Preview {
+    KeyboardPicker(keyboard: .constant(.default))
 }

@@ -2,7 +2,7 @@ import SwiftUI
 
 struct FontPicker: View {
     @Binding var fontFamily: String?
-    @Environment(\.presentationMode) @Binding var presentationMode
+    @Environment(\.dismiss) private var dismiss
     @State private var isShowingNativePicker = false
     
     var fontFamilyBinding: Binding<UIFontDescriptor?> {
@@ -17,19 +17,19 @@ struct FontPicker: View {
     
     var body: some View {
         FontPickerVC(fontFamily: fontFamilyBinding)
-            .edgesIgnoringSafeArea(.vertical) // Bottom doesn't inset properly
+            .ignoresSafeArea(edges: .vertical) // Bottom doesn't inset properly
             .safeAreaBar(edge: .bottom, spacing: 0) {
                 HStack {
                     Button {
                         fontFamily = nil
-                        presentationMode.dismiss()
+                        dismiss()
                     } label: {
                         Text("System")
                             .frame(maxWidth: .infinity)
                     }
                     .buttonStyle(.glassProminent)
                     Button {
-                        presentationMode.dismiss()
+                        dismiss()
                     } label: {
                         Text("Cancel")
                             .frame(maxWidth: .infinity)
@@ -47,13 +47,15 @@ struct FontPickerVC: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIFontPickerViewController {
         let picker = UIFontPickerViewController(configuration: .init())
         picker.delegate = context.coordinator
-        context.coordinator.dismiss = {context.environment.presentationMode.wrappedValue.dismiss()}
+        let dismiss = context.environment.dismiss
+        context.coordinator.dismiss = { dismiss() }
         return picker
     }
     
     func updateUIViewController(_ picker: UIFontPickerViewController, context: Context) {
         picker.delegate = context.coordinator
-        context.coordinator.dismiss = {context.environment.presentationMode.wrappedValue.dismiss()}
+        let dismiss = context.environment.dismiss
+        context.coordinator.dismiss = { dismiss() }
     }
     
     func makeCoordinator() -> Coordinator {
@@ -83,19 +85,7 @@ struct FontPickerVC: UIViewControllerRepresentable {
     }
 }
 
-struct FontPicker_Previews: PreviewProvider {
-    struct Container: View {
-        @State private var fontFamily: String?
-        
-        var body: some View {
-            VStack {
-                FontPicker(fontFamily: $fontFamily)
-//                Divider()
-//                Text("\(fontFamily)" as String)
-            }
-        }
-    }
-    static var previews: some View {
-        Container()
-    }
+#Preview {
+    @Previewable @State var fontFamily: String?
+    FontPicker(fontFamily: $fontFamily)
 }
