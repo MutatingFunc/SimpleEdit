@@ -25,7 +25,9 @@ struct Editor: View {
                 editMode = document.isSafelyEditable
             }
             .environment(\.editMode, .constant(editMode ? .active : .inactive))
-            .font(family: fontFamily, size: fontSize)
+            .font(family: fontFamily, size: fontSize.map {
+                min(max($0, FontSizePicker.validRange.lowerBound), FontSizePicker.validRange.upperBound)
+            })
             .uiKeyboardType(keyboardType)
             .toolbar(id: "Editor") {
                 Group {

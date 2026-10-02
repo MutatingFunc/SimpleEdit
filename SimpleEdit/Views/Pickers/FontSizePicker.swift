@@ -3,17 +3,9 @@ import SwiftUI
 // TODO: Add dynamic type font sizes
 struct FontSizePicker: View {
     @FocusState private var isFieldFocused: Bool
-    @Binding var fontSize: Double? {
-        didSet {
-            if let fontSize = fontSize {
-                if fontSize < 1 {
-                    self.fontSize = 1
-                } else if fontSize > 300 {
-                    self.fontSize = 300
-                }
-            }
-        }
-    }
+    @Binding var fontSize: Double?
+    
+    static let validRange: ClosedRange<Double> = 1 ... 300
     
     var fontSizeBinding: Binding<Double> {
         Binding {
@@ -27,8 +19,8 @@ struct FontSizePicker: View {
         let formatter = NumberFormatter()
         formatter.allowsFloats = false
         formatter.maximumIntegerDigits = 3
-        formatter.maximum = 300
-        formatter.minimum = 1
+        formatter.maximum = validRange.upperBound as NSNumber
+        formatter.minimum = validRange.lowerBound as NSNumber
         return formatter
     }()
     
@@ -53,7 +45,7 @@ struct FontSizePicker: View {
         Stepper(
             "Font size",
             value: fontSizeBinding,
-            in: 8 ... (399 as Double)
+            in: 8 ... Self.validRange.upperBound
         ).labelsHidden()
     }
 }
