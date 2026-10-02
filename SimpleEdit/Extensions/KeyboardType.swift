@@ -1,4 +1,4 @@
-public import SwiftUI
+import SwiftUI
 
 private enum UIKeyboardTypeKey: EnvironmentKey {
     static let defaultValue: UIKeyboardType = .default
