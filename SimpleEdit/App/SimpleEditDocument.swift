@@ -1,70 +1,100 @@
 import SwiftUI
 import UniformTypeIdentifiers
 
-nonisolated struct SimpleEditDocument: FileDocument {
-    static let readableContentTypes: [UTType] = [.plainText, .data]
+@Observable
+final class SimpleEditDocument: Document, Transferable {
+    static let readableContentTypes = [UTType.plainText, .data]
     static let defaultFileName = "Untitled.txt"
     
-    let originalText: String
-    var text: String
-    var filename: String
-    var isSafelyEditable: Bool
-    
-    enum LoadError: String, LocalizedError {
-        case incorrectContentType = "Incorrect file type"
-        case noFileContentsFound = "File content not recognised"
-        var errorDescription: String? { rawValue }
-    }
-    
-    init(text: String = "", filename: String = Self.defaultFileName, isSafelyEditable: Bool = true) {
-        self.originalText = text
-        self.text = text
-        self.filename = filename
-        self.isSafelyEditable = isSafelyEditable
-    }
-    
-    init(data: Data, filename: String = Self.defaultFileName, isSafelyEditable: Bool = true) throws {
-        guard let text = String(data: data, encoding: .utf8) else {
-            throw CocoaError(.fileReadCorruptFile)
+    struct Contents: Sendable {
+        var originalText: String
+        var text: String
+        var filename: String
+        var contentType: UTType
+        var isSafelyEditable: Bool {
+            contentType == .plainText
         }
-        self.init(
-            text: text,
-            filename: filename,
-            isSafelyEditable: isSafelyEditable
-        )
+        
+        mutating func revert() {
+            text = originalText
+        }
+        
+        func writeToFile(in fileURL: URL) throws -> URL {
+            let url = fileURL.appending(component: filename)
+            try text.write(to: url, atomically: true, encoding: .utf8)
+            return url
+        }
+        
+        init(text: String, filename: String = SimpleEditDocument.defaultFileName, contentType: UTType = .plainText) {
+            self.originalText = text
+            self.text = text
+            self.filename = filename
+            self.contentType = contentType
+        }
+    }
+    var contents: Contents
+    init(contents: Contents) { self.contents = contents }
+    
+    func reader(configuration: sending ReadConfiguration) -> sending FileWrapperDocumentReader<Contents> {
+        FileWrapperDocumentReader(configuration) { [contentType = configuration.contentType] fileWrapper in
+            guard let data =
+                fileWrapper.regularFileContents else {
+                throw CocoaError(.fileReadCorruptFile)
+            }
+            let text = String(decoding: data, as: UTF8.self)
+            return Contents(
+                text: text,
+                filename: fileWrapper.filename ?? fileWrapper.preferredFilename ?? Self.defaultFileName,
+                contentType: contentType
+            )
+        }
     }
     
-    init(url: URL) throws {
+    func writer(configuration: sending WriteConfiguration) -> sending FileWrapperDocumentWriter<Contents> {
+        FileWrapperDocumentWriter(configuration) { snapshot, _ in
+            let fileWrapper = FileWrapper(
+                regularFileWithContents: Data(snapshot.text.utf8)
+            )
+            fileWrapper.filename = snapshot.filename
+            return fileWrapper
+        }
+    }
+    
+    @MainActor
+    func snapshot(contentType: UTType) async throws -> sending Contents { contents }
+    
+    @MainActor
+    func apply(snapshot: sending Contents, previous: sending Contents?) async throws {
+        contents = snapshot
+    }
+    
+    /// Import
+    convenience init(url: URL) throws {
         guard url.startAccessingSecurityScopedResource() else {
             throw CocoaError(.fileReadNoPermission)
         }
         defer { url.stopAccessingSecurityScopedResource() }
         let contents = try String(contentsOf: url, encoding: .utf8)
         self.init(
-            text: contents,
-            filename: url.lastPathComponent,
-            isSafelyEditable: UTType(filenameExtension: url.pathExtension) == .plainText
+            contents: .init(
+                text: contents,
+                filename: url.lastPathComponent,
+                contentType: UTType(filenameExtension: url.pathExtension) ?? .data
+            )
         )
     }
     
-    init(configuration: ReadConfiguration) throws {
-        guard let contents = configuration.file.regularFileContents else {
-            throw CocoaError(.fileReadCorruptFile)
+    static var transferRepresentation: some TransferRepresentation {
+        FileRepresentation(contentType: .plainText) { doc in
+            SentTransferredFile(
+                try doc.contents.writeToFile(
+                    in: try FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+                )
+            )
+        } importing: { received in
+            try SimpleEditDocument(url: received.file)
         }
-        try self.init(
-            data: contents,
-            filename: configuration.file.filename
-            ?? configuration.file.preferredFilename
-            ?? Self.defaultFileName,
-            isSafelyEditable: configuration.contentType == .plainText
-        )
-    }
-    
-    func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
-        FileWrapper(regularFileWithContents: Data(text.utf8))
-    }
-    
-    mutating func revert() {
-        self.text = originalText
+
     }
 }
+

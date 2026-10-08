@@ -1,4 +1,10 @@
 import SwiftUI
+import UniformTypeIdentifiers
+
+extension DocumentCreationSource {
+    static let newDoc: Self =
+        DocumentCreationSource(id: "new-document")
+}
 
 @main
 struct SimpleEditApp: App {
@@ -12,21 +18,18 @@ struct SimpleEditApp: App {
     }
 
     var body: some Scene {
-        DocumentGroup(newDocument: SimpleEditDocument(text: "")) { config in
-            let editor = Editor(document: config.$document)
-            if let fileURL = config.fileURL {
-                editor
-                    .navigationDocument(fileURL)
-            } else {
-                editor
-            }
+        DocumentGroup { document in
+            Editor(document: document)
+                .navigationDocument(document)
+        } makeDocument: { configuration, context in
+            SimpleEditDocument(contents: .init(text: "", filename: configuration.fileURL?.lastPathComponent ?? SimpleEditDocument.defaultFileName, contentType: .plainText))
         }.commands {
             SharedCommands(openSettings: openSettings)
         }
 
         // Launch scene breaks Open In (iOS 18, 26)
         DocumentGroupLaunchScene {
-            NewDocumentButton("New Text File")
+            NewDocumentButton("New Text File", source: .newDoc)
                 .keyboardShortcut("n")
             Button {
                 showSettings = true

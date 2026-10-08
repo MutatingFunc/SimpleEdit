@@ -1,7 +1,8 @@
 import SwiftUI
+import UniformTypeIdentifiers
 
 struct Editor: View {
-    @Binding var document: SimpleEditDocument
+    var document: SimpleEditDocument
     @State private var activeSearch = ""
     @State private var isRevertShown = false
     @State private var isSettingsShown = false
@@ -16,12 +17,18 @@ struct Editor: View {
     @Environment(\.horizontalSizeClass) private var hSize
     
     var body: some View {
-        TextView(text: $document.text, focused: $isEditorFocused)
+        @Bindable var document = document
+        TextView(text: $document.contents.text, focused: $isEditorFocused)
             .ignoresSafeArea(.container, edges: .vertical)
             .focused($isEditorFocused)
             .onAppear {
                 isEditorFocused = true
-                editMode = document.isSafelyEditable
+                editMode = document.contents.isSafelyEditable
+            }
+            .onChange(of: document.contents.text) { oldValue, _ in
+                undoManager?.registerUndo(withTarget: document) { document in
+                    document.contents.text = oldValue
+                }
             }
             .environment(\.editMode, .constant(editMode ? .active : .inactive))
             .font(family: fontFamily, size: fontSize.map {
@@ -82,7 +89,7 @@ struct Editor: View {
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle(document.filename)
+            .navigationTitle(document.contents.filename)
             .toolbarTitleMenu {
                 RenameButton()
                 revertButton
@@ -90,7 +97,7 @@ struct Editor: View {
             // Attached to the editor, not to the button in the title menu, which is dismissed along with its presentation.
             .confirmationDialog("Revert file content to state when last opened?", isPresented: $isRevertShown) {
                 Button(role: .destructive) {
-                    document.revert()
+                    document.contents.revert()
                 } label: {
                     Text("Revert to last opened")
                 }
@@ -149,9 +156,14 @@ struct EditModeToggle: View {
 }
 
 #Preview {
-    @Previewable @State var document = SimpleEditDocument(text: "https://example.com")
+    @Previewable @State var document = SimpleEditDocument(
+        contents: .init(
+            text: "https://example.com",
+            contentType: .plainText
+        )
+    )
     NavigationStack {
-        Editor(document: $document)
+        Editor(document: document)
             .toolbarRole(.editor)
     }
 }

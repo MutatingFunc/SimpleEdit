@@ -3,13 +3,13 @@ import UniformTypeIdentifiers
 
 // An alternative to the document picker. Not currently used.
 struct RootView: View {
-    @State var document = SimpleEditDocument(text: "")
+    @State var document = SimpleEditDocument(contents: .init(text: "", contentType: .plainText))
     @State private var isFileImporterShown = false
     @State private var importError: (any Error)?
     
     var body: some View {
         NavigationStack {
-            Editor(document: $document)
+            Editor(document: document)
                 .fileImporter(
                     isPresented: $isFileImporterShown, 
                     allowedContentTypes: [.plainText], 
