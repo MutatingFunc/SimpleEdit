@@ -15,7 +15,11 @@ struct Editor: View {
     @Environment(\.undoManager) private var undoManager
     @Environment(\.verticalSizeClass) private var vSize
     @Environment(\.horizontalSizeClass) private var hSize
+//    @Environment(\.toolbarVerticalEdge) private var toolbarVerticalEdge
     
+    var defaultCustomisation: Visibility {
+        hSize != .compact /*&& toolbarVerticalEdge == nil*/ ? .visible : .hidden
+    }
     var body: some View {
         @Bindable var document = document
         TextView(text: $document.contents.text, focused: $isEditorFocused)
@@ -36,39 +40,43 @@ struct Editor: View {
             })
             .uiKeyboardType(keyboardType)
             .toolbar(id: "Editor") {
-                Group {
-                    ToolbarItem(id: "FontFamily") {
-                        Button {
-                            fontPickerShown.toggle()
-                        } label: {
-                            FontPickerLabel()
-                        }.popover(isPresented: $fontPickerShown) {
-                            FontPicker(fontFamily: $fontFamily)
-                        }
-                    }
-                    ToolbarItem(id: "FontSize") {
-                        Menu {
-                            Section("Font size") {
-                                FontSizePicker(fontSize: $fontSize)
-                                Button {
-                                    fontSize = nil
-                                } label: {
-                                    Label("Reset to System", systemImage: "undo")
-                                }
+                if hSize != .compact {
+                    Group {
+                        ToolbarItem(id: "FontFamily") {
+                            Button {
+                                fontPickerShown.toggle()
+                            } label: {
+                                FontPickerLabel()
+                            }.popover(isPresented: $fontPickerShown) {
+                                FontPicker(fontFamily: $fontFamily)
                             }
-                        } label: {
-                            FontSizePickerLabel()
+                        }
+                        ToolbarItem(id: "FontSize") {
+                            Menu {
+                                Section("Font size") {
+                                    FontSizePicker(fontSize: $fontSize)
+                                    Button {
+                                        fontSize = nil
+                                    } label: {
+                                        Label("Reset to System", systemImage: "undo")
+                                    }
+                                }
+                            } label: {
+                                FontSizePickerLabel()
+                            }
+                        }
+                        ToolbarItem(id: "KeyboardPicker") {
+                            Menu {
+                                KeyboardPicker(keyboard: $keyboardType)
+                                    .pickerStyle(.inline)
+                            } label: {
+                                KeyboardPickerLabel()
+                            }
                         }
                     }
-                    ToolbarItem(id: "KeyboardPicker") {
-                        Menu {
-                            KeyboardPicker(keyboard: $keyboardType)
-                                .pickerStyle(.inline)
-                        } label: {
-                            KeyboardPickerLabel()
-                        }
-                    }
-                }.defaultCustomization(.hidden)
+                    .defaultCustomization(defaultCustomisation)
+                    .visibilityPriority(.low)
+                }
             }
             .toolbar {
                 if isEditorFocused {
@@ -78,7 +86,7 @@ struct Editor: View {
                         } label: {
                             Label("Dismiss Keyboard", systemImage: "keyboard.chevron.compact.down")
                         }.keyboardShortcut(.cancelAction)
-                    }
+                    }.visibilityPriority(.high)
                     ToolbarSpacer(placement: .topBarTrailing)
                 }
                 ToolbarItem(placement: .topBarTrailing) {
