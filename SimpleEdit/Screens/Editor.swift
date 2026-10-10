@@ -88,8 +88,6 @@ struct Editor: View {
                     editorSettingsButton
                 }
             }
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle(document.contents.filename)
             .toolbarTitleMenu {
                 RenameButton()
                 revertButton
