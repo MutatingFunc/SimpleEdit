@@ -11,6 +11,7 @@ struct TextView: UIViewRepresentable {
         view.text = text
         view.dataDetectorTypes = .all
         view.keyboardDismissMode = .interactive
+        view.alwaysBounceVertical = true
         updateUIView(view, context: context)
         return view
     }
