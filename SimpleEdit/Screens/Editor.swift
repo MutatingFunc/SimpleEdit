@@ -15,11 +15,7 @@ struct Editor: View {
     @Environment(\.undoManager) private var undoManager
     @Environment(\.verticalSizeClass) private var vSize
     @Environment(\.horizontalSizeClass) private var hSize
-    @Environment(\.toolbarVerticalEdge) private var toolbarVerticalEdge
     
-    var defaultCustomisation: Visibility {
-        hSize != .compact && toolbarVerticalEdge == nil ? .visible : .hidden
-    }
     var body: some View {
         @Bindable var document = document
         TextView(text: $document.contents.text, focused: $isEditorFocused)
@@ -74,7 +70,7 @@ struct Editor: View {
                             }
                         }
                     }
-                    .defaultCustomization(defaultCustomisation)
+                    .defaultCustomization(.visible)
                     .visibilityPriority(.low)
                 }
             }
