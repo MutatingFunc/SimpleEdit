@@ -1,5 +1,5 @@
 {
-  "originHash" : "35b04bbac4d4ea48cab86bfae7117208ad80a7e53c7d48251259e642a4118d01",
+  "originHash" : "fb6eba953e21da90fab9f39cb9669fc967146ffaa046344a1a219d57c5b3f4fb",
   "pins" : [
     {
       "identity" : "about",
@@ -8,6 +8,15 @@
       "state" : {
         "revision" : "27b4604d96b312abdab1f54b0c7c7dc194231c13",
         "version" : "4.1.4"
+      }
+    },
+    {
+      "identity" : "robotsuitesting",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/MutatingFunc/RobotsUITesting",
+      "state" : {
+        "branch" : "main",
+        "revision" : "8bf2a64a41b7f803a8e7a121ad58773d33fc1add"
       }
     }
   ],

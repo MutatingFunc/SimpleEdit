@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7D00BB303077B5CA00AC4FA1 /* RobotsUITesting in Frameworks */ = {isa = PBXBuildFile; productRef = 7D00BB2F3077B5CA00AC4FA1 /* RobotsUITesting */; };
+		7D26BC2230825D3C00411A2E /* RobotsUITesting in Frameworks */ = {isa = PBXBuildFile; productRef = 7D26BC2130825D3C00411A2E /* RobotsUITesting */; };
+		7D26BC6930825E6800411A2E /* RobotsUITesting in Frameworks */ = {isa = PBXBuildFile; productRef = 7D00BB2F3077B5CA00AC4FA1 /* RobotsUITesting */; };
 		7D805CA9306FA7ED00A67CAE /* About in Frameworks */ = {isa = PBXBuildFile; productRef = 7D805CA8306FA7ED00A67CAE /* About */; };
 /* End PBXBuildFile section */
 
@@ -75,7 +76,8 @@
 		7DAB981E30703305000C08A2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			files = (
-				7D00BB303077B5CA00AC4FA1 /* RobotsUITesting in Frameworks */,
+				7D26BC6930825E6800411A2E /* RobotsUITesting in Frameworks */,
+				7D26BC2230825D3C00411A2E /* RobotsUITesting in Frameworks */,
 			);
 		};
 /* End PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 			name = SimpleEditUITests;
 			packageProductDependencies = (
 				7D00BB2F3077B5CA00AC4FA1 /* RobotsUITesting */,
+				7D26BC2130825D3C00411A2E /* RobotsUITesting */,
 			);
 			productName = SimpleEditUITests;
 			productReference = 7DAB982130703305000C08A2 /* SimpleEditUITests.xctest */;
@@ -202,7 +205,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				7D805CA7306FA7ED00A67CAE /* XCRemoteSwiftPackageReference "About" */,
-				7D00BB2E3077B5CA00AC4FA1 /* XCLocalSwiftPackageReference "../../Packages/RobotsUITesting" */,
+				7D26BC2030825D3C00411A2E /* XCRemoteSwiftPackageReference "RobotsUITesting" */,
 			);
 			preferredProjectObjectVersion = 110;
 			productRefGroup = 000000000000000000000020 /* Products */;
@@ -654,14 +657,15 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCLocalSwiftPackageReference section */
-		7D00BB2E3077B5CA00AC4FA1 /* XCLocalSwiftPackageReference "../../Packages/RobotsUITesting" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = ../../Packages/RobotsUITesting;
-		};
-/* End XCLocalSwiftPackageReference section */
-
 /* Begin XCRemoteSwiftPackageReference section */
+		7D26BC2030825D3C00411A2E /* XCRemoteSwiftPackageReference "RobotsUITesting" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MutatingFunc/RobotsUITesting";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		7D805CA7306FA7ED00A67CAE /* XCRemoteSwiftPackageReference "About" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/MutatingFunc/About.git";
@@ -675,6 +679,11 @@
 /* Begin XCSwiftPackageProductDependency section */
 		7D00BB2F3077B5CA00AC4FA1 /* RobotsUITesting */ = {
 			isa = XCSwiftPackageProductDependency;
+			productName = RobotsUITesting;
+		};
+		7D26BC2130825D3C00411A2E /* RobotsUITesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7D26BC2030825D3C00411A2E /* XCRemoteSwiftPackageReference "RobotsUITesting" */;
 			productName = RobotsUITesting;
 		};
 		7D805CA8306FA7ED00A67CAE /* About */ = {

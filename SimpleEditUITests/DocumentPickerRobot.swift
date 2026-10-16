@@ -12,6 +12,9 @@ struct DocumentPickerRobot: Robot {
             app.wait(for: { _ in self.isLaunchScreenShown || self.isFullBrowserShown }, timeout: 30),
             "Neither the launch screen nor the document browser was found"
         )
+        newTextFileButton.wait(for: \.isHittable, toEqual: true, timeout: 3)
+        settingsButton.wait(for: \.isHittable, toEqual: true, timeout: 3)
+        
         // A fresh simulator has no save location until the Browse tab has been opened, which "New Text File" needs.
         // The document browser can take around 10s to launch.
         let isLaunchScreen = isLaunchScreenShown
@@ -20,6 +23,8 @@ struct DocumentPickerRobot: Robot {
         } else {
             XCTAssert(!isLaunchScreen, "Browse tab not found")
         }
+        browseButton.wait(for: \.isHittable, timeout: isLaunchScreen ? 30 : 3)
+        browseButton.tap()
         // New files are saved to the browser's current location, so open the device's local one ("On My iPhone/iPad").
         // The browser remembers its last location, so it may already be inside one, in which case there is no sidebar.
         XCTAssert(
@@ -93,6 +98,7 @@ struct DocumentPickerRobot: Robot {
     func deleteAllDocuments() -> Self {
         perform {
             XCTAssert(openLocationFiles.wait(for: \.exists, timeout: 15), "File list not found")
+            openLocationFiles.wait(for: \.exists, timeout: 15)
             // The list fills in some seconds after it appears, with no sign that it is loading, so an empty list is only treated as
             // empty after a wait. Skipping an existing document makes the next New Text File fail with a name collision.
             guard documentCells.wait(for: { $0.count > 0 }, timeout: 6) else { return }
@@ -120,6 +126,7 @@ struct DocumentPickerRobot: Robot {
             // The browser identifies documents as "<name>, <extension>".
             let cell = app.cells.matching(identifier: "\(url.deletingPathExtension().lastPathComponent), \(url.pathExtension)").firstMatch
             XCTAssert(openLocationFiles.wait(for: \.exists, timeout: 15), "File list not found")
+            openLocationFiles.wait(for: \.exists, timeout: 15)
             // The collection view only creates cells for the rows on screen, so the cell does not exist until it is scrolled to.
             XCTAssert(cell.scrollTo(in: openLocationFiles, swipeLimit: 30, until: \.isHittable), "\(filename) not found")
             XCTAssert(cell.waitUntilStationary(), "The file list did not stop scrolling")
